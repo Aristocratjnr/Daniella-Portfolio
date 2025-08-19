@@ -35,10 +35,10 @@ const ProjectsSection: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Illustration */}
           <div className="relative flex items-center justify-center">
-            <div className="text-6xl font-bold text-gray-800 transform -rotate-90 absolute -left-16 top-1/2 -translate-y-1/2 origin-center">
+            <div className="text-6xl font-bold text-gray-800 transform -rotate-90 absolute -left-16 top-1/2 -translate-y-1/2 origin-center mr-2">
               MY PROJECTS
             </div>
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-md ml-24">
               <Image
                 src="/images/woman.png"
                 alt="Woman working"
