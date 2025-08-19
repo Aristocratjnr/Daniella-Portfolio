@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar } from './components/Navbar';
 import HeroSection from './components/HeroSection';
 import SkillsSection from './components/SkillsSection';
-import ContactForm from './components/ContactForm';
 import { Footer } from './components/Footer';
 import  ContactSection  from './components/ContactSection';
 
