@@ -43,8 +43,15 @@ export default function ContactForm() {
 
   return (
     <div className="min-h-screen bg-pink-50 flex items-center justify-center px-4 py-16">
-      <div className="max-w-5xl w-full">
-        <div className="bg-[#F2EEED] rounded-3xl p-8 md:p-12 shadow-xl">
+      <div className="max-w-5xl w-full relative">
+        {/* Floating CONTACT ME button extending beyond right edge */}
+        <div className="absolute -top-6 -right-4 z-10">
+          <div className="rounded-full px-8 py-3 shadow-lg" style={{ backgroundColor: "#B5A394" }}>
+            <h1 className="text-white font-semibold text-lg tracking-wide">CONTACT ME</h1>
+          </div>
+        </div>
+        
+        <div className="bg-[#F2EEED] rounded-3xl p-8 md:p-12 shadow-xl pt-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left side - Illustration */}
             <div className="flex justify-center">
@@ -94,11 +101,6 @@ export default function ContactForm() {
 
             {/* Right side - Contact Form */}
             <div className="space-y-6">
-              {/* Header */}
-              <div className="inline-block rounded-full px-8 py-3" style={{ backgroundColor: "#B5A394" }}>
-                <h1 className="text-white font-semibold text-lg tracking-wide">CONTACT ME</h1>
-              </div>
-
               {/* Description */}
               <div className="space-y-2">
                 <p className="text-black text-base leading-relaxed">Please leave me your message</p>
