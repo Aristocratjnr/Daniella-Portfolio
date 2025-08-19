@@ -3,12 +3,12 @@ import { ArrowRight, ChevronDown } from "lucide-react"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F5F1ED] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#A58D84] flex items-center justify-center p-4">
       <div className="max-w-6xl w-full">
         <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg">
           {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#E8D8D0] rounded-full -mr-32 -mt-32"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F0E6E0] rounded-full -ml-48 -mb-48"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#A58D84] rounded-full -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A58D84] rounded-full -ml-48 -mb-48"></div>
           
           <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -36,6 +36,10 @@ export default function Home() {
                 <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
                   <p className="text-gray-500 text-sm font-medium mb-1">EXPERIENCE</p>
                   <p className="text-gray-900 text-xl font-bold">3+ years</p>
+                </div>
+                <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
+                  <p className="text-gray-500 text-sm font-medium mb-1">PROJECTS</p>
+                  <p className="text-gray-900 text-xl font-bold">10+ Designs</p>
                 </div>
                 <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
                   <p className="text-gray-500 text-sm font-medium mb-1">PROJECTS</p>
