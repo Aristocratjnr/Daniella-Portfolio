@@ -23,8 +23,15 @@ export default function HeroSection() {
         </div>
         <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg z-10">
           {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#A58D84] rounded-full -mr-32 -mt-32"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A58D84] rounded-full -ml-48 -mb-48"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#6E4D42] rounded-full -mr-32 -mt-32"></div>
+          <div 
+            className="absolute bottom-0 left-0 bg-[#6E4D42] rounded-full -ml-48 -mb-48 flex-shrink-0"
+            style={{
+              width: '402px',
+              height: '532px',
+              transform: 'rotate(-55.347deg)'
+            }}
+          ></div>
           
           <motion.div 
             className="relative z-10 grid lg:grid-cols-2 gap-12 items-center"
@@ -91,23 +98,73 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.8 }}
             >
               <div className="relative">
-                {/* Animated circle */}
+                {/* Animated SVG shape */}
                 <motion.div 
-                  className="absolute -top-6 -left-6 w-96 h-96 rounded-full bg-[#A58D84] z-0"
+                  className="absolute -top-12 -left-12 z-0 opacity-90 flex-shrink-0"
+                  style={{
+                    width: '537px',
+                    height: '600px'
+                  }}
+                  initial={{ opacity: 0 }}
                   animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [0.8, 1, 0.8],
+                    rotate: [0, 2, 0, -2, 0],
+                    opacity: 1
                   }}
                   transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
+                    rotate: {
+                      duration: 15,
+                      repeat: Infinity,
+                      ease: 'easeInOut'
+                    },
+                    opacity: {
+                      duration: 1,
+                      ease: 'easeOut'
+                    }
                   }}
-                />
+                >
+                  <svg 
+                    viewBox="0 0 537 600" 
+                    className="w-full h-full"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <motion.path
+                      d="M232.88 3.89857C310.082 22.1545 305.698 127.785 359.913 182.055C409.764 231.956 508.174 234.841 528.858 300.177C552.479 374.788 522.649 459.714 465.909 516.859C407.393 575.791 318.494 608.062 232.88 598.263C154.21 589.259 94.678 530.824 50.9292 469.364C15.6523 419.805 25.8047 359.418 20.6953 300.177C14.7758 231.545 -21.842 158.795 19.2 101.487C64.9242 37.6412 152.931 -15.0068 232.88 3.89857Z"
+                      fill="#6E4D42"
+                      initial={{ pathLength: 0, pathOffset: 1 }}
+                      animate={{ 
+                        pathLength: 1,
+                        pathOffset: 0,
+                        scale: [0.98, 1, 0.98]
+                      }}
+                      transition={{
+                        pathLength: { 
+                          duration: 4,
+                          ease: "easeInOut",
+                        },
+                        pathOffset: {
+                          duration: 4,
+                          ease: "easeInOut",
+                        },
+                        scale: {
+                          duration: 10,
+                          repeat: Infinity,
+                          repeatType: 'reverse',
+                          ease: 'easeInOut'
+                        }
+                      }}
+                    />
+                  </svg>
+                </motion.div>
                 
                 {/* Profile Image Container */}
                 <motion.div 
-                  className="relative z-10 w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl"
+                  className="relative z-10 flex-shrink-0"
+                  style={{
+                    width: '442px',
+                    height: '590px',
+                    aspectRatio: '218/291',
+                    borderRadius: '476.5px'
+                  }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 >
