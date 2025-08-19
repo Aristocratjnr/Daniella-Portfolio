@@ -46,8 +46,10 @@ export default function ContactForm() {
                   <Image
                     src="/images/contact.png" 
                     alt="Contact illustration" 
+                    width={500}
+                    height={500}
                     className="w-full h-full object-contain"
-                    loading="lazy"
+                    priority
                   />
                 </div>
               </div>
