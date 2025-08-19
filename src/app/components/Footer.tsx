@@ -51,7 +51,7 @@ export function Footer() {
               <h3 className="text-gray-800 font-medium mb-4">Connect With Me</h3>
               <div className="flex items-center justify-center space-x-6 md:space-x-8">
                 <a 
-                  href="https://wa.me/1234567890" 
+                  href="https://wa.me/233203430787" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-700 hover:text-green-600 transition-colors"

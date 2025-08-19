@@ -42,7 +42,7 @@ export default function HeroSection() {
             <div className="space-y-8">
               <div>
                 <p className="text-[#B5A394] text-lg font-medium mb-2">Hi, I am Daniella Asiedu</p>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                <h1 className="text-6xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
                   UI/UX DESIGNER
                 </h1>
                 <div className="h-1 w-16 bg-[#B5A394] mb-6"></div>
@@ -54,8 +54,7 @@ export default function HeroSection() {
                 </p>
                 
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  I blend a passion for human-centered design with strategic thinking to craft intuitive and effective
-                  digital experiences. Specializing in UI/UX, brand identity, and user research.
+                I blend a passion for human-centered design with strategic thinking to craft intuitive and effective digital experiences.Simplicity UI/UX is what I always aim to achieve
                 </p>
               </div>
                 {/* Stats Grid */}
