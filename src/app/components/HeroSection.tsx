@@ -3,7 +3,7 @@ import { ArrowRight, ChevronDown } from "lucide-react"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#A58D84] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#A58D84] flex items-center justify-center p-4 pt-24 md:pt-32">
       <div className="max-w-6xl w-full">
         <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg">
           {/* Decorative Elements */}
@@ -31,26 +31,26 @@ export default function Home() {
                   digital experiences. Specializing in UI/UX, brand identity, and user research.
                 </p>
               </div>
-
+                {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-4 mt-8">
-                <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
-                  <p className="text-gray-500 text-sm font-medium mb-1">EXPERIENCE</p>
-                  <p className="text-gray-900 text-xl font-bold">3+ years</p>
+                <div className="backdrop-blur-md bg-white/30 border border-white/20 rounded-2xl p-4 shadow-lg">
+                  <p className="text-black text-sm font-medium mb-1">EXPERIENCE</p>
+                  <p className="text-black text-xl font-bold">3+ years</p>
                 </div>
-                <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
-                  <p className="text-gray-500 text-sm font-medium mb-1">PROJECTS</p>
-                  <p className="text-gray-900 text-xl font-bold">10+ Designs</p>
+                <div className="backdrop-blur-md bg-white/30 border border-white/20 rounded-2xl p-4 shadow-lg">
+                  <p className="text-black text-sm font-medium mb-1">PROJECTS</p>
+                  <p className="text-black text-xl font-bold">10+ Designs</p>
                 </div>
-                <div className="bg-white border border-gray-200 rounded-2xl p-4 shadow-sm">
-                  <p className="text-gray-500 text-sm font-medium mb-1">PROJECTS</p>
-                  <p className="text-gray-900 text-xl font-bold">10+ Designs</p>
+                <div className="backdrop-blur-md bg-white/30 border border-white/20 rounded-2xl p-4 shadow-lg">
+                  <p className="text-black text-sm font-medium mb-1">CLIENTS</p>
+                  <p className="text-black text-xl font-bold">20+</p>
                 </div>
               </div>
 
               <div className="pt-4">
                 <Button
                   variant="default"
-                  className="bg-[#B5A394] hover:bg-[#9c8e82] text-white rounded-full px-8 py-6 text-base font-medium transition-colors duration-200 group"
+                  className="backdrop-blur-md bg-[#F0E6E0]/80 hover:bg-[#F0E6E0] text-gray-800 rounded-full px-8 py-6 text-base font-medium transition-all duration-200 group border border-white/20 shadow-lg"
                 >
                   About Me
                   <img 
