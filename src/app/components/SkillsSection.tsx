@@ -82,7 +82,13 @@ const ProjectsSection: React.FC = () => {
             <div className="flex justify-end mt-8">
               <button className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-black flex items-center gap-2 hover:bg-white transition-all duration-300 group">
                 <span className="text-gray-800 font-medium">See More?</span>
-                <ArrowRight className="w-4 h-4 text-gray-800 group-hover:translate-x-1 transition-transform duration-300" />
+                <Image 
+                  src="/images/hand.png" 
+                  alt="Hand pointing right" 
+                  width={20} 
+                  height={20} 
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                />
               </button>
             </div>
           </div>
