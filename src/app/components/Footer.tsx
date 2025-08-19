@@ -1,4 +1,4 @@
-import { MessageCircle, Instagram, ExternalLink, Mail } from "lucide-react"
+import {  Instagram,  } from "lucide-react"
 import Image from "next/image"
 export function Footer() {
   return (
@@ -57,7 +57,13 @@ export function Footer() {
                   className="text-gray-700 hover:text-green-600 transition-colors"
                   aria-label="WhatsApp"
                 >
-                  <MessageCircle className="w-6 h-6" />
+                  <Image 
+                    src="/images/whatsapp.png" 
+                    alt="WhatsApp" 
+                    width={24} 
+                    height={24} 
+                    className="w-6 h-6 object-contain"
+                  />
                 </a>
                 <a 
                   href="https://instagram.com/daniella" 
@@ -75,8 +81,30 @@ export function Footer() {
                   className="text-gray-700 hover:text-blue-600 transition-colors"
                   aria-label="Portfolio"
                 >
-                  <ExternalLink className="w-6 h-6" />
+                  <Image 
+                    src="/images/linkedin.png" 
+                    alt="LinkedIn" 
+                    width={24} 
+                    height={24} 
+                    className="w-6 h-6 object-contain"
+                  />
                 </a>
+                <a 
+                  href="https://thread.com/daniella" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  aria-label="Portfolio"
+                >
+                  <Image 
+                    src="/images/thread.png" 
+                    alt="LinkedIn" 
+                    width={24} 
+                    height={24} 
+                    className="w-6 h-6 object-contain"
+                  />
+                </a>
+                
               </div>
             </div>
           </div>
