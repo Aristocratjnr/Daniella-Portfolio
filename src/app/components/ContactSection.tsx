@@ -5,10 +5,10 @@ import Image from "next/image"
 
 export default function ContactForm() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen bg-pink-50 flex items-center justify-center px-4 py-16">
       <div className="max-w-5xl w-full">
-        <div className="bg-white rounded-3xl p-8 md:p-16 shadow-xl">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left side - Illustration */}
             <div className="flex justify-center">
               <div className="relative w-80 h-96">
@@ -56,56 +56,56 @@ export default function ContactForm() {
             </div>
 
             {/* Right side - Contact Form */}
-            <div className="space-y-8">
+            <div className="space-y-6">
               {/* Header */}
-              <div className="inline-block rounded-full px-8 py-4 bg-gradient-to-r from-pink-300 to-purple-300 shadow-lg">
-                <h1 className="text-white font-semibold text-xl tracking-wide">CONTACT ME</h1>
+              <div className="inline-block rounded-full px-8 py-3" style={{ backgroundColor: "#B5A394" }}>
+                <h1 className="text-white font-semibold text-lg tracking-wide">CONTACT ME</h1>
               </div>
 
               {/* Description */}
-              <div className="space-y-3">
-                <p className="text-gray-700 text-lg leading-relaxed">Please leave me your message</p>
-                <p className="text-gray-700 text-lg leading-relaxed">I will answer it as quickly as possible</p>
+              <div className="space-y-2">
+                <p className="text-gray-600 text-base leading-relaxed">Please leave me your message</p>
+                <p className="text-gray-600 text-base leading-relaxed">I will answer it as quickly as possible</p>
               </div>
 
               {/* Contact Form */}
-              <form className="space-y-8 pt-4">
-                <div className="space-y-2">
+              <form className="space-y-6 pt-4">
+                <div className="space-y-1">
                   <Input
                     type="text"
                     placeholder="Your Name"
-                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-4 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-lg focus-visible:ring-0 focus-visible:border-gray-600"
+                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-500"
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Input
                     type="email"
                     placeholder="Email Address"
-                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-4 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-lg focus-visible:ring-0 focus-visible:border-gray-600"
+                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-500"
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Input
                     type="text"
                     placeholder="Contact"
-                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-4 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-lg focus-visible:ring-0 focus-visible:border-gray-600"
+                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-500"
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1">
                   <Textarea
                     placeholder="Message"
-                    rows={4}
-                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-4 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 resize-none text-lg focus-visible:ring-0 focus-visible:border-gray-600"
+                    rows={3}
+                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 resize-none text-base focus-visible:ring-0 focus-visible:border-gray-500"
                   />
                 </div>
 
-                <div className="pt-6">
+                <div className="pt-4">
                   <Button
                     type="submit"
-                    className="bg-gray-100 hover:bg-gray-200 text-gray-800 border-2 border-gray-300 rounded-full px-10 py-3 transition-all duration-300 text-lg font-medium shadow-md hover:shadow-lg focus-visible:ring-0"
+                    className="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 rounded-full px-8 py-2 transition-all duration-200 text-base font-medium shadow-sm hover:shadow focus-visible:ring-0"
                   >
                     Submit
                   </Button>
