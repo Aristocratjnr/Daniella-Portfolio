@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronDown } from "lucide-react";
 import AnimatedBackground from "./AnimatedBackground";
 import { motion } from "framer-motion";
 
@@ -17,9 +16,9 @@ export default function HeroSection() {
     <div className="max-w-6xl w-full relative">
         {/* Pronounced 3D shadow effect */}
         <div className="absolute -bottom-4 left-0 right-0 h-16 z-0 overflow-visible pointer-events-none">
-          <div className="absolute left-1/2 -translate-x-1/2 w-[98%] h-8 bg-gradient-to-b from-[#4a3025] to-transparent rounded-b-3xl opacity-60 transform -skew-y-6 scale-y-75 origin-bottom"></div>
-          <div className="absolute left-1/2 -translate-x-1/2 w-[96%] h-6 bg-gradient-to-b from-[#5a4035] to-transparent rounded-b-3xl opacity-40 -bottom-2 transform -skew-y-3 scale-y-85 origin-bottom"></div>
-          <div className="absolute left-1/2 -translate-x-1/2 w-[94%] h-4 bg-gradient-to-b from-[#6a5045] to-transparent rounded-b-3xl opacity-20 -bottom-4"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[98%] h-8 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-60 transform -skew-y-6 scale-y-75 origin-bottom"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[96%] h-6 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-40 -bottom-2 transform -skew-y-3 scale-y-85 origin-bottom"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[94%] h-4 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-20 -bottom-4"></div>
         </div>
         <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg z-10">
           {/* Decorative Elements */}
@@ -176,8 +175,8 @@ export default function HeroSection() {
                 </motion.div>
                 
                 {/* Small decorative circles */}
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#E8D8D0] z-0"></div>
-                <div className="absolute top-1/2 -left-12 w-16 h-16 rounded-full bg-[#E8D8D0] z-0"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#6E4D42] z-0"></div>
+                <div className="absolute top-1/2 -left-12 w-16 h-16 rounded-full bg-[#6E4D42] z-0"></div>
               </div>
             </motion.div>
           </motion.div>
