@@ -66,7 +66,7 @@ export default function Home() {
             <div className="relative flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Large circle */}
-                <div className="absolute -top-6 -left-6 w-96 h-96 rounded-full bg-[#F0E6E0] z-0"></div>
+                <div className="absolute -top-6 -left-6 w-96 h-96 rounded-full bg-[#A58D84] z-0"></div>
                 
                 {/* Profile Image Container */}
                 <div className="relative z-10 w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
