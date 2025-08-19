@@ -58,23 +58,38 @@ const ProjectsSection: React.FC = () => {
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-black hover:shadow-lg transition-all duration-300 h-full"
-                  style={{ backgroundColor: project.color }}
+                  className="relative bg-white backdrop-blur-sm p-4 sm:p-6 border border-black hover:shadow-lg transition-all duration-300 h-full"
+                  style={{ 
+                    backgroundColor: project.color,
+                    clipPath: 'polygon(0 15%, 15% 0, 85% 0, 100% 15%, 100% 100%, 0 100%)',
+                    borderRadius: '0 0 16px 16px'
+                  }}
                 >
-                  <div className="flex items-start justify-between mb-3 sm:mb-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>
-                      <Image 
-                        src={project.icon} 
-                        alt={project.title}
-                        width={20}
-                        height={20}
-                        className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
-                      />
+                  {/* Top cut edge styling */}
+                  <div 
+                    className="absolute top-0 left-0 w-full h-4"
+                    style={{
+                      background: `linear-gradient(135deg, transparent 15%, ${project.color} 15%)`,
+                      clipPath: 'polygon(0 100%, 15% 0, 85% 0, 100% 100%)'
+                    }}
+                  ></div>
+                  
+                  <div className="mt-2">
+                    <div className="flex items-start justify-between mb-3 sm:mb-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>
+                        <Image 
+                          src={project.icon} 
+                          alt={project.title}
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  <h3 className="text-black font-bold text-base sm:text-lg mb-2 sm:mb-3">{project.title}</h3>
-                  <p className="text-black text-xs sm:text-sm leading-relaxed">{project.description}</p>
+                    <h3 className="text-black font-bold text-base sm:text-lg mb-2 sm:mb-3">{project.title}</h3>
+                    <p className="text-black text-xs sm:text-sm leading-relaxed">{project.description}</p>
+                  </div>
                 </div>
               ))}
             </div>

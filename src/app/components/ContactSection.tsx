@@ -1,9 +1,46 @@
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
+import { X } from "lucide-react"
 
 export default function ContactForm() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    contact: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Here you would typically send the form data to your backend
+    console.log('Form submitted:', formData);
+    
+    // Show success modal
+    setIsModalOpen(true);
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      contact: '',
+      message: ''
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-pink-50 flex items-center justify-center px-4 py-16">
       <div className="max-w-5xl w-full">
@@ -69,36 +106,52 @@ export default function ContactForm() {
               </div>
 
               {/* Contact Form */}
-              <form className="space-y-6 pt-4">
+              <form onSubmit={handleSubmit} className="space-y-6 pt-4">
                 <div className="space-y-1">
                   <Input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your Name"
                     className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-600"
+                    required
                   />
                 </div>
 
                 <div className="space-y-1">
                   <Input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Email Address"
                     className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-600"
+                    required
                   />
                 </div>
 
                 <div className="space-y-1">
                   <Input
                     type="text"
+                    name="contact"
+                    value={formData.contact}
+                    onChange={handleChange}
                     placeholder="Contact"
                     className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-600"
+                    required
                   />
                 </div>
 
                 <div className="space-y-1">
                   <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     placeholder="Message"
                     rows={3}
                     className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 resize-none text-base focus-visible:ring-0 focus-visible:border-gray-600"
+                    required
                   />
                 </div>
 
@@ -115,6 +168,50 @@ export default function ContactForm() {
           </div>
         </div>
       </div>
+      
+      {/* Success Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full relative">
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              aria-label="Close modal"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            <div className="text-center">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg 
+                  className="w-10 h-10 text-green-600" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth="2" 
+                    d="M5 13l4 4L19 7"
+                  ></path>
+                </svg>
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+              <p className="text-gray-600 mb-6">Thank you for reaching out. I&apos;ll get back to you as soon as possible.</p>
+              
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="bg-[#B5A394] hover:bg-[#9c8e82] text-white font-medium py-2 px-6 rounded-full transition-colors duration-200"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
