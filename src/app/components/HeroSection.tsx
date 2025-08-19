@@ -1,16 +1,46 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, ChevronDown } from "lucide-react"
+"use client";
 
-export default function Home() {
+import { Button } from "@/components/ui/button";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import AnimatedBackground from "./AnimatedBackground";
+import { motion } from "framer-motion";
+
+export default function HeroSection() {
   return (
-    <div className="min-h-screen bg-[#A58D84] flex items-center justify-center p-4 pt-24 md:pt-32">
-      <div className="max-w-6xl w-full">
-        <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg">
+    <motion.div 
+      className="min-h-screen bg-[#A58D84] flex items-center justify-center p-4 pt-24 md:pt-32"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2, duration: 0.8 }}
+    >
+      {/* Animated Background */}
+    <div className="max-w-6xl w-full relative">
+        {/* Enhanced visible shadow effect */}
+        <div className="absolute -bottom-6 left-0 right-0 h-20 z-0 overflow-visible pointer-events-none">
+          {/* Base shadow for full width */}
+          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-[#3a2015] to-transparent opacity-70 rounded-b-3xl"></div>
+          
+          {/* Center shadow for depth */}
+          <div className="absolute left-1/2 -translate-x-1/2 w-[99%] h-10 bg-gradient-to-b from-[#4a3025] to-transparent rounded-b-3xl opacity-50 -bottom-1"></div>
+          
+          {/* Edge highlights */}
+          <div className="absolute left-0 w-1/5 h-8 bg-gradient-to-r from-[#3a2015] to-transparent opacity-40 -bottom-1"></div>
+          <div className="absolute right-0 w-1/5 h-8 bg-gradient-to-l from-[#3a2015] to-transparent opacity-40 -bottom-1"></div>
+          
+          {/* Center highlight */}
+          <div className="absolute left-1/2 -translate-x-1/2 w-1/3 h-6 bg-gradient-to-b from-[#6a5045] to-transparent rounded-b-3xl opacity-30 -bottom-3"></div>
+        </div>
+        <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg z-10">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#A58D84] rounded-full -mr-32 -mt-32"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#A58D84] rounded-full -ml-48 -mb-48"></div>
           
-          <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            className="relative z-10 grid lg:grid-cols-2 gap-12 items-center"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
             {/* Left Content */}
             <div className="space-y-8">
               <div>
@@ -63,28 +93,49 @@ export default function Home() {
             </div>
 
             {/* Right Content - Profile Image */}
-            <div className="relative flex justify-center lg:justify-end">
+            <motion.div 
+              className="relative flex justify-center lg:justify-end"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
               <div className="relative">
-                {/* Large circle */}
-                <div className="absolute -top-6 -left-6 w-96 h-96 rounded-full bg-[#A58D84] z-0"></div>
+                {/* Animated circle */}
+                <motion.div 
+                  className="absolute -top-6 -left-6 w-96 h-96 rounded-full bg-[#A58D84] z-0"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    opacity: [0.8, 1, 0.8],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                  }}
+                />
                 
                 {/* Profile Image Container */}
-                <div className="relative z-10 w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                <motion.div 
+                  className="relative z-10 w-80 h-80 rounded-full overflow-hidden border-4 border-white shadow-xl"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                >
                   <img
                     src="/images/daniella.png"
-                    alt="Daniella Asiedu - UI/UX Designer"
+                    alt="Daniella Asiedu"
                     className="w-full h-full object-cover"
                   />
-                </div>
+                </motion.div>
                 
                 {/* Small decorative circles */}
                 <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#E8D8D0] z-0"></div>
                 <div className="absolute top-1/2 -left-12 w-16 h-16 rounded-full bg-[#E8D8D0] z-0"></div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </div>
+      <AnimatedBackground />
+    </motion.div>
   )
 }
