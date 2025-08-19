@@ -7,7 +7,7 @@ export default function ContactForm() {
   return (
     <div className="min-h-screen bg-pink-50 flex items-center justify-center px-4 py-16">
       <div className="max-w-5xl w-full">
-        <div className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
+        <div className="bg-[#F2EEED] rounded-3xl p-8 md:p-12 shadow-xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left side - Illustration */}
             <div className="flex justify-center">
@@ -64,8 +64,8 @@ export default function ContactForm() {
 
               {/* Description */}
               <div className="space-y-2">
-                <p className="text-gray-600 text-base leading-relaxed">Please leave me your message</p>
-                <p className="text-gray-600 text-base leading-relaxed">I will answer it as quickly as possible</p>
+                <p className="text-black text-base leading-relaxed">Please leave me your message</p>
+                <p className="text-black text-base leading-relaxed">I will answer it as quickly as possible</p>
               </div>
 
               {/* Contact Form */}
@@ -74,7 +74,7 @@ export default function ContactForm() {
                   <Input
                     type="text"
                     placeholder="Your Name"
-                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-500"
+                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-600"
                   />
                 </div>
 
@@ -82,7 +82,7 @@ export default function ContactForm() {
                   <Input
                     type="email"
                     placeholder="Email Address"
-                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-500"
+                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-600"
                   />
                 </div>
 
@@ -90,7 +90,7 @@ export default function ContactForm() {
                   <Input
                     type="text"
                     placeholder="Contact"
-                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-500"
+                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 text-base focus-visible:ring-0 focus-visible:border-gray-600"
                   />
                 </div>
 
@@ -98,7 +98,7 @@ export default function ContactForm() {
                   <Textarea
                     placeholder="Message"
                     rows={3}
-                    className="bg-transparent border-0 border-b border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-400 focus:border-gray-500 focus:ring-0 resize-none text-base focus-visible:ring-0 focus-visible:border-gray-500"
+                    className="bg-transparent border-0 border-b-2 border-dotted border-gray-300 rounded-none px-0 py-3 text-gray-700 placeholder:text-gray-500 focus:border-gray-600 focus:ring-0 resize-none text-base focus-visible:ring-0 focus-visible:border-gray-600"
                   />
                 </div>
 
