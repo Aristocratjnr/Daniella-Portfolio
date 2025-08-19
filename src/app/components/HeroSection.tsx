@@ -15,20 +15,11 @@ export default function HeroSection() {
     >
       {/* Animated Background */}
     <div className="max-w-6xl w-full relative">
-        {/* Enhanced visible shadow effect */}
-        <div className="absolute -bottom-6 left-0 right-0 h-20 z-0 overflow-visible pointer-events-none">
-          {/* Base shadow for full width */}
-          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-[#3a2015] to-transparent opacity-70 rounded-b-3xl"></div>
-          
-          {/* Center shadow for depth */}
-          <div className="absolute left-1/2 -translate-x-1/2 w-[99%] h-10 bg-gradient-to-b from-[#4a3025] to-transparent rounded-b-3xl opacity-50 -bottom-1"></div>
-          
-          {/* Edge highlights */}
-          <div className="absolute left-0 w-1/5 h-8 bg-gradient-to-r from-[#3a2015] to-transparent opacity-40 -bottom-1"></div>
-          <div className="absolute right-0 w-1/5 h-8 bg-gradient-to-l from-[#3a2015] to-transparent opacity-40 -bottom-1"></div>
-          
-          {/* Center highlight */}
-          <div className="absolute left-1/2 -translate-x-1/2 w-1/3 h-6 bg-gradient-to-b from-[#6a5045] to-transparent rounded-b-3xl opacity-30 -bottom-3"></div>
+        {/* Pronounced 3D shadow effect */}
+        <div className="absolute -bottom-4 left-0 right-0 h-16 z-0 overflow-visible pointer-events-none">
+          <div className="absolute left-1/2 -translate-x-1/2 w-[98%] h-8 bg-gradient-to-b from-[#4a3025] to-transparent rounded-b-3xl opacity-60 transform -skew-y-6 scale-y-75 origin-bottom"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[96%] h-6 bg-gradient-to-b from-[#5a4035] to-transparent rounded-b-3xl opacity-40 -bottom-2 transform -skew-y-3 scale-y-85 origin-bottom"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[94%] h-4 bg-gradient-to-b from-[#6a5045] to-transparent rounded-b-3xl opacity-20 -bottom-4"></div>
         </div>
         <div className="bg-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-lg z-10">
           {/* Decorative Elements */}
