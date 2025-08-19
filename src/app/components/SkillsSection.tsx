@@ -1,6 +1,7 @@
 "use client"
 
-import Image from "next/image"
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const SkillsSection = () => {
   const projects = [
@@ -42,16 +43,28 @@ const SkillsSection = () => {
             <h2 className="lg:hidden text-4xl font-bold text-gray-800 mb-6 text-center w-full">
               MY PROJECTS
             </h2>
-            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:ml-16 xl:ml-24">
-              <Image
-                src="/images/woman.png"
-                alt="Woman working"
-                width={500}
-                height={600}
-                className="w-full h-auto object-contain"
-                priority
-              />
-            </div>
+            {/* Animated Illustration */}
+            <motion.div 
+              className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:ml-16 xl:ml-24"
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <div className="relative w-full h-[400px]">
+                <Image
+                  src="/images/woman.png"
+                  alt="Woman with laptop"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </motion.div>
           </div>
 
           {/* Right side - Project cards */}
