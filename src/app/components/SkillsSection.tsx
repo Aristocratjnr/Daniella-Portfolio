@@ -1,37 +1,95 @@
-import React from 'react';
+import { ArrowRight, Plus, Car, Shirt, ChefHat } from "lucide-react"
+import Image from "next/image"
 
-const skills = [
-  { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux'] },
-  { category: 'Backend', items: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'GraphQL'] },
-  { category: 'Design', items: ['Figma', 'Adobe XD', 'UI/UX', 'Responsive Design'] },
-  { category: 'Tools', items: ['Git', 'Docker', 'AWS', 'Jest', 'Cypress'] },
-];
+const ProjectsSection: React.FC = () => {
+  const projects = [
+    {
+      title: "LIFELINE",
+      description: "A first aid guide built with web mobile app interface",
+      icon: Plus,
+      color: "#E53E3E",
+    },
+    {
+      title: "SPARTANS",
+      description: "An interactive automated interface for both admin and customers",
+      icon: Car,
+      color: "#2D3748",
+    },
+    {
+      title: "TULAUNDRY",
+      description: "An interactive collective laundry services web interface for both admin and customers",
+      icon: Shirt,
+      color: "#2B6CB0",
+    },
+    {
+      title: "KITCHEN & CLOSETS",
+      description: "An interactive kitchen & closet furniture web app interface for both admin and customers",
+      icon: ChefHat,
+      color: "#38A169",
+    },
+  ]
 
-export default function SkillsSection() {
   return (
-    <section id="skills" className="py-20 bg-gray-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Skills & Expertise</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map((skillGroup) => (
-            <div 
-              key={skillGroup.category}
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-xl font-semibold mb-4 text-gray-800">{skillGroup.category}</h3>
-              <ul className="space-y-2">
-                {skillGroup.items.map((skill) => (
-                  <li key={skill} className="flex items-center">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    <span className="text-gray-600">{skill}</span>
-                  </li>
-                ))}
-              </ul>
+    <div className="min-h-screen px-4 py-12" style={{ backgroundColor: "#F5F1ED" }}>
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Illustration */}
+          <div className="relative flex items-center justify-center">
+            <div className="text-6xl font-bold text-gray-800 transform -rotate-90 absolute -left-16 top-1/2 -translate-y-1/2 origin-center">
+              MY PROJECTS
             </div>
-          ))}
+            <div className="relative w-full max-w-md">
+              <Image
+                src="/images/woman.png"
+                alt="Woman working"
+                width={500}
+                height={600}
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Right side - Project cards */}
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {projects.map((project, index) => {
+                const IconComponent = project.icon
+                return (
+                  <div
+                    key={index}
+                    className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-black hover:shadow-lg transition-all duration-300"
+                    style={{ backgroundColor: "#A58D84" }}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div
+                        className="w-12 h-12 rounded-lg flex items-center justify-center"
+                        style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+                      >
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+
+                    <h3 className="text-white font-bold text-lg mb-3">{project.title}</h3>
+
+                    <p className="text-white/80 text-sm leading-relaxed">{project.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* See More button */}
+            <div className="flex justify-end mt-8">
+              <button className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-3 border border-black flex items-center gap-2 hover:bg-white transition-all duration-300 group">
+                <span className="text-gray-800 font-medium">See More?</span>
+                <ArrowRight className="w-4 h-4 text-gray-800 group-hover:translate-x-1 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  );
+    </div>
+  )
 }
+
+export default ProjectsSection
