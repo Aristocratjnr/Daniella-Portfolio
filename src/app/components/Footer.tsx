@@ -37,8 +37,7 @@ export function Footer() {
               className="flex flex-col items-center justify-center h-full group"
             >
               <div className="flex items-center space-x-3 mb-2">
-                <Mail className="w-6 h-6 text-gray-700 group-hover:scale-110 transition-transform" />
-                <span className="text-gray-800 font-semibold text-lg md:text-xl">Say Hello</span>
+                <span className="text-gray-800 font-semibold text-lg md:text-xl">Say Hello : 💌</span>
               </div>
               <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
                 hello@daniella.com
