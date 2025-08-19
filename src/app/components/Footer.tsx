@@ -40,7 +40,7 @@ export function Footer() {
                 <span className="text-gray-800 font-semibold text-lg md:text-xl">Say Hello : 💌</span>
               </div>
               <span className="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">
-                hello@daniella.com
+              daniellaasiedu755@gmail.com
               </span>
             </a>
           </div>
