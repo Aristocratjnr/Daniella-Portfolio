@@ -1,4 +1,4 @@
-import { ArrowRight, Plus, Car, Shirt, ChefHat } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 const ProjectsSection: React.FC = () => {
@@ -6,26 +6,26 @@ const ProjectsSection: React.FC = () => {
     {
       title: "LIFELINE",
       description: "A first aid guide built with web mobile app interface",
-      icon: Plus,
-      color: "#E53E3E",
+      icon: "/images/aid.png",
+      color: "#C1B1AB",
     },
     {
       title: "SPARTANS",
       description: "An interactive automated interface for both admin and customers",
-      icon: Car,
-      color: "#2D3748",
+      icon: "/images/car.png",
+      color: "#C1B1AB",
     },
     {
       title: "TULAUNDRY",
       description: "An interactive collective laundry services web interface for both admin and customers",
-      icon: Shirt,
-      color: "#2B6CB0",
+      icon: "/images/lamp.png",
+      color: "#C1B1AB",
     },
     {
       title: "KITCHEN & CLOSETS",
       description: "An interactive kitchen & closet furniture web app interface for both admin and customers",
-      icon: ChefHat,
-      color: "#38A169",
+      icon: "/images/machine.png",
+      color: "#C1B1AB",
     },
   ]
 
@@ -53,29 +53,28 @@ const ProjectsSection: React.FC = () => {
           {/* Right side - Project cards */}
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {projects.map((project, index) => {
-                const IconComponent = project.icon
-                return (
-                  <div
-                    key={index}
-                    className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-black hover:shadow-lg transition-all duration-300"
-                    style={{ backgroundColor: "#A58D84" }}
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div
-                        className="w-12 h-12 rounded-lg flex items-center justify-center"
-                        style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
-                      >
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
+              {projects.map((project, index) => (
+                <div
+                  key={index}
+                  className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-black hover:shadow-lg transition-all duration-300"
+                  style={{ backgroundColor: project.color }}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>
+                      <Image 
+                        src={project.icon} 
+                        alt={project.title} 
+                        width={24} 
+                        height={24} 
+                        className="object-contain"
+                      />
                     </div>
-
-                    <h3 className="text-white font-bold text-lg mb-3">{project.title}</h3>
-
-                    <p className="text-white/80 text-sm leading-relaxed">{project.description}</p>
                   </div>
-                )
-              })}
+
+                  <h3 className="text-black font-bold text-lg mb-3">{project.title}</h3>
+                  <p className="text-black text-sm leading-relaxed">{project.description}</p>
+                </div>
+              ))}
             </div>
 
             {/* See More button */}
