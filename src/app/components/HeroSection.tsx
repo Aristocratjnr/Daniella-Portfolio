@@ -53,7 +53,7 @@ export default function HeroSection() {
             {/* Left Content */}
             <div className="space-y-5 sm:space-y-6 md:space-y-8">
               <div>
-                <p className="text-[#B5A394] text-sm sm:text-base md:text-lg font-medium mb-1 sm:mb-2">Hi, I am Daniella Asiedu</p>
+                <p className="text-[#6E4D42] text-md sm:text-base md:text-lg font-medium mb-1 sm:mb-2">Hi, I am Daniella Asiedu</p>
                 <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-3 sm:mb-4 md:mb-6">
                   UI/UX DESIGNER
                 </h1>
