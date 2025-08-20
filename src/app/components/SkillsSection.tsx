@@ -89,14 +89,18 @@ const SkillsSection = () => {
                   >
                     {/* Main card with slanted top */}
                     <div 
-                      className="relative z-10 h-full p-6 sm:p-7 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300"
+                      className="relative z-10 h-full p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300"
                       style={{
+                        width: '240px',
+                        height: '211px',
+                        flexShrink: 0,
                         clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
                         marginTop: '1.75rem',
                         backgroundColor: project.color || '#ffffff',
                         borderColor: 'rgba(0,0,0,0.1)',
                         transform: 'translateZ(20px)',
                         backfaceVisibility: 'hidden',
+                        borderRadius: '20px',
                       }}
                     >
                     {/* Top accent bar */}
