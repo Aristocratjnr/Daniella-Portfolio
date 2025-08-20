@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "./AnimatedBackground";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -61,7 +62,7 @@ export default function HeroSection() {
 
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
-                  I'm a UI/UX Designer who solves complex problems to create products people love to use.
+                  I&apos;m a UI/UX Designer who solves complex problems to create products people love to use.
                 </p>
                 
                 <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
@@ -90,9 +91,11 @@ export default function HeroSection() {
                   className="w-full xs:w-auto backdrop-blur-md bg-[#F0E6E0]/80 hover:bg-[#F0E6E0] text-gray-800 rounded-full px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 text-sm sm:text-base font-medium transition-all duration-200 group border border-white/20 shadow-lg"
                 >
                   About Me
-                  <img 
+                  <Image 
                     src="/images/hand.png" 
                     alt="" 
+                    width={20}
+                    height={20}
                     className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
                   />
                 </Button>
@@ -177,10 +180,13 @@ export default function HeroSection() {
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 >
-                  <img
+                  <Image
                     src="/images/daniella.png"
                     alt="Daniella Asiedu"
+                    width={442}
+                    height={590}
                     className="w-full h-full object-cover"
+                    priority
                   />
                 </motion.div>
                 
