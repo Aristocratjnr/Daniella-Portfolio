@@ -21,7 +21,7 @@ export default function HeroSection() {
           <div className="absolute left-1/2 -translate-x-1/2 w-[96%] h-6 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-40 -bottom-2 transform -skew-y-3 scale-y-85 origin-bottom"></div>
           <div className="absolute left-1/2 -translate-x-1/2 w-[94%] h-4 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-20 -bottom-4"></div>
         </div>
-        <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden shadow-lg z-10">
+        <div className="bg-[#F0E6E0]/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden shadow-lg z-10">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-[#6E4D42] rounded-full -mr-12 -mt-12 sm:-mr-16 sm:-mt-16 md:-mr-24 md:-mt-24 lg:-mr-32 lg:-mt-32 transition-all duration-300"></div>
           <div 
