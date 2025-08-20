@@ -23,10 +23,45 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (link: string) => {
+  const handleLinkClick = (link: string, e: React.MouseEvent) => {
+    e.preventDefault();
     setActiveLink(link);
     setIsOpen(false);
+    
+    if (link === 'HOME') {
+      window.location.href = '/';
+    } else if (link === 'CONTACT ME') {
+      window.location.href = '/contact';
+    } else {
+      // For section links (ABOUT ME, SERVICES, etc.)
+      const sectionId = link.toLowerCase().replace(' ', '-');
+      const element = document.getElementById(sectionId);
+      
+      if (element) {
+        // If we're on the home page, just scroll to the section
+        if (window.location.pathname === '/' || window.location.pathname === '') {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          // If we're on another page, go to home first then scroll
+          window.location.href = `/#${sectionId}`;
+          // The actual scroll will be handled by the home page's useEffect
+        }
+      }
+    }
   };
+
+  const [currentActiveLink, setCurrentActiveLink] = useState('HOME');
+
+  useEffect(() => {
+    // This code runs only on the client side
+    if (window.location.pathname === '/contact') {
+      setCurrentActiveLink('CONTACT ME');
+    } else if (window.location.pathname === '/' || window.location.pathname === '') {
+      setCurrentActiveLink('HOME');
+    } else {
+      setCurrentActiveLink(activeLink);
+    }
+  }, [activeLink]);
 
   return (
     <nav className={`w-full fixed top-0 left-0 bg-[#F2EEED] text-gray-900 px-4 sm:px-6 py-3 z-50 transition-all duration-300 ${
@@ -59,13 +94,10 @@ export function Navbar() {
             {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((link) => (
               <a
                 key={link}
-                href={`#${link.toLowerCase().replace(' ', '-')}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleLinkClick(link);
-                }}
+                href={link === 'CONTACT ME' ? '/contact' : `#${link.toLowerCase().replace(' ', '-')}`}
+                onClick={(e) => handleLinkClick(link, e)}
                 className={`text-lg font-medium leading-normal transition-colors px-4 py-2 rounded-lg ${
-                  activeLink === link
+                  currentActiveLink === link
                     ? 'bg-gray-900 text-white'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
@@ -74,8 +106,8 @@ export function Navbar() {
               </a>
             ))}
             <a 
-              href="#contact" 
-              className="inline-flex items-center justify-center px-6 py-2 border border-gray-900 text-sm font-medium rounded-md text-gray-900 hover:bg-gray-900 hover:text-white transition-colors mt-2"
+              href="/contact" 
+              className="inline-flex items-center justify-center px-6 py-2 border border-gray-900 text-sm font-medium rounded-md text-gray-900 hover:bg-gray-900 hover:text-white transition-colors"
             >
               REQUEST QUOTE
             </a>
@@ -99,13 +131,10 @@ export function Navbar() {
           {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((link) => (
             <a
               key={link}
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick(link);
-              }}
+              href={link === 'CONTACT ME' ? '/contact' : `#${link.toLowerCase().replace(' ', '-')}`}
+              onClick={(e) => handleLinkClick(link, e)}
               className={`text-[18px] font-normal leading-normal transition-colors ${
-                activeLink === link
+                currentActiveLink === link
                   ? 'text-gray-900 border-b-2 border-gray-900 pb-1'
                   : 'text-gray-600 hover:text-gray-900'
               }`}

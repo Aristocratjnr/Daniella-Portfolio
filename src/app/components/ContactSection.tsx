@@ -42,16 +42,31 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="min-h-screen bg-pink-50 flex items-center justify-center px-4 py-16">
-      <div className="max-w-5xl w-full relative">
-        {/* Floating CONTACT ME button extending beyond right edge */}
-        <div className="absolute -top-6 -right-4 z-10">
-          <div className="rounded-full px-8 py-3 shadow-lg" style={{ backgroundColor: "#B5A394" }}>
-            <h1 className="text-white font-semibold text-lg tracking-wide">CONTACT ME</h1>
-          </div>
-        </div>
-        
-        <div className="bg-[#F2EEED] rounded-3xl p-8 md:p-12 shadow-xl pt-16">
+    <div className="w-full">
+      <div className="flex justify-center py-8 md:py-16 px-4 sm:px-6">
+        <div 
+          className="bg-pink-50 flex items-center justify-center w-full max-w-[1280px] mx-auto rounded-[50px] p-8 md:p-16"
+          style={{
+            minHeight: 'min(100vh - 4rem, 838px)'
+          }}
+        >
+          <div className="max-w-5xl w-full relative">
+            {/* Floating CONTACT ME button extending beyond right edge */}
+            <div className="absolute -top-6 -right-4 z-10">
+              <div 
+                className="flex items-center justify-center shadow-lg" 
+                style={{ 
+                  backgroundColor: "#B5A394",
+                  width: '694px',
+                  height: '130px',
+                  borderRadius: '50px 50px 0 50px'
+                }}
+              >
+                <h1 className="text-white font-semibold text-2xl tracking-wide">CONTACT ME</h1>
+              </div>
+            </div>
+            
+            <div className="bg-[#F2EEED] rounded-3xl p-8 md:p-12 shadow-xl pt-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Left side - Illustration */}
             <div className="flex justify-center">
@@ -167,6 +182,8 @@ export default function ContactForm() {
                 </div>
               </form>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>
