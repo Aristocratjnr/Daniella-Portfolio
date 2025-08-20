@@ -97,8 +97,9 @@ export default function HeroSection() {
               <div className="pt-4">
                 <Button
                   variant="default"
-                  className="w-full xs:w-auto backdrop-blur-md bg-[#F0E6E0]/80 hover:bg-[#F0E6E0] text-gray-800 rounded-full px-5 py-3 sm:px-6 sm:py-4 md:px-8 md:py-5 text-sm sm:text-base font-medium transition-all duration-200 group border border-white/20 shadow-lg"
+                  className="w-full xs:w-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-6 py-3.5 sm:px-7 sm:py-4.5 md:px-9 md:py-5 text-sm sm:text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-xl hover:shadow-2xl relative overflow-hidden"
                 >
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   About Me
                   <Image 
                     src="/images/hand.png" 
