@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { Poppins } from 'next/font/google'
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, Send, Loader2 } from 'lucide-react'
+import { Menu, X, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
 
 const poppins = Poppins({
   weight: ['400'],
@@ -46,16 +46,17 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const validateForm = (): boolean => {
-    const newErrors: Partial<QuoteFormData> = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) {
+  const validateForm = () => {
+    const newErrors: Partial<Record<keyof QuoteFormData, string>> = {};
+    
+    if (!formData.name) newErrors.name = 'Name is required';
+    if (!formData.email) {
       newErrors.email = 'Email is required';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
+      newErrors.email = 'Email is invalid';
     }
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.message.trim()) newErrors.message = 'Please provide project details';
+    if (!formData.phone) newErrors.phone = 'Phone number is required';
+    if (!formData.message) newErrors.message = 'Project details are required';
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -272,9 +273,9 @@ export function Navbar() {
       
       {/* Quote Request Modal */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
           <div 
-            className="relative bg-white/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border border-white/20"
+            className="relative bg-white/90 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-2xl max-h-[90vh] my-4 overflow-y-auto shadow-2xl border border-white/20"
           >
             <button 
               onClick={() => !isSubmitting && setIsQuoteModalOpen(false)}
@@ -284,68 +285,76 @@ export function Navbar() {
               <X size={24} />
             </button>
             
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">Request a Quote</h2>
-              <p className="text-gray-600 mt-1">Tell us about your project and we&apos;ll get back to you soon</p>
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Request a Quote</h2>
+              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Fill out the form below and we'll get back to you shortly</p>
             </div>
             
             {submitStatus ? (
               <div className={`p-6 rounded-lg text-center ${submitStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
-                <p className="font-medium">{submitStatus.message}</p>
+                <div className="flex flex-col items-center">
+                  {submitStatus.success ? (
+                    <CheckCircle2 className="h-12 w-12 text-green-500 mb-3" />
+                  ) : (
+                    <AlertCircle className="h-12 w-12 text-red-500 mb-3" />
+                  )}
+                  <p className="font-medium text-lg mt-2">{submitStatus.success ? 'Success!' : 'Error'}</p>
+                  <p className="mt-1">{submitStatus.message}</p>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Full Name <span className="text-red-600">*</span></label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2 rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
-                      placeholder="John Doe"
+                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+                      placeholder="Junior David"
                     />
                     {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email <span className="text-red-600">*</span></label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2 rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
-                      placeholder="john@example.com"
+                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                      placeholder="junior@example.com"
                     />
                     {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                    <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Phone Number <span className="text-red-600">*</span></label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-2 rounded-lg border ${errors.phone ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
-                      placeholder="+1 (555) 123-4567"
+                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                      placeholder="+233 551784926"
                     />
                     {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
+                    <label htmlFor="projectType" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Project Type</label>
                     <select
                       id="projectType"
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
                     >
                       <option value="website">Website</option>
                       <option value="web-app">Web Application</option>
@@ -356,13 +365,13 @@ export function Navbar() {
                   </div>
                   
                   <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-1">Timeline</label>
+                    <label htmlFor="timeline" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Timeline</label>
                     <select
                       id="timeline"
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
                     >
                       <option value="1-2 weeks">1-2 weeks</option>
                       <option value="2-4 weeks">2-4 weeks</option>
@@ -373,32 +382,32 @@ export function Navbar() {
                   </div>
                   
                   <div>
-                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1">Budget Range</label>
+                    <label htmlFor="budget" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Budget Range</label>
                     <select
                       id="budget"
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
                     >
-                      <option value="1000-5000">$1,000 - $5,000</option>
-                      <option value="5000-10000">$5,000 - $10,000</option>
-                      <option value="10000-25000">$10,000 - $25,000</option>
-                      <option value="25000-50000">$25,000 - $50,000</option>
-                      <option value="50000+">$50,000+</option>
+                      <option value="1000-5000">₵1,000 - ₵5,000</option>
+                      <option value="5000-10000">₵5,000 - ₵10,000</option>
+                      <option value="10000-25000">₵10,000 - ₵25,000</option>
+                      <option value="25000-50000">₵25,000 - ₵50,000</option>
+                      <option value="50000+">₵50,000+</option>
                     </select>
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Project Details *</label>
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Project Details <span className="text-red-600">*</span></label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`w-full px-4 py-2 rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
                     placeholder="Tell us about your project..."
                   />
                   {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
@@ -408,7 +417,7 @@ export function Navbar() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#33241E] hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#33241E] disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent rounded-md shadow-sm text-sm sm:text-base font-medium text-white bg-[#33241E] hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#33241E] disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
