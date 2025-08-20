@@ -3,6 +3,7 @@
 import { Instagram, Github, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { useState, useRef, useEffect } from "react"
 const TermsOfServiceModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -369,17 +370,31 @@ export function Footer() {
         {/* Top Row - Brand Card and Description */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {/* Profile Image */}
-          <div className="bg-white/90 rounded-3xl p-3 md:p-4 flex items-center justify-center backdrop-blur-sm border border-black h-40 md:h-48">
-            <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-gray-200">
+          <div className="bg-white/90 rounded-3xl p-3 md:p-4 flex items-center justify-center backdrop-blur-sm border border-black h-40 md:h-48 shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <motion.div 
+              className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-white/80 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_6px_25px_rgba(0,0,0,0.2)] transition-all duration-300 transform hover:-translate-y-1"
+              animate={{
+                y: [0, -5, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               <Image
                 src="/images/her.png"
                 alt="Daniella"
                 width={128}
                 height={128}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                style={{
+                  filter: 'brightness(1.05) contrast(1.05)',
+                  WebkitFilter: 'brightness(1.05) contrast(1.05)'
+                }}
                 priority
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* Description */}
