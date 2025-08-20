@@ -1,5 +1,6 @@
-import {  Instagram,  } from "lucide-react"
+import { Instagram, Github } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 export function Footer() {
   return (
     <footer className="w-full bg-[#C1B1AB] px-4 sm:px-6 py-8 md:py-12">
@@ -135,6 +136,25 @@ export function Footer() {
               <a href="#" className="hover:underline">Terms of Service</a>
               <a href="#" className="hover:underline">Cookies Settings</a>
             </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Footer Credits - Right Aligned */}
+      <div className="max-w-6xl mx-auto pt-6 mt-8 border-t border-black/10">
+        <div className="flex justify-end">
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-black/60 font-light italic">Built by</span>
+            <Link 
+              href="https://github.com/aristocratjnr" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-sm text-black/80 hover:text-black transition-colors group"
+              aria-label="Visit developer's GitHub"
+            >
+              <span className="font-medium">aristocratjnr</span>
+              <Github className="ml-1.5 h-4 w-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+            </Link>
           </div>
         </div>
       </div>
