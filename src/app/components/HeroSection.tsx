@@ -71,17 +71,26 @@ export default function HeroSection() {
               </div>
                 {/* Stats Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xs:gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
-                <div className="backdrop-blur-md bg-white/60 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
-                  <p className="text-black text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1">EXPERIENCE</p>
-                  <p className="text-black text-base sm:text-lg md:text-xl">3+ years</p>
+                <div className="backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+                  <div className="relative z-10">
+                    <p className="text-black/80 text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">EXPERIENCE</p>
+                    <p className="text-black text-base sm:text-lg md:text-xl ">3+ years</p>
+                  </div>
                 </div>
-                <div className="backdrop-blur-md bg-white/60 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
-                  <p className="text-black text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1">PROJECTS</p>
-                  <p className="text-black text-base sm:text-lg md:text-xl ">10+ Designs</p>
+                <div className="backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+                  <div className="relative z-10">
+                    <p className="text-black/80 text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">PROJECTS</p>
+                    <p className="text-black text-base sm:text-lg md:text-xl ">10+ Designs</p>
+                  </div>
                 </div>
-                <div className="col-span-2 sm:col-span-1 backdrop-blur-lg bg-white/60 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
-                  <p className="text-black text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1">CLIENTS</p>
-                  <p className="text-black text-base sm:text-lg md:text-xl">20+</p>
+                <div className="col-span-2 sm:col-span-1 backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+                  <div className="relative z-10">
+                    <p className="text-black/80 text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">CLIENTS</p>
+                    <p className="text-black text-base sm:text-lg md:text-xl ">20+</p>
+                  </div>
                 </div>
               </div>
 
