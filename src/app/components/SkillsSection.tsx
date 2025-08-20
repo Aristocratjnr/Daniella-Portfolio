@@ -170,16 +170,17 @@ const SkillsSection = () => {
             <div className="flex justify-center sm:justify-end mt-6 sm:mt-8">
               <button 
                 type="button"
-                className="bg-white/90 backdrop-blur-sm rounded-full px-5 sm:px-6 py-2.5 sm:py-3 border border-black flex items-center gap-2 hover:bg-white transition-all duration-300 group"
+                className="relative bg-white/90 backdrop-blur-sm rounded-full px-5 sm:px-6 py-2.5 sm:py-3 border border-black flex items-center gap-2 hover:bg-white transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-lg hover:shadow-blue-200/50"
                 aria-label="View more projects"
               >
-                <span className="text-gray-800 font-medium text-sm sm:text-base">See More?</span>
+                <span className="relative z-10 text-gray-800 font-medium text-sm sm:text-base">See More?</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-blue-200/60 via-blue-100/40 to-transparent -translate-x-full group-hover:translate-x-0 transition-all duration-700"></span>
                 <Image 
                   src="/images/hand.png" 
                   alt="" 
                   width={16}
                   height={16}
-                  className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
+                  className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
                   aria-hidden="true"
                 />
               </button>
