@@ -68,43 +68,95 @@ const SkillsSection = () => {
           </div>
 
           {/* Right side - Project cards */}
-          <div className="order-1 lg:order-2 space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <div className="order-1 lg:order-2 space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="relative bg-white backdrop-blur-sm p-4 sm:p-6 border border-black h-full group overflow-hidden hover:-translate-y-1 transition-transform duration-300"
-                  style={{ 
-                    backgroundColor: project.color,
-                    clipPath: 'polygon(0 12%, 12% 0, 88% 0, 100% 12%, 100% 100%, 0 100%)',
-                    borderRadius: '0 0 16px 16px'
+                  className="relative group overflow-visible transition-all duration-500 hover:transform hover:transition-transform"
+                  style={{
+                    perspective: '1000px',
+                    transformStyle: 'preserve-3d',
                   }}
                 >
-                  {/* Top cut edge styling */}
-                  <div 
-                    className="absolute top-0 left-0 w-full h-3.5 z-10 pointer-events-none"
+                  {/* 3D Card Container */}
+                  <div className="relative h-full transition-transform duration-500 group-hover:translate-z-10 group-hover:translate-y-[-10px]"
                     style={{
-                      background: `linear-gradient(135deg, transparent 12.5%, ${project.color} 12.5%)`,
-                      clipPath: 'polygon(0 100%, 12% 0, 88% 0, 100% 100%)',
-                      boxShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                      transformStyle: 'preserve-3d',
+                      transform: 'rotateX(0deg) rotateY(0deg)',
+                      transition: 'transform 0.5s ease-out',
                     }}
-                  />
-                  
-                  <div className="mt-2">
-                    <div className="flex items-start justify-between mb-3 sm:mb-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: "rgba(255,255,255,0.2)" }}>
-                        <Image 
-                          src={project.icon} 
-                          alt={project.title}
-                          width={20}
-                          height={20}
-                          className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
-                        />
+                  >
+                    {/* Main card with slanted top */}
+                    <div 
+                      className="relative z-10 h-full p-6 sm:p-7 bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300"
+                      style={{
+                        clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
+                        marginTop: '1.75rem',
+                        backgroundColor: project.color || '#ffffff',
+                        borderColor: 'rgba(0,0,0,0.1)',
+                        transform: 'translateZ(20px)',
+                        backfaceVisibility: 'hidden',
+                      }}
+                    >
+                    {/* Top accent bar */}
+                    <div 
+                      className="absolute top-0 left-0 right-0 h-3"
+                      style={{
+                        background: 'linear-gradient(90deg, rgba(0,0,0,0.05), transparent)'
+                      }}
+                    />
+                    
+                    <div className="mt-1">
+                      <div className="flex items-start justify-between mb-4 sm:mb-5">
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" 
+                          style={{ 
+                            backgroundColor: 'rgba(255,255,255,0.2)',
+                            backdropFilter: 'blur(4px)'
+                          }}
+                        >
+                          <Image 
+                            src={project.icon} 
+                            alt={project.title}
+                            width={24}
+                            height={24}
+                            className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                          />
+                        </div>
                       </div>
-                    </div>
 
-                    <h3 className="text-black font-bold text-base sm:text-lg mb-2 sm:mb-3">{project.title}</h3>
-                    <p className="text-black text-xs sm:text-sm leading-relaxed">{project.description}</p>
+                      <h3 className="text-gray-900 font-bold text-lg sm:text-xl mb-2.5 leading-tight">
+                        {project.title}
+                      </h3>
+                      <p className="text-gray-700 text-sm sm:text-[0.94rem] leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+                  </div>
+                  
+                    {/* 3D Shadow effect */}
+                    <div 
+                      className="absolute inset-0 bg-gray-200 rounded-lg transition-all duration-500 group-hover:opacity-70"
+                      style={{
+                        clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
+                        zIndex: 0,
+                        transform: 'translateZ(0)',
+                        filter: 'blur(8px)',
+                        opacity: 0.6,
+                        margin: '0 10px 10px 0',
+                      }}
+                    />
+                    
+                    {/* Edge highlight */}
+                    <div 
+                      className="absolute inset-0 border-2 border-white/30 rounded-lg pointer-events-none"
+                      style={{
+                        clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
+                        zIndex: 15,
+                        transform: 'translateZ(1px)',
+                        boxShadow: 'inset 0 0 15px rgba(255,255,255,0.5)'
+                      }}
+                    />
                   </div>
                 </div>
               ))}
