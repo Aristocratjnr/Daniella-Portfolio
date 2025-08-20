@@ -314,7 +314,7 @@ export default function ContactPage() {
               </div>
               <DialogTitle className="text-2xl font-bold text-center">Message Sent!</DialogTitle>
               <DialogDescription className="text-center text-gray-600">
-                Thank you for reaching out. I'll get back to you as soon as possible.
+                Thank you for reaching out. I&apos;ll get back to you as soon as possible.
               </DialogDescription>
             </div>
           </DialogHeader>
