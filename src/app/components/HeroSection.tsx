@@ -70,26 +70,26 @@ export default function HeroSection() {
                 </p>
               </div>
                 {/* Stats Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xs:gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
-                <div className="backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+              <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 xs:gap-4 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
+                <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
                   <div className="relative z-10">
-                    <p className="text-black/80 text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">EXPERIENCE</p>
-                    <p className="text-black text-base sm:text-lg md:text-xl ">3+ years</p>
+                    <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">EXPERIENCE</p>
+                    <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl ">3+ years</p>
                   </div>
                 </div>
-                <div className="backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
                   <div className="relative z-10">
-                    <p className="text-black/80 text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">PROJECTS</p>
-                    <p className="text-black text-base sm:text-lg md:text-xl ">10+ Designs</p>
+                    <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">PROJECTS</p>
+                    <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl ">10+ Designs</p>
                   </div>
                 </div>
-                <div className="col-span-2 sm:col-span-1 backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                <div className="col-span-1 xs:col-span-2 sm:col-span-1 relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
                   <div className="relative z-10">
-                    <p className="text-black/80 text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">CLIENTS</p>
-                    <p className="text-black text-base sm:text-lg md:text-xl ">20+</p>
+                    <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">CLIENTS</p>
+                    <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl ">20+</p>
                   </div>
                 </div>
               </div>

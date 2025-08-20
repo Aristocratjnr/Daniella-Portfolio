@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { Poppins } from 'next/font/google'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Menu, X } from 'lucide-react'
 
 const poppins = Poppins({
@@ -51,6 +51,21 @@ export function Navbar() {
   };
 
   const [currentActiveLink, setCurrentActiveLink] = useState('HOME');
+  const navbarRef = useRef<HTMLElement>(null);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen && navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     // This code runs only on the client side
@@ -64,7 +79,7 @@ export function Navbar() {
   }, [activeLink]);
 
   return (
-    <nav className={`w-full fixed top-0 left-0 bg-[#F2EEED] text-gray-900 px-4 sm:px-6 py-3 z-50 transition-all duration-300 ${
+    <nav ref={navbarRef} className={`w-full fixed top-0 left-0 bg-[#F2EEED] text-gray-900 px-4 sm:px-6 py-3 z-50 transition-all duration-300 ${
       isScrolled ? 'shadow-md py-2' : 'py-3'
     } ${poppins.className}`}>
       {/* Mobile menu button */}
