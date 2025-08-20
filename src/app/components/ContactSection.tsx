@@ -175,9 +175,10 @@ export default function ContactForm() {
                 <div className="pt-2 sm:pt-4 text-center lg:text-left">
                   <Button
                     type="submit"
-                    className="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 rounded-full px-6 sm:px-8 py-2 transition-all duration-200 text-sm sm:text-base font-medium shadow-sm hover:shadow focus-visible:ring-0 w-full sm:w-auto"
+                    className="relative bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 rounded-full px-6 sm:px-8 py-2 transition-all duration-300 text-sm sm:text-base font-medium shadow-sm hover:shadow-lg hover:shadow-blue-200/50 focus-visible:ring-0 w-full sm:w-auto overflow-hidden group"
                   >
-                    Submit
+                    <span className="relative z-10">Submit</span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-blue-100/50 to-transparent -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></span>
                   </Button>
                 </div>
               </form>
