@@ -428,6 +428,15 @@ export function Footer() {
                   />
                 </a>
                 <a 
+                  href="https://github.com/Danny7555" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-700 hover:text-gray-900 transition-colors"
+                  aria-label="GitHub"
+                >
+                  <Github className="w-6 h-6" />
+                </a>
+                <a 
                   href="https://www.instagram.com/dani.ella8588" 
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -491,7 +500,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="bg-[#C1B1AB] rounded-3xl p-6 backdrop-blur-sm border border-black">
           <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-700 space-y-3 sm:space-y-0">
-            <span>{new Date().getFullYear()} Daniella. All rights reserved.</span>
+            <span>©  {new Date().getFullYear()} @Daniella. All rights reserved.</span>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               <button 
                 onClick={() => setIsPrivacyModalOpen(true)}
