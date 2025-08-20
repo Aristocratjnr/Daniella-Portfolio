@@ -71,17 +71,17 @@ export default function HeroSection() {
               </div>
                 {/* Stats Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 xs:gap-3 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
-                <div className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
+                <div className="backdrop-blur-md bg-white/60 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
                   <p className="text-black text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1">EXPERIENCE</p>
-                  <p className="text-black text-base sm:text-lg md:text-xl font-bold">3+ years</p>
+                  <p className="text-black text-base sm:text-lg md:text-xl">3+ years</p>
                 </div>
-                <div className="backdrop-blur-md bg-white/30 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
+                <div className="backdrop-blur-md bg-white/60 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
                   <p className="text-black text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1">PROJECTS</p>
-                  <p className="text-black text-base sm:text-lg md:text-xl font-bold">10+ Designs</p>
+                  <p className="text-black text-base sm:text-lg md:text-xl ">10+ Designs</p>
                 </div>
-                <div className="col-span-2 sm:col-span-1 backdrop-blur-md bg-white/30 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
+                <div className="col-span-2 sm:col-span-1 backdrop-blur-lg bg-white/60 border border-white/20 rounded-lg sm:rounded-xl md:rounded-2xl p-2 xs:p-3 md:p-4 shadow-lg">
                   <p className="text-black text-[10px] xs:text-xs sm:text-sm font-medium mb-0.5 sm:mb-1">CLIENTS</p>
-                  <p className="text-black text-base sm:text-lg md:text-xl font-bold">20+</p>
+                  <p className="text-black text-base sm:text-lg md:text-xl">20+</p>
                 </div>
               </div>
 
