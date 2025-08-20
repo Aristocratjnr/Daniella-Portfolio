@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -31,9 +31,98 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+const PrivacyPolicyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div 
+        ref={modalRef}
+        className="bg-white/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border border-white/20"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl font-bold text-gray-800">Privacy Policy</h2>
+          <button 
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700 transition-colors"
+            aria-label="Close privacy policy"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div className="prose prose-sm sm:prose text-gray-700 space-y-4">
+          <p className="font-medium">Last updated: August 20, 2025</p>
+          
+          <h3 className="text-lg font-semibold mt-6">1. Information We Collect</h3>
+          <p>We collect information that you provide directly to us, such as when you fill out our contact form. This may include your name, email address, and any other information you choose to provide.</p>
+          
+          <h3 className="text-lg font-semibold mt-6">2. How We Use Your Information</h3>
+          <p>We use the information we collect to:</p>
+          <ul className="list-disc pl-5 space-y-2 mt-2">
+            <li>Respond to your inquiries and provide customer support</li>
+            <li>Send you updates and information about our services</li>
+            <li>Improve our website and services</li>
+            <li>Comply with legal obligations</li>
+          </ul>
+          
+          <h3 className="text-lg font-semibold mt-6">3. Data Security</h3>
+          <p>We implement appropriate security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+          
+          <h3 className="text-lg font-semibold mt-6">4. Your Rights</h3>
+          <p>You have the right to:</p>
+          <ul className="list-disc pl-5 space-y-2 mt-2">
+            <li>Access the personal information we hold about you</li>
+            <li>Request correction of your personal information</li>
+            <li>Request deletion of your personal information</li>
+            <li>Object to or restrict processing of your personal information</li>
+          </ul>
+          
+          <h3 className="text-lg font-semibold mt-6">5. Contact Us</h3>
+          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:daniellaasiedu755@gmail.com" className="text-blue-600 hover:underline">daniellaasiedu755@gmail.com</a>.</p>
+        </div>
+        
+        <div className="mt-8 flex justify-end">
+          <button
+            onClick={onClose}
+            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
   
   const {
     register,
@@ -167,7 +256,17 @@ export default function ContactPage() {
                         onCheckedChange={(checked) => setValue('privacy', checked === true)}
                       />
                       <label htmlFor="privacy" className="text-gray-700 text-sm leading-tight">
-                        I agree to the <a href="#" className="text-black font-medium hover:underline">Privacy & Policy</a>
+                        I agree to the{' '}
+                        <button 
+                          type="button" 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setIsPrivacyModalOpen(true);
+                          }} 
+                          className="text-black font-medium hover:underline focus:outline-none"
+                        >
+                          Privacy & Policy
+                        </button>
                       </label>
                     </div>
                     {errors.privacy && (
@@ -198,6 +297,12 @@ export default function ContactPage() {
         </div>
       </div>
       <Footer />
+      
+      {/* Privacy Policy Modal */}
+      <PrivacyPolicyModal 
+        isOpen={isPrivacyModalOpen} 
+        onClose={() => setIsPrivacyModalOpen(false)} 
+      />
       
       {/* Success Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
