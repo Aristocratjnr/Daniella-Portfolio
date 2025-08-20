@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { Poppins } from 'next/font/google'
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Send, Loader2 } from 'lucide-react'
 
 const poppins = Poppins({
   weight: ['400'],
@@ -10,10 +10,33 @@ const poppins = Poppins({
   display: 'swap',
 })
 
+interface QuoteFormData {
+  name: string;
+  email: string;
+  phone: string;
+  projectType: string;
+  timeline: string;
+  budget: string;
+  message: string;
+}
+
 export function Navbar() {
   const [activeLink, setActiveLink] = useState('HOME');
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState<QuoteFormData>({
+    name: '',
+    email: '',
+    phone: '',
+    projectType: 'website',
+    timeline: '1-2 weeks',
+    budget: '1000-5000',
+    message: ''
+  });
+  const [errors, setErrors] = useState<Partial<QuoteFormData>>({});
+  const [submitStatus, setSubmitStatus] = useState<{success: boolean; message: string} | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +45,83 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<QuoteFormData> = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
+    if (!formData.message.trim()) newErrors.message = 'Please provide project details';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof QuoteFormData]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      // Here you would typically send the form data to your backend
+      console.log('Form submitted:', formData);
+      
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setSubmitStatus({
+        success: true,
+        message: 'Your quote request has been sent successfully! We\'ll get back to you soon.'
+      });
+      
+      // Reset form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        projectType: 'website',
+        timeline: '1-2 weeks',
+        budget: '1000-5000',
+        message: ''
+      });
+      
+      // Close modal after 3 seconds
+      setTimeout(() => {
+        setIsQuoteModalOpen(false);
+        setSubmitStatus(null);
+      }, 3000);
+      
+    } catch {
+      setSubmitStatus({
+        success: false,
+        message: 'Something went wrong. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleLinkClick = (link: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -120,12 +220,12 @@ export function Navbar() {
                 {link}
               </a>
             ))}
-            <a 
-              href="/contact" 
+            <button 
+              onClick={() => setIsQuoteModalOpen(true)}
               className="inline-flex items-center justify-center px-6 py-2 border border-gray-900 text-sm font-medium rounded-md text-gray-900 hover:bg-gray-900 hover:text-white transition-colors"
             >
               REQUEST QUOTE
-            </a>
+            </button>
           </div>
         </div>
       )}
@@ -161,14 +261,173 @@ export function Navbar() {
 
         {/* Desktop Contact Button */}
         <div className="hidden md:flex flex-shrink-0">
-          <a 
-            href="#contact" 
+          <button 
+            onClick={() => setIsQuoteModalOpen(true)}
             className="inline-flex items-center px-6 py-2 border border-gray-900 text-sm font-medium rounded-md text-gray-900 hover:bg-gray-900 hover:text-white transition-colors"
           >
             REQUEST QUOTE
-          </a>
+          </button>
         </div>
       </div>
+      
+      {/* Quote Request Modal */}
+      {isQuoteModalOpen && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div 
+            className="relative bg-white/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border border-white/20"
+          >
+            <button 
+              onClick={() => !isSubmitting && setIsQuoteModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              disabled={isSubmitting}
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-900">Request a Quote</h2>
+              <p className="text-gray-600 mt-1">Tell us about your project and we&apos;ll get back to you soon</p>
+            </div>
+            
+            {submitStatus ? (
+              <div className={`p-6 rounded-lg text-center ${submitStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+                <p className="font-medium">{submitStatus.message}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-2 rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
+                      placeholder="John Doe"
+                    />
+                    {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-2 rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
+                      placeholder="john@example.com"
+                    />
+                    {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-2 rounded-lg border ${errors.phone ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
+                      placeholder="+1 (555) 123-4567"
+                    />
+                    {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="projectType" className="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
+                    <select
+                      id="projectType"
+                      name="projectType"
+                      value={formData.projectType}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                    >
+                      <option value="website">Website</option>
+                      <option value="web-app">Web Application</option>
+                      <option value="mobile-app">Mobile App</option>
+                      <option value="ecommerce">E-commerce</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="timeline" className="block text-sm font-medium text-gray-700 mb-1">Timeline</label>
+                    <select
+                      id="timeline"
+                      name="timeline"
+                      value={formData.timeline}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                    >
+                      <option value="1-2 weeks">1-2 weeks</option>
+                      <option value="2-4 weeks">2-4 weeks</option>
+                      <option value="1-2 months">1-2 months</option>
+                      <option value="3+ months">3+ months</option>
+                      <option value="flexible">Flexible</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-1">Budget Range</label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                    >
+                      <option value="1000-5000">$1,000 - $5,000</option>
+                      <option value="5000-10000">$5,000 - $10,000</option>
+                      <option value="10000-25000">$10,000 - $25,000</option>
+                      <option value="25000-50000">$25,000 - $50,000</option>
+                      <option value="50000+">$50,000+</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Project Details *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-2 rounded-lg border ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
+                    placeholder="Tell us about your project..."
+                  />
+                  {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
+                </div>
+                
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#33241E] hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#33241E] disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="-ml-1 mr-2 h-5 w-5" />
+                        Send Request
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </nav>
   )
 }
