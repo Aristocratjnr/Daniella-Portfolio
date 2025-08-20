@@ -71,25 +71,43 @@ export default function HeroSection() {
               </div>
                 {/* Stats Grid */}
               <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-3 xs:gap-4 sm:gap-4 mt-4 sm:mt-6 md:mt-8">
-                <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-                  <div className="relative z-10">
-                    <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">EXPERIENCE</p>
-                    <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl ">3+ years</p>
+                <div className="relative group">
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-[#B5A394] via-[#6E4D42] to-[#B5A394] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
+                    maskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
+                  }}></div>
+                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+                    <div className="relative z-10">
+                      <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">EXPERIENCE</p>
+                      <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl">3+ years</p>
+                    </div>
                   </div>
                 </div>
-                <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-                  <div className="relative z-10">
-                    <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">PROJECTS</p>
-                    <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl ">10+ Designs</p>
+                <div className="relative group">
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-[#6E4D42] via-[#B5A394] to-[#6E4D42] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
+                    maskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
+                  }}></div>
+                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+                    <div className="relative z-10">
+                      <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">PROJECTS</p>
+                      <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl">10+ Designs</p>
+                    </div>
                   </div>
                 </div>
-                <div className="col-span-1 xs:col-span-2 sm:col-span-1 relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-                  <div className="relative z-10">
-                    <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">CLIENTS</p>
-                    <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl ">20+</p>
+                <div className="col-span-1 xs:col-span-2 sm:col-span-1 relative group">
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-[#B5A394] via-[#6E4D42] to-[#B5A394] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
+                    maskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
+                  }}></div>
+                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl md:rounded-2xl p-3 xs:p-3 sm:p-4 md:p-4 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/40 hover:scale-105 hover:border-white/60">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
+                    <div className="relative z-10">
+                      <p className="text-black/80 text-xs xs:text-xs sm:text-sm font-medium mb-1 sm:mb-1 uppercase tracking-wider">CLIENTS</p>
+                      <p className="text-black text-sm xs:text-base sm:text-lg md:text-xl">20+</p>
+                    </div>
                   </div>
                 </div>
               </div>
