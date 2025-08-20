@@ -89,10 +89,9 @@ const SkillsSection = () => {
                   >
                     {/* Main card with slanted top */}
                     <div 
-                      className="relative z-10 h-full p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                      className="relative z-10 h-auto min-h-[211px] p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
                       style={{
                         width: '240px',
-                        height: '211px',
                         flexShrink: 0,
                         clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
                         marginTop: '1.75rem',
@@ -110,8 +109,7 @@ const SkillsSection = () => {
                         background: 'linear-gradient(90deg, rgba(0,0,0,0.05), transparent)'
                       }}
                     />
-                    
-                    <div className="mt-1">
+                    <div className="mt-1 flex-1 flex flex-col">
                       <div className="flex items-start justify-between mb-4 sm:mb-5">
                         <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" 
                           style={{ 
@@ -130,11 +128,13 @@ const SkillsSection = () => {
                       </div>
 
                       <h3 className="text-xl font-bold text-gray-800 mb-3 tracking-wide uppercase font-sans">{project.title}</h3>
-                      <p className="text-black text-sm leading-relaxed font-light tracking-wide">
-                        <span className="inline-block transform transition-all duration-300 hover:scale-105">
-                          {project.description}
-                        </span>
-                      </p>
+                      <div className="flex-1 flex items-start">
+                        <p className="text-black text-xs sm:text-sm md:text-base leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-4">
+                          <span className="inline-block transform transition-all duration-300 hover:scale-105 hover:text-gray-800">
+                            {project.description}
+                          </span>
+                        </p>
+                      </div>
                     </div>
                   </div>
                   
