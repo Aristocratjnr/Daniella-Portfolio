@@ -89,7 +89,7 @@ const SkillsSection = () => {
                   >
                     {/* Main card with slanted top */}
                     <div 
-                      className="relative z-10 h-full p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300"
+                      className="relative z-10 h-full p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
                       style={{
                         width: '240px',
                         height: '211px',
@@ -129,11 +129,11 @@ const SkillsSection = () => {
                         </div>
                       </div>
 
-                      <h3 className="text-gray-900 font-bold text-lg sm:text-xl mb-2.5 leading-tight">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-700 text-sm sm:text-[0.94rem] leading-relaxed">
-                        {project.description}
+                      <h3 className="text-xl font-bold text-gray-800 mb-3 tracking-wide uppercase font-sans">{project.title}</h3>
+                      <p className="text-black text-sm leading-relaxed font-light tracking-wide">
+                        <span className="inline-block transform transition-all duration-300 hover:scale-105">
+                          {project.description}
+                        </span>
                       </p>
                     </div>
                   </div>
