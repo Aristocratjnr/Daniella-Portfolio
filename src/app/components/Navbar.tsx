@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { Poppins } from 'next/font/google'
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import { Menu, X, Send, Loader2 } from 'lucide-react'
 
 const poppins = Poppins({
   weight: ['400'],
@@ -287,20 +287,12 @@ export function Navbar() {
             
             <div className="text-center mb-4 sm:mb-6">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Request a Quote</h2>
-              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Fill out the form below and we'll get back to you shortly</p>
+              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Fill out the form below and we&apos;ll get back to you shortly</p>
             </div>
             
             {submitStatus ? (
               <div className={`p-6 rounded-lg text-center ${submitStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
-                <div className="flex flex-col items-center">
-                  {submitStatus.success ? (
-                    <CheckCircle2 className="h-12 w-12 text-green-500 mb-3" />
-                  ) : (
-                    <AlertCircle className="h-12 w-12 text-red-500 mb-3" />
-                  )}
-                  <p className="font-medium text-lg mt-2">{submitStatus.success ? 'Success!' : 'Error'}</p>
-                  <p className="mt-1">{submitStatus.message}</p>
-                </div>
+                <p className="font-medium">{submitStatus.message}</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -314,7 +306,7 @@ export function Navbar() {
                       value={formData.name}
                       onChange={handleInputChange}
                       className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-                      placeholder="Junior David"
+                      placeholder="John Doe"
                     />
                     {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                   </div>
@@ -328,7 +320,7 @@ export function Navbar() {
                       value={formData.email}
                       onChange={handleInputChange}
                       className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-                      placeholder="junior@example.com"
+                      placeholder="john@example.com"
                     />
                     {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                   </div>
@@ -342,7 +334,7 @@ export function Navbar() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
-                      placeholder="+233 551784926"
+                      placeholder="+1 (555) 123-4567"
                     />
                     {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                   </div>
