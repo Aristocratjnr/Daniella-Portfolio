@@ -289,13 +289,13 @@ const photoCards = [
 
       {/* Quote Modal */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start md:items-center justify-center z-50 p-4 overflow-y-auto">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start md:items-center justify-center z-50 p-2 sm:p-4 overflow-y-auto">
           <motion.div 
             ref={modalRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="bg-white/90 backdrop-blur-lg rounded-2xl p-4 sm:p-6 w-full max-w-md mx-auto my-8 relative shadow-2xl border border-white/20"
+            className="bg-white/90 backdrop-blur-lg rounded-2xl p-4 sm:p-5 w-full max-w-md mx-auto my-4 sm:my-6 relative shadow-2xl border border-white/20 max-h-[90vh] overflow-y-auto"
           >
             <button 
               onClick={() => setIsQuoteModalOpen(false)}
@@ -305,22 +305,22 @@ const photoCards = [
               <X size={20} className="w-5 h-5" />
             </button>
             
-            <div className="text-center mb-4 sm:mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Get a Free Quote</h3>
-              <p className="text-sm sm:text-base text-gray-600">Fill out the form below and we&apos;ll get back to you soon</p>
+            <div className="text-center mb-3 sm:mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-0.5">Get a Free Quote</h3>
+              <p className="text-xs sm:text-sm text-gray-600">Fill out the form and we&apos;ll get back to you</p>
             </div>
 
             {submitStatus ? (
               <div className={`p-6 rounded-lg text-center ${submitStatus?.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
                 {submitStatus?.success ? (
-                  <CheckCircle2 className="w-12 h-12 mx-auto mb-4 text-green-500" />
+                  <CheckCircle2 className="w-10 h-10 mx-auto mb-3 text-green-500" />
                 ) : (
-                  <AlertCircle className="w-12 h-12 mx-auto mb-4 text-red-500" />
+                  <AlertCircle className="w-10 h-10 mx-auto mb-3 text-red-500" />
                 )}
-                <p className="text-lg font-medium">{submitStatus?.message}</p>
+                <p className="text-sm font-medium">{submitStatus?.message}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3">
                 <div>
                   <input
                     type="text"
@@ -328,7 +328,7 @@ const photoCards = [
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your Name"
-                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border ${
+                    className={`w-full px-3 py-1.5 text-sm rounded border ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                   />
@@ -368,7 +368,7 @@ const photoCards = [
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                    className="w-full px-3 py-1.5 text-sm rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
                     <option value="website">Website Development</option>
                     <option value="mobile">Mobile App</option>
@@ -382,7 +382,7 @@ const photoCards = [
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                    className="w-full px-3 py-1.5 text-sm rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
                     <option value="1-2 weeks">1-2 weeks</option>
                     <option value="2-4 weeks">2-4 weeks</option>
@@ -396,7 +396,7 @@ const photoCards = [
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                    className="w-full px-3 py-1.5 text-sm rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
                     <option value="1000-5000">$1,000 - $5,000</option>
                     <option value="5000-20000">$5,000 - $20,000</option>
@@ -411,8 +411,8 @@ const photoCards = [
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Tell us about your project..."
-                    rows={4}
-                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border ${
+                    rows={3}
+                    className={`w-full px-3 py-1.5 text-sm rounded border ${
                       errors.message ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                   />
@@ -422,7 +422,7 @@ const photoCards = [
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#33241E] hover:bg-gray-800 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 mt-2 text-sm sm:text-base"
+                  className="w-full bg-[#33241E] hover:bg-gray-800 text-white py-2 px-4 rounded font-medium transition-all duration-300 flex items-center justify-center gap-2 mt-2 text-sm"
                 >
                   {isSubmitting ? (
                     <>
