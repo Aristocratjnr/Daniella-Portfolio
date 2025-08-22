@@ -289,25 +289,25 @@ const photoCards = [
 
       {/* Quote Modal */}
       {isQuoteModalOpen && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start md:items-center justify-center z-50 p-4 overflow-y-auto">
           <motion.div 
             ref={modalRef}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="bg-white/90 backdrop-blur-lg rounded-2xl p-6 max-w-md w-full relative shadow-2xl border border-white/20"
+            className="bg-white/90 backdrop-blur-lg rounded-2xl p-4 sm:p-6 w-full max-w-md mx-auto my-8 relative shadow-2xl border border-white/20"
           >
             <button 
               onClick={() => setIsQuoteModalOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 p-1 text-gray-500 hover:text-gray-700 transition-colors"
               aria-label="Close modal"
             >
-              <X size={24} />
+              <X size={20} className="w-5 h-5" />
             </button>
             
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Get a Free Quote</h3>
-              <p className="text-gray-600">Fill out the form below and we&apos;ll get back to you soon</p>
+            <div className="text-center mb-4 sm:mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">Get a Free Quote</h3>
+              <p className="text-sm sm:text-base text-gray-600">Fill out the form below and we&apos;ll get back to you soon</p>
             </div>
 
             {submitStatus ? (
@@ -320,7 +320,7 @@ const photoCards = [
                 <p className="text-lg font-medium">{submitStatus?.message}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                 <div>
                   <input
                     type="text"
@@ -328,7 +328,7 @@ const photoCards = [
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your Name"
-                    className={`w-full px-4 py-2 rounded-lg border ${
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                   />
@@ -342,7 +342,7 @@ const photoCards = [
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Email Address"
-                    className={`w-full px-4 py-2 rounded-lg border ${
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                   />
@@ -356,7 +356,7 @@ const photoCards = [
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="Phone Number"
-                    className={`w-full px-4 py-2 rounded-lg border ${
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border ${
                       errors.phone ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                   />
@@ -368,7 +368,7 @@ const photoCards = [
                     name="projectType"
                     value={formData.projectType}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                    className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
                     <option value="website">Website Development</option>
                     <option value="mobile">Mobile App</option>
@@ -382,7 +382,7 @@ const photoCards = [
                     name="timeline"
                     value={formData.timeline}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                    className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
                     <option value="1-2 weeks">1-2 weeks</option>
                     <option value="2-4 weeks">2-4 weeks</option>
@@ -396,7 +396,7 @@ const photoCards = [
                     name="budget"
                     value={formData.budget}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
+                    className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
                     <option value="1000-5000">$1,000 - $5,000</option>
                     <option value="5000-20000">$5,000 - $20,000</option>
@@ -412,7 +412,7 @@ const photoCards = [
                     onChange={handleInputChange}
                     placeholder="Tell us about your project..."
                     rows={4}
-                    className={`w-full px-4 py-2 rounded-lg border ${
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base rounded-lg border ${
                       errors.message ? 'border-red-500' : 'border-gray-300'
                     } focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all`}
                   />
@@ -422,7 +422,7 @@ const photoCards = [
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-[#33241E] hover:bg-gray-800 text-white py-3 px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 mt-2"
+                  className="w-full bg-[#33241E] hover:bg-gray-800 text-white py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-medium transition-all duration-300 flex items-center justify-center gap-2 mt-2 text-sm sm:text-base"
                 >
                   {isSubmitting ? (
                     <>
