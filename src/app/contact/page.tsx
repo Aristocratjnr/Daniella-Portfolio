@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Navbar } from "../components/Navbar"
 import { Footer } from "../components/Footer"
+import  PortfolioShowcase  from "../components/portfolio-showcase"
 import {
   Dialog,
   DialogContent,
@@ -296,6 +297,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+      <PortfolioShowcase />
       <Footer />
       
       {/* Privacy Policy Modal */}
