@@ -1,44 +1,51 @@
 const photoCards = [
     {
+      src: "/images/mock.png",
+      className:
+        "absolute w-[160px] h-[280px] top-[220px] left-[-40px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[-45deg] shadow-[0px_8px_24px_rgba(0,0,0,0.15)] z-10 transition-transform duration-300 hover:scale-105 hover:rotate-[-42deg]",
+      imgClassName: "absolute w-full h-full object-cover",
+      alt: "Mock - New Interface",
+    },
+    {
       src: "/images/mock-1.png",
       className:
-        "absolute w-[180px] h-[225px] top-[280px] left-[-50px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[-35deg] shadow-[0px_6px_12px_#00000030]",
-      imgClassName: "absolute w-[100px] h-[265px] top-[50px] left-[70px] rotate-[35deg] object-cover",
+        "absolute w-[170px] h-[290px] top-[120px] left-[100px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[-25deg] shadow-[0px_10px_26px_rgba(0,0,0,0.18)] z-20 transition-transform duration-300 hover:scale-105 hover:rotate-[-22deg]",
+      imgClassName: "absolute w-full h-full object-cover",
       alt: "Mock 1 - Research Interface",
     },
     {
       src: "/images/mock-2.png",
       className:
-        "absolute w-[170px] h-[280px] top-[-20px] left-[120px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[-25deg] shadow-[0px_6px_12px_#00000030]",
-      imgClassName: "absolute w-[250px] h-[360px] top-[-40px] left-[-40px] rotate-[25deg] object-cover",
+        "absolute w-[175px] h-[300px] top-[60px] left-[260px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[-8deg] shadow-[0px_12px_28px_rgba(0,0,0,0.2)] z-30 transition-transform duration-300 hover:scale-105 hover:rotate-[-5deg]",
+      imgClassName: "absolute w-full h-full object-cover",
       alt: "Mock 2 - Payment Interface",
     },
     {
       src: "/images/mock-3.png",
       className:
-        "absolute w-[165px] h-[290px] top-[-30px] left-[380px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[15deg] shadow-[0px_6px_12px_#00000030]",
-      imgClassName: "absolute w-[220px] h-[340px] top-[-25px] left-[-30px] rotate-[-15deg] object-cover",
+        "absolute w-[180px] h-[310px] top-[40px] left-[480px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[8deg] shadow-[0px_14px_30px_rgba(0,0,0,0.22)] z-35 transition-transform duration-300 hover:scale-105 hover:rotate-[11deg]",
+      imgClassName: "absolute w-full h-full object-cover",
       alt: "Mock 3 - UX Design Interface",
     },
     {
       src: "/images/mock-4.png",
       className:
-        "absolute w-[175px] h-[220px] top-[300px] left-[450px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[40deg] shadow-[0px_6px_12px_#00000030]",
-      imgClassName: "absolute w-[115px] h-[190px] top-[80px] left-[2px] rotate-[-40deg] object-cover",
+        "absolute w-[175px] h-[300px] top-[60px] left-[660px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[25deg] shadow-[0px_12px_28px_rgba(0,0,0,0.2)] z-30 transition-transform duration-300 hover:scale-105 hover:rotate-[28deg]",
+      imgClassName: "absolute w-full h-full object-cover",
       alt: "Mock 4 - Development Interface",
     },
     {
       src: "/images/mock-5.png",
       className:
-        "absolute w-[185px] h-[290px] top-[10px] left-[580px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[25deg] shadow-[0px_6px_12px_#00000030]",
-      imgClassName: "absolute w-[270px] h-[380px] top-[-45px] left-[-45px] rotate-[-25deg] object-cover",
+        "absolute w-[170px] h-[290px] top-[120px] left-[820px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[40deg] shadow-[0px_10px_26px_rgba(0,0,0,0.18)] z-20 transition-transform duration-300 hover:scale-105 hover:rotate-[43deg]",
+      imgClassName: "absolute w-full h-full object-cover",
       alt: "Mock 5 - Workspace Overview",
     },
     {
       src: "/images/mock-6.png",
       className:
-        "absolute w-[185px] h-[290px] top-[10px] left-[780px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[40deg] shadow-[0px_6px_12px_#00000030]",
-      imgClassName: "absolute w-[195px] h-[320px] top-[-18px] left-[-20px] rotate-[30deg] object-cover",
+        "absolute w-[160px] h-[280px] top-[220px] left-[940px] rounded-[25px] overflow-hidden border-[0.5px] border-solid border-gray-300 rotate-[55deg] shadow-[0px_8px_24px_rgba(0,0,0,0.15)] z-10 transition-transform duration-300 hover:scale-105 hover:rotate-[58deg]",
+      imgClassName: "absolute w-full h-full object-cover",
       alt: "Mock 6 - Creative Interface",
     },
   ]
@@ -76,20 +83,25 @@ const photoCards = [
             <p className="text-gray-500 text-sm">Trusted by 6+ Clients</p>
           </div>
   
-          <div className="relative mb-12 h-[600px] flex items-center justify-center">
-            {/* Phone Mockups with precise positioning */}
-            <div className="relative w-[800px] h-[500px]">
+          <div className="relative mb-12 h-[700px] flex items-center justify-center overflow-hidden">
+            {/* Phone Mockups arranged in concave arc */}
+            <div className="relative w-[1100px] h-[600px]">
               {photoCards.map((card, index) => (
                 <div key={index} className={card.className}>
                   <img className={card.imgClassName} alt={card.alt} src={card.src || "/placeholder.svg"} />
                 </div>
               ))}
   
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg width="600" height="500" className="absolute">
-                  <defs>
-                    <path id="circle" d="M 300, 250 m -200, 0 a 200,200 0 1,1 400,0 a 200,200 0 1,1 -400,0" />
-                  </defs>
+              {/* Subtle arc guide line for visual reference (optional) */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <svg width="1000" height="500" className="absolute opacity-5">
+                  <path 
+                    d="M 20,350 Q 500,80 980,350" 
+                    stroke="#e5e7eb" 
+                    strokeWidth="2" 
+                    fill="none"
+                    strokeDasharray="5,5"
+                  />
                 </svg>
               </div>
             </div>
