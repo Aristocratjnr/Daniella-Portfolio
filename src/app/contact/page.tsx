@@ -248,15 +248,15 @@ export default function ContactPage() {
                       )}
                     </div>
 
-                    <div className="flex items-start space-x-3 pt-1">
+                    <div className="flex items-center space-x-2 pt-1">
                       <Checkbox 
                         id="privacy"
-                        className={`h-5 w-5 rounded-md border-gray-300 mt-0.5 data-[state=checked]:bg-black ${errors.privacy ? 'border-red-500' : ''}`}
+                        className={`h-5 w-5 rounded-md border-gray-300 data-[state=checked]:bg-black ${errors.privacy ? 'border-red-500' : ''}`}
                         disabled={isSubmitting}
                         checked={watch('privacy')}
                         onCheckedChange={(checked) => setValue('privacy', checked === true)}
                       />
-                      <label htmlFor="privacy" className="text-gray-700 text-sm leading-tight">
+                      <label htmlFor="privacy" className="text-gray-700 text-sm">
                         I agree to the{' '}
                         <button 
                           type="button" 

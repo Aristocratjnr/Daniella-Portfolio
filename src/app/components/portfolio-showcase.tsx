@@ -37,7 +37,7 @@ const photoCards = [
     {
       src: "/images/mock-6.png",
       className:
-        "absolute w-[160px] h-[285px] top-[280px] left-[650px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[-30deg] shadow-[0px_6px_12px_#00000030]",
+        "absolute w-[185px] h-[290px] top-[10px] left-[780px] rounded-[25px] overflow-hidden border-[0.3px] border-solid border-black rotate-[40deg] shadow-[0px_6px_12px_#00000030]",
       imgClassName: "absolute w-[195px] h-[320px] top-[-18px] left-[-20px] rotate-[30deg] object-cover",
       alt: "Mock 6 - Creative Interface",
     },
