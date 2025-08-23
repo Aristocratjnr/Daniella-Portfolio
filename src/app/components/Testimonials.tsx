@@ -6,7 +6,7 @@ import { Star } from "lucide-react"
 export default function Testimonials() {
   return (
     <div className="w-full bg-white py-12">
-      <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-16 md:mb-20 px-4">Testimonials</h1>
+      <h1 className="text-3xl md:text-5xl font-bold text-center text-[#6E4D42] mb-16 md:mb-20 px-4">Testimonials</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 md:gap-8 px-4 max-w-6xl mx-auto">
         {/* First Testimonial */}
