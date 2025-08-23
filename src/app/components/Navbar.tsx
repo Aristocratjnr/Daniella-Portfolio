@@ -135,8 +135,10 @@ export function Navbar() {
       window.location.href = '/contact';
     } else if (link === 'ABOUT ME') {
       window.location.href = '/about';
+    } else if (link === 'SERVICES') {
+      window.location.href = '/services';
     } else {
-      // For section links (SERVICES, etc.)
+      // For section links
       const sectionId = link.toLowerCase().replace(' ', '-');
       const element = document.getElementById(sectionId);
       
@@ -218,6 +220,7 @@ export function Navbar() {
                   link === 'CONTACT ME' ? '/contact' : 
                   link === 'ABOUT ME' ? '/about' : 
                   link === 'HOME' ? '/' :
+                  link === 'SERVICES' ? '/services' :
                   `#${link.toLowerCase().replace(' ', '-')}`
                 }
                 onClick={(e) => handleLinkClick(link, e)}
@@ -260,6 +263,7 @@ export function Navbar() {
                 link === 'CONTACT ME' ? '/contact' : 
                 link === 'ABOUT ME' ? '/about' : 
                 link === 'HOME' ? '/' :
+                link === 'SERVICES' ? '/services' :
                 `#${link.toLowerCase().replace(' ', '-')}`
               }
               onClick={(e) => handleLinkClick(link, e)}
