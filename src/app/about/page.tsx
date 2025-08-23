@@ -5,6 +5,7 @@ import { Footer } from '../components/Footer';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import { ReasonsSection } from '../components/reasons-section';
 
 export default function AboutPage() {
   return (
@@ -31,7 +32,7 @@ export default function AboutPage() {
                 >
                   Hello,
                   <br />
-                  <span className="text-black text-5xl md:text-6xl lg:text-7xl font-extrabold">I&apos;m Daniella!</span>
+                  <span className="text-black text-5xl md:text-6xl lg:text-7xl font-extrabold drop-shadow-[0_0_8px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_0_15px_rgba(0,0,0,0.25)] transition-all duration-300">I&apos;m Daniella!</span>
                 </motion.h1>
                 
                 <motion.div 
@@ -165,6 +166,11 @@ export default function AboutPage() {
             </motion.div>
             
           </div>
+        </div>
+        
+        {/* 3 Reasons to Choose Me Section */}
+        <div className="mt-12">
+          <ReasonsSection />
         </div>
       </main>
       
