@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
+import Image from 'next/image'; 
 
 export default function NotFound() {
   return (
@@ -10,14 +11,14 @@ export default function NotFound() {
           <h1 className="text-6xl font-bold text-[#6E4D42]">404</h1>
           <h2 className="text-2xl font-light text-[#C1B1AB]">Page Not Found</h2>
           <p className="text-muted-foreground">
-            Oops! The page you're looking for doesn't exist or has been moved.
+            Oops! The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
         </div>
         
         <div className="relative w-64 h-64 mx-auto">
           <div className="absolute inset-0 bg-muted/10 rounded-full animate-pulse"></div>
           <div className="relative w-full h-full flex items-center justify-center">
-            <img 
+            <Image
               src="/images/illustration.png" 
               alt="404 Illustration" 
               className="w-full h-auto object-contain"
