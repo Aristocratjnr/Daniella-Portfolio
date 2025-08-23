@@ -69,6 +69,14 @@ const photoCards = [
     },
   ]
   
+  // Add haptic feedback function
+  const triggerHapticFeedback = (intensity = 50, duration = 20) => {
+    if ('vibrate' in navigator) {
+      // Vibrate for the specified duration (in milliseconds)
+      navigator.vibrate(duration);
+    }
+  };
+
   export default function PortfolioShowcase() {
     interface FormData {
       name: string;
@@ -231,7 +239,14 @@ const photoCards = [
             {/* Phone Mockups arranged in concave arc */}
             <div className="relative w-[1250px] h-[600px]">
               {photoCards.map((card, index) => (
-                <div key={index} className={card.className}>
+                <div 
+                  key={index} 
+                  className={card.className}
+                  onMouseDown={() => triggerHapticFeedback(50, 10)}
+                  onMouseUp={() => triggerHapticFeedback(30, 5)}
+                  onTouchStart={() => triggerHapticFeedback(50, 10)}
+                  onTouchEnd={() => triggerHapticFeedback(30, 5)}
+                >
                   <Image 
                     className={card.imgClassName} 
                     alt={card.alt} 
@@ -264,9 +279,9 @@ const photoCards = [
                 <defs>
                   <path id="button-arc" d="M 150,150 C 250,40 550,40 650,150" fill="none" />
                 </defs>
-                <text className="fill-black text-xl font-extrabold tracking-widest">
-                  <textPath href="#button-arc" startOffset="50%" textAnchor="middle" dominantBaseline="middle" letterSpacing="0.8em">
-                    READY  TO  STEP  UP  ?
+                <text className="fill-black text-2xl font-black tracking-widest [text-shadow:0_0_3px_rgba(0,0,0,0.2),0_0_6px_rgba(0,0,0,0.1),0_0_10px_rgba(0,0,0,0.05)]">
+                  <textPath href="#button-arc" startOffset="50%" textAnchor="middle" dominantBaseline="middle" letterSpacing="0.6em">
+                    Ready To Step Up ?
                   </textPath>
                 </text>
               </svg>
