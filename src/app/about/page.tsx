@@ -128,7 +128,7 @@ export default function AboutPage() {
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 0 }}
                 >
-                  The Researcher
+                  Researcher
                 </motion.div>
                 
                 {/* Communicator Tag - Middle Left */}
@@ -137,7 +137,7 @@ export default function AboutPage() {
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                 >
-                  The Communicator
+                  Communicator
                 </motion.div>
                 
                 {/* Strategist Tag - Bottom Right */}
@@ -146,7 +146,7 @@ export default function AboutPage() {
                   animate={{ y: [0, -5, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 2 }}
                 >
-                  The Strategist
+                   Strategist
                 </motion.div>
                 
                 <motion.div
