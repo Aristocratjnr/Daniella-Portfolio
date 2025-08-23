@@ -24,7 +24,8 @@ export function SkillsTools() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {/* Figma Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -47,7 +48,8 @@ export function SkillsTools() {
 
             {/* Canva Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -73,7 +75,8 @@ export function SkillsTools() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {/* Photoshop Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -96,7 +99,8 @@ export function SkillsTools() {
 
             {/* PixelCut Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -121,7 +125,8 @@ export function SkillsTools() {
           {/* Bottom Row - 1 centered card */}
           <div className="flex justify-center">
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden max-w-md w-full"
+              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
