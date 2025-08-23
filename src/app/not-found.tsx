@@ -21,7 +21,10 @@ export default function NotFound() {
             <Image
               src="/images/illustration.png" 
               alt="404 Illustration" 
+              width={256}
+              height={256}
               className="w-full h-auto object-contain"
+              priority
             />
           </div>
         </div>
