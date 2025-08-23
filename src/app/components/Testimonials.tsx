@@ -25,15 +25,15 @@ export default function Testimonials() {
           
           <div className="pt-12 flex flex-col items-center">
             <h3 className="text-xl font-bold">Akua Donkor</h3>
-            <p className="text-gray-600 mb-4">Physician</p>
+            <p className="text-gray-600 mb-4">Founder and CEO</p>
             
             <p className="text-center text-sm mb-4">
-              &ldquo;Lifeline is an invaluable tool for anyone wanting to be prepared for the unexpected.&ldquo; - Dr. John Smith, Emergency Physician
+              &ldquo;Daniella&apos;s design skills are exceptional. She created a beautiful and intuitive interface for our mobile app that our users love. Her attention to detail is remarkable.&ldquo;
             </p>
             
             <div className="flex mt-auto">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                <Star key={i} className="w-6 h-5 text-gray-400" fill="none" strokeWidth={1.5} />
               ))}
             </div>
           </div>
@@ -55,19 +55,16 @@ export default function Testimonials() {
           
         <div className="pt-12 flex flex-col items-center">
         <h3 className="text-xl font-bold">Ataa Ayi</h3>
-        <p className="text-gray-600 mb-4">Student</p>
+        <p className="text-gray-600 mb-4">Product Manager</p>
 
         <p className="text-center text-sm mb-4">
-            &ldquo; I woke up with a bad headache and wasn&lsquo;t sure if I should go to the doctor. Lifeline&lsquo;s symptom checker
-            helped me figure out it was likely a migraine and gave me some home remedies to try. It saved me a trip to
-            the clinic! &ldquo;
+            &ldquo;Working with Daniella was a pleasure. She transformed our website with her creative design solutions and improved our user engagement significantly. Highly recommended!&ldquo;
         </p>
 
-        <div className="flex mt-auto text-yellow-400">
-            {[...Array(4)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-current" />
+        <div className="flex mt-auto">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-6 h-5 text-gray-400" fill="none" strokeWidth={1.5} />
             ))}
-            
         </div>
         </div>
         </div>
@@ -89,31 +86,15 @@ export default function Testimonials() {
           
           <div className="pt-12 flex flex-col items-center">
             <h3 className="text-xl font-bold">Diana Asamoah</h3>
-            <p className="text-gray-600 mb-4">Hiker</p>
+            <p className="text-gray-600 mb-4">Construction Manager</p>
             
             <p className="text-center text-sm mb-4">
-              &ldquo; I was hiking in a remote area when a friend twisted his ankle. I had no signal, but Lifeline&lsquo;s offline guide
-              helped me stabilize him until we could get help. This app is a lifesaver! &ldquo;
+              &ldquo;Daniella&apos;s UI/UX designs are not just visually appealing but also highly functional. She understands user behavior and creates designs that are both beautiful and easy to use.&ldquo;
             </p>
             
             <div className="flex mt-auto">
               {[...Array(5)].map((_, i) => (
-                i < 4 ? (
-                  <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                ) : (
-                  <Star 
-                    key={i}
-                    className="w-5 h-5 text-yellow-400" 
-                    fill="none" 
-                    strokeWidth={1.5}
-                    style={{
-                      background: 'linear-gradient(90deg, #FBBF24 50%, transparent 50%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text'
-                    }}
-                  />
-                )
+                <Star key={i} className="w-6 h-5 text-gray-400" fill="none" strokeWidth={1.5} />
               ))}
             </div>
           </div>
