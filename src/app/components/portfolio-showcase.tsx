@@ -70,7 +70,7 @@ const photoCards = [
   ]
   
   // Add haptic feedback function
-  const triggerHapticFeedback = (intensity = 50, duration = 20) => {
+  const triggerHapticFeedback = (duration = 20) => {
     if ('vibrate' in navigator) {
       // Vibrate for the specified duration (in milliseconds)
       navigator.vibrate(duration);
@@ -242,10 +242,10 @@ const photoCards = [
                 <div 
                   key={index} 
                   className={card.className}
-                  onMouseDown={() => triggerHapticFeedback(50, 10)}
-                  onMouseUp={() => triggerHapticFeedback(30, 5)}
-                  onTouchStart={() => triggerHapticFeedback(50, 10)}
-                  onTouchEnd={() => triggerHapticFeedback(30, 5)}
+                  onMouseDown={() => triggerHapticFeedback(10)}
+                  onMouseUp={() => triggerHapticFeedback(5)}
+                  onTouchStart={() => triggerHapticFeedback(10)}
+                  onTouchEnd={() => triggerHapticFeedback(5)}
                 >
                   <Image 
                     className={card.imgClassName} 
