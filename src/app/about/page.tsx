@@ -4,8 +4,8 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
 import { ReasonsSection } from '../components/reasons-section';
+import { SkillsTools } from '../components/skillsTools';
 
 export default function AboutPage() {
   return (
@@ -75,14 +75,17 @@ export default function AboutPage() {
                 <a
                   href="/cv/daniella-cv.pdf"
                   download
-                  className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 rounded-full font-medium hover:bg-gray-100 transition-colors duration-300 group"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 group
+                    bg-[#F2EEED] backdrop-blur-md border border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.2)]
+                    hover:bg-white/20 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:border-white/30
+                    text-black"
                 >
                   <Image 
                     src="/images/download.png" 
                     alt="" 
                     width={18} 
                     height={18} 
-                    className="mr-2"
+                    className="mr-2 group-hover:scale-110 transition-transform duration-300"
                   />
                   Download my CV/Resume
                 </a>
@@ -91,17 +94,21 @@ export default function AboutPage() {
                   href="https://www.linkedin.com/in/daniella-asiedu-961856266"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-white text-white rounded-full font-medium hover:bg-white hover:text-gray-900 transition-colors duration-300 group"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 group
+                    bg-gray-700/80 backdrop-blur-md border border-white/20 shadow-[0_0_15px_rgba(107,114,128,0.3)]
+                    hover:bg-gray-600/90 hover:shadow-[0_0_25px_rgba(75,85,99,0.5)] hover:border-white/30
+                    text-white"
                 >
-                  <Image 
-                    src="/images/link.png" 
-                    alt="LinkedIn" 
-                    width={16} 
-                    height={16} 
-                    className="mr-2 group-hover:brightness-0 transition-all" 
-                  />
-                  www.linkedin.com/in/daniella-asiedu-961856266
-                  <ExternalLink className="w-4 h-4 ml-2" />
+                  <div className="mr-2 p-1.5 bg-[#0A66C2] rounded-md group-hover:scale-110 transition-transform duration-300">
+                    <Image 
+                      src="/images/link.png" 
+                      alt="LinkedIn" 
+                      width={16} 
+                      height={16}
+                      className="w-4 h-4"
+                    />
+                  </div>
+                  Connect on LinkedIn
                 </a>
               </motion.div>
             </motion.div>
@@ -171,6 +178,11 @@ export default function AboutPage() {
         {/* 3 Reasons to Choose Me Section */}
         <div className="mt-12">
           <ReasonsSection />
+        </div>
+        
+        {/* Skills & Tools Section */}
+        <div className="mt-12">
+          <SkillsTools />
         </div>
       </main>
       
