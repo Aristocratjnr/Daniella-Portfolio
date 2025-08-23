@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ReasonsSection } from '../components/reasons-section';
 import { SkillsTools } from '../components/skillsTools';
+import Testimonials from '../components/Testimonials';
 
 export default function AboutPage() {
   return (
@@ -183,6 +184,11 @@ export default function AboutPage() {
         {/* Skills & Tools Section */}
         <div className="mt-12">
           <SkillsTools />
+        </div>
+        
+        {/* Testimonials Section */}
+        <div className="mt-12">
+          <Testimonials />
         </div>
       </main>
       
