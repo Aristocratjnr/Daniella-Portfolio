@@ -11,7 +11,7 @@ export function ReasonsSection() {
         transition={{ duration: 0.8, delay: 0.8 }}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-[#A58D84] mb-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-[#6E4D42] mb-4">
           3 Reasons to Choose Me
         </h2>
         <div className="w-16 h-1 bg-gray-200 mx-auto"></div>
@@ -49,21 +49,21 @@ export function ReasonsSection() {
           
           <div className="flex flex-col h-full">
             <div className="mb-4">
-              <div className="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-3">
+              <div className="w-16 h-16 bg-transparent rounded-lg shadow-sm flex items-center justify-center mb-3">
                 <Image 
                   src="/images/Group-1.png" 
                   alt="Problem Solver" 
-                  width={24} 
-                  height={24}
-                  className="w-6 h-6"
+                  width={32} 
+                  height={32}
+                  className="w-8 h-8"
                 />
               </div>
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">
+              <h3 className="text-lg font-light text-black uppercase tracking-wider mb-4">
                 Problem Solver
               </h3>
             </div>
             
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-black leading-relaxed">
               I don&apos;t just create designs, I create elegant solutions to complex user challenges. My approach focuses on understanding the root cause of usability issues and crafting designs that serve a purpose.
             </p>
           </div>
@@ -100,21 +100,21 @@ export function ReasonsSection() {
           
           <div className="flex flex-col h-full">
             <div className="mb-4">
-              <div className="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-3">
+              <div className="w-16 h-16 bg-transparent rounded-lg shadow-sm flex items-center justify-center mb-3">
                 <Image 
                   src="/images/Group-2.png" 
                   alt="Build for People" 
-                  width={24} 
-                  height={24}
+                  width={32} 
+                  height={32}
                   className="w-6 h-6"
                 />
               </div>
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">
+              <h3 className="text-lg font-light text-black uppercase tracking-wider mb-4">
                 I Build for People, Not Pixels
               </h3>
             </div>
             
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-black leading-relaxed">
               My primary focus is on the human behind the screen. I prioritize user research, usability testing, and creating experiences that genuinely improve a user&apos;s life.
             </p>
           </div>
@@ -151,21 +151,21 @@ export function ReasonsSection() {
           
           <div className="flex flex-col h-full">
             <div className="mb-4">
-              <div className="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-3">
+              <div className="w-16 h-16 bg-transparent rounded-lg shadow-sm flex items-center justify-center mb-3">
                 <Image 
                   src="/images/Group-3.png" 
                   alt="Deliver Results" 
-                  width={24} 
-                  height={24}
+                  width={32} 
+                  height={32}
                   className="w-6 h-6"
                 />
               </div>
-              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4">
+              <h3 className="text-lg font-light text-black uppercase tracking-wider mb-4">
                 I Deliver Results Through Collaboration
               </h3>
             </div>
             
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-black leading-relaxed">
               I thrive on working with developers, product managers, and stakeholders to transform ideas into a polished final product. I believe in effective collaboration and alignment with business goals.
             </p>
           </div>
