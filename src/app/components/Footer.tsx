@@ -501,7 +501,7 @@ export function Footer() {
           <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
             {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((item) => (
               <li key={item}>
-                <a 
+                <Link 
                   href={
                     item === 'HOME' ? '/' :
                     item === 'ABOUT ME' ? '/about' :
@@ -511,7 +511,7 @@ export function Footer() {
                   className="text-sm sm:text-base font-medium text-gray-800 hover:text-gray-600 transition-colors whitespace-nowrap"
                 >
                   {item}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
