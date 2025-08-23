@@ -133,8 +133,10 @@ export function Navbar() {
       window.location.href = '/';
     } else if (link === 'CONTACT ME') {
       window.location.href = '/contact';
+    } else if (link === 'ABOUT ME') {
+      window.location.href = '/about';
     } else {
-      // For section links (ABOUT ME, SERVICES, etc.)
+      // For section links (SERVICES, etc.)
       const sectionId = link.toLowerCase().replace(' ', '-');
       const element = document.getElementById(sectionId);
       
@@ -172,6 +174,8 @@ export function Navbar() {
     // This code runs only on the client side
     if (window.location.pathname === '/contact') {
       setCurrentActiveLink('CONTACT ME');
+    } else if (window.location.pathname === '/about') {
+      setCurrentActiveLink('ABOUT ME');
     } else if (window.location.pathname === '/' || window.location.pathname === '') {
       setCurrentActiveLink('HOME');
     } else {
@@ -210,7 +214,12 @@ export function Navbar() {
             {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((link) => (
               <a
                 key={link}
-                href={link === 'CONTACT ME' ? '/contact' : `#${link.toLowerCase().replace(' ', '-')}`}
+                href={
+                  link === 'CONTACT ME' ? '/contact' : 
+                  link === 'ABOUT ME' ? '/about' : 
+                  link === 'HOME' ? '/' :
+                  `#${link.toLowerCase().replace(' ', '-')}`
+                }
                 onClick={(e) => handleLinkClick(link, e)}
                 className={`text-lg font-medium leading-normal transition-colors px-4 py-2 rounded-lg ${
                   currentActiveLink === link
@@ -247,7 +256,12 @@ export function Navbar() {
           {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((link) => (
             <a
               key={link}
-              href={link === 'CONTACT ME' ? '/contact' : `#${link.toLowerCase().replace(' ', '-')}`}
+              href={
+                link === 'CONTACT ME' ? '/contact' : 
+                link === 'ABOUT ME' ? '/about' : 
+                link === 'HOME' ? '/' :
+                `#${link.toLowerCase().replace(' ', '-')}`
+              }
               onClick={(e) => handleLinkClick(link, e)}
               className={`text-[18px] font-normal leading-normal transition-colors ${
                 currentActiveLink === link

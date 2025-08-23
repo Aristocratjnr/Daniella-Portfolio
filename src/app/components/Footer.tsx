@@ -502,7 +502,12 @@ export function Footer() {
             {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((item) => (
               <li key={item}>
                 <a 
-                  href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  href={
+                    item === 'HOME' ? '/' :
+                    item === 'ABOUT ME' ? '/about' :
+                    item === 'CONTACT ME' ? '/contact' :
+                    `#${item.toLowerCase().replace(' ', '-')}`
+                  }
                   className="text-sm sm:text-base font-medium text-gray-800 hover:text-gray-600 transition-colors whitespace-nowrap"
                 >
                   {item}
