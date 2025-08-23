@@ -51,7 +51,7 @@ export function ReasonsSection() {
             <div className="mb-4">
               <div className="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-3">
                 <Image 
-                  src="/images/lamp.png" 
+                  src="/images/Group-1.png" 
                   alt="Problem Solver" 
                   width={24} 
                   height={24}
@@ -102,7 +102,7 @@ export function ReasonsSection() {
             <div className="mb-4">
               <div className="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-3">
                 <Image 
-                  src="/images/machine.png" 
+                  src="/images/Group-2.png" 
                   alt="Build for People" 
                   width={24} 
                   height={24}
@@ -153,7 +153,7 @@ export function ReasonsSection() {
             <div className="mb-4">
               <div className="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center mb-3">
                 <Image 
-                  src="/images/woman.png" 
+                  src="/images/Group-3.png" 
                   alt="Deliver Results" 
                   width={24} 
                   height={24}
