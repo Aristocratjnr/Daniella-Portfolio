@@ -1,0 +1,39 @@
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft } from 'lucide-react';
+
+export default function NotFound() {
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+      <div className="max-w-md w-full space-y-6 text-center">
+        <div className="space-y-2">
+          <h1 className="text-6xl font-bold text-foreground">404</h1>
+          <h2 className="text-2xl font-semibold text-foreground">Page Not Found</h2>
+          <p className="text-muted-foreground">
+            Oops! The page you're looking for doesn't exist or has been moved.
+          </p>
+        </div>
+        
+        <div className="relative w-64 h-64 mx-auto">
+          <div className="absolute inset-0 bg-muted/10 rounded-full animate-pulse"></div>
+          <div className="relative w-full h-full flex items-center justify-center">
+            <img 
+              src="/images/illustration.png" 
+              alt="404 Illustration" 
+              className="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
+        <div className="pt-6">
+          <Button asChild variant="outline">
+            <Link href="/" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
