@@ -7,7 +7,7 @@ const SkillsSection = () => {
   const projects = [
     {
       title: "LIFELINE",
-      description: "A first aid guide built with web mobile app interface",
+      description: "A first aid guide built with web and mobile app interface",
       icon: "/images/aid.png",
       color: "#C1B1AB",
     },

@@ -13,7 +13,7 @@ export function SkillsTools() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#A58D84] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#6E4D42] mb-4">
             SKILLS & TOOLS
           </h2>
         </motion.div>
