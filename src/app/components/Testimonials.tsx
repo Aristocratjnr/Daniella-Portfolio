@@ -34,7 +34,7 @@ export default function Testimonials() {
             
             <div className="flex mt-auto">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-5 text-gray-400" fill="none" strokeWidth={1.5} />
+                <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
               ))}
             </div>
           </div>
@@ -64,9 +64,11 @@ export default function Testimonials() {
         </p>
 
         <div className="flex mt-auto">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-5 text-gray-400" fill="none" strokeWidth={1.5} />
-            ))}
+              {[...Array(4)].map((_, i) => (
+                <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
+              ))}
+              {/* Half Star */}
+              <Star className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} style={{clipPath: 'inset(0 50% 0 0)'}} />
         </div>
         </div>
         </div>
@@ -96,9 +98,9 @@ export default function Testimonials() {
             </p>
             
             <div className="flex mt-auto">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-5 text-gray-400" fill="none" strokeWidth={1.5} />
-              ))}
+                {[...Array(4)].map((_, i) => (
+                  <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
+                ))}
             </div>
           </div>
         </div>

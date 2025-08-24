@@ -43,15 +43,15 @@ export default function AboutPage() {
                   transition={{ duration: 0.8, delay: 0.4 }}
                 >
                   <p>
-                    I'm a self-taught UI/UX designer driven by a curiosity for human behavior and a passion for creating products that just feel right.
+                    I&apos;m a self-taught UI/UX designer driven by a curiosity for human behavior and a passion for creating products that just feel right.
                   </p>
                   
                   <p>
-                    After spending some years in marketing, I realized my true passion wasn't only in selling products, but in understanding the people who use them. This led me to a career pivot where I could blend my research skills with a love for design.
+                    After spending some years in marketing, I realized my true passion wasn&apos;t only in selling products, but in understanding the people who use them. This led me to a career pivot where I could blend my research skills with a love for design.
                   </p>
                   
                   <p>
-                    My vision is to design a future where technology is both seamless and human-centered. I believe in the power of collaboration to solve complex problems and create innovative, empathetic products that genuinely improve people's lives.
+                    My vision is to design a future where technology is both seamless and human-centered. I believe in the power of collaboration to solve complex problems and create innovative, empathetic products that genuinely improve people&apos;s lives.
                   </p>
                 </motion.div>
               </div>
