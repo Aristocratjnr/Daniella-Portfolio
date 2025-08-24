@@ -24,7 +24,7 @@ export function SkillsTools() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto">
             {/* Figma Card */}
             <motion.div 
-              className="flex items-center rounded-xl  overflow-hidden
+              className="flex items-center rounded-xl overflow-hidden mr-8 md:mr-12
                 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -48,7 +48,7 @@ export function SkillsTools() {
 
             {/* Canva Card */}
             <motion.div 
-              className="flex items-center rounded-2xl overflow-hidden
+              className="flex items-center rounded-2xl overflow-hidden mr-8 md:mr-12
                 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ export function SkillsTools() {
 
             {/* PixelCut Card */}
             <motion.div 
-              className="flex items-center rounded-2xl overflow-hidden
+              className="flex items-center rounded-2xl overflow-hidden mr-8 md:mr-12
                 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -125,7 +125,7 @@ export function SkillsTools() {
           {/* Bottom Row - 1 centered card */}
           <div className="flex justify-center px-2">
             <motion.div 
-              className="flex items-center rounded-2xl overflow-hidden
+              className="flex items-center rounded-2xl overflow-hidden mr-8 md:mr-12
                 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
