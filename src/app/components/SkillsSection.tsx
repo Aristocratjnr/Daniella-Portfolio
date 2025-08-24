@@ -111,10 +111,10 @@ const SkillsSection = () => {
                     />
                     <div className="mt-1 flex-1 flex flex-col">
                       <div className="flex items-start justify-between mb-4 sm:mb-5">
-                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center" 
-                          style={{ 
-                            backgroundColor: 'rgba(255,255,255,0.2)',
-                            backdropFilter: 'blur(4px)'
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center bg-white shadow-sm" 
+                          style={{
+                            padding: '0.5rem',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
                           }}
                         >
                           <Image 

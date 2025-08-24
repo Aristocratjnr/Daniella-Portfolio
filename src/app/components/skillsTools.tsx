@@ -90,8 +90,8 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="inline-flex min-h-[60px] md:h-[77px] p-2 md:pr-6 md:pl-8 justify-center items-center flex-shrink-0 rounded-[20px] md:rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
-                <h3 className="text-xs md:text-sm font-semibold text-gray-900 uppercase tracking-wide text-center">
+              <div className="inline-flex min-h-[60px] md:h-[77px] p-2 md:px-4 justify-center items-center flex-shrink-0 rounded-[20px] md:rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+                <h3 className="text-[10px] md:text-xs font-semibold text-gray-900 uppercase tracking-wide text-center px-2">
                   ADOBE PHOTOSHOP & ITS TOOLS
                 </h3>
               </div>
@@ -114,8 +114,8 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="inline-flex min-h-[60px] md:h-[77px] p-2 md:pr-4 md:pl-8 justify-center items-center flex-shrink-0 rounded-[20px] md:rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
-                <h3 className="text-xs md:text-sm font-semibold text-gray-900 uppercase tracking-wide text-center">
+              <div className="inline-flex min-h-[60px] md:h-[77px] p-2 md:px-4 justify-center items-center flex-shrink-0 rounded-[20px] md:rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+                <h3 className="text-[10px] md:text-xs font-semibold text-gray-900 uppercase tracking-wide text-center px-2">
                   PIXELCUT & ITS TOOLS
                 </h3>
               </div>
@@ -140,8 +140,8 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="inline-flex min-h-[60px] md:h-[77px] p-2 md:pr-4 md:pl-8 justify-center items-center flex-shrink-0 rounded-[20px] md:rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
-                <h3 className="text-xs md:text-sm font-semibold text-gray-900 uppercase tracking-wide text-center">
+              <div className="inline-flex min-h-[60px] md:h-[77px] p-2 md:px-4 justify-center items-center flex-shrink-0 rounded-[20px] md:rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+                <h3 className="text-[10px] md:text-xs font-semibold text-gray-900 uppercase tracking-wide text-center px-2">
                   OPEN TO & STILL DISCOVERING & LEARNING MORE DESIGN TOOLS
                 </h3>
               </div>

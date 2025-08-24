@@ -520,7 +520,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="bg-[#C1B1AB] rounded-3xl p-6 backdrop-blur-sm border border-black">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-700 space-y-4 md:space-y-0">
-            <div className="w-full md:w-auto text-center md:text-left mb-4 md:mb-0">
+            <div className="w-full md:w-auto text-center md:pl-8 mb-4 md:mb-0">
               <span>© {new Date().getFullYear()} @Daniella. All rights reserved.</span>
             </div>
             <div className="w-full max-w-2xl mx-auto">
