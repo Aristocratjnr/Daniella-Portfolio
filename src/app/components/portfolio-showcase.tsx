@@ -273,13 +273,13 @@ const photoCards = [
             </div>
           </div>
       {/* Button Section */}
-          <div className="mb-4 text-center relative pt-32 pb-20 px-4">
-            <div className="absolute inset-x-0 top-0 flex justify-center">
-              <svg width="800" height="200" viewBox="0 0 800 200" className="relative">
+          <div className="mb-4 text-center relative pt-4 pb-6 px-4">
+            <div className="absolute inset-x-0 -top-4 flex justify-center">
+              <svg width="800" height="140" viewBox="0 0 800 140" className="relative -mt-14">
                 <defs>
-                  <path id="button-arc" d="M 150,150 C 250,40 550,40 650,150" fill="none" />
+                  <path id="button-arc" d="M 100,100 C 250,40 550,40 700,100" fill="none" />
                 </defs>
-                <text className="fill-black text-2xl font-black tracking-widest [text-shadow:0_0_3px_rgba(0,0,0,0.2),0_0_6px_rgba(0,0,0,0.1),0_0_10px_rgba(0,0,0,0.05)]">
+                <text className="fill-black text-3xl font-black tracking-widest [text-shadow:0_0_3px_rgba(0,0,0,0.2),0_0_6px_rgba(0,0,0,0.1),0_0_10px_rgba(0,0,0,0.05)]">
                   <textPath href="#button-arc" startOffset="50%" textAnchor="middle" dominantBaseline="middle" letterSpacing="0.6em">
                     Ready To Step Up ?
                   </textPath>
@@ -287,7 +287,7 @@ const photoCards = [
               </svg>
             </div>
             <div className="relative z-10">
-              <p className="text-gray-800 mb-6 text-md font-thin">Join hundreds of Satisfied Clients and Users</p>
+              <p className="text-gray-800 mb-8 mt-2 text-md font-thin">Join hundreds of Satisfied Clients and Users</p>
               <button 
                 onClick={() => setIsQuoteModalOpen(true)}
                 className="bg-[#33241E] hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg hover:shadow-xl hover:shadow-blue-200/50 group"
