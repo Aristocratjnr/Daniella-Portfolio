@@ -10,7 +10,7 @@ export default function Testimonials() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 md:gap-8 px-4 max-w-6xl mx-auto">
         {/* First Testimonial */}
-        <div className="flex-1 border border-gray-200 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
+        <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
           <div className="absolute -top-12">
             <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm bg-gray-100">
@@ -41,7 +41,7 @@ export default function Testimonials() {
         </div>
         
         {/* Second Testimonial */}
-        <div className="flex-1 border border-gray-200 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
+        <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
           <div className="absolute -top-12">
             <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm bg-gray-100">
@@ -75,7 +75,7 @@ export default function Testimonials() {
 
         
         {/* Third Testimonial */}
-        <div className="flex-1 border border-gray-200 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
+        <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
           <div className="absolute -top-12">
             <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm bg-gray-100">
