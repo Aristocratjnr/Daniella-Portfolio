@@ -195,8 +195,8 @@ export function Navbar() {
           <Image 
             src="/images/logo.png" 
             alt="Daniella" 
-            width={36}
-            height={36}
+            width={40}
+            height={40}
             className="h-9 w-auto"
           />
         </div>

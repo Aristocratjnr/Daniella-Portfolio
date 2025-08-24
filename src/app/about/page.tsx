@@ -73,10 +73,10 @@ export default function AboutPage() {
                 >
                   <Image 
                     src="/images/download.png" 
-                    alt="" 
-                    width={18} 
-                    height={18} 
-                    className="mr-2 group-hover:scale-110 transition-transform duration-300"
+                    alt="Download icon" 
+                    width={20}
+                    height={20}
+                    className="w-[18px] h-auto mr-2 group-hover:scale-110 transition-transform duration-300"
                   />
                   Download my CV/Resume
                 </a>
