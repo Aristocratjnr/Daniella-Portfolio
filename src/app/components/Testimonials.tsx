@@ -33,7 +33,7 @@ export default function Testimonials() {
             </p>
             
             <div className="flex mt-auto">
-              <div style={{ border: '0.1px solid #000', borderRadius: '8px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
+              <div style={{ border: '0.1px solid #D9D9D9', borderRadius: '4px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
                 ))}
@@ -66,7 +66,7 @@ export default function Testimonials() {
         </p>
 
         <div className="flex mt-auto">
-              <div style={{ border: '0.1px solid #000', borderRadius: '8px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
+              <div style={{ border: '0.1px solid #D9D9D9', borderRadius: '4px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
                 {[...Array(4)].map((_, i) => (
                   <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
                 ))}
@@ -102,7 +102,7 @@ export default function Testimonials() {
             </p>
             
             <div className="flex mt-auto">
-                <div style={{ border: '0.1px solid #000', borderRadius: '4px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
+                <div style={{ border: '0.1px solid #D9D9D9', borderRadius: '4px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
                   {[...Array(4)].map((_, i) => (
                     <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
                   ))}
