@@ -197,6 +197,7 @@ export function Navbar() {
             alt="Daniella" 
             width={40}
             height={40}
+            priority
             className="h-9 w-auto"
           />
         </div>
