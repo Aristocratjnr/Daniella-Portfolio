@@ -519,27 +519,31 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="bg-[#C1B1AB] rounded-3xl p-6 backdrop-blur-sm border border-black">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-700 space-y-3 sm:space-y-0">
-            <span>©  {new Date().getFullYear()} @Daniella. All rights reserved.</span>
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-700 space-y-4 md:space-y-0">
+            <div className="w-full md:w-auto text-center md:text-left mb-4 md:mb-0">
+              <span>© {new Date().getFullYear()} @Daniella. All rights reserved.</span>
+            </div>
+            <div className="w-full max-w-2xl mx-auto">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-8 lg:gap-12 xl:gap-24">
               <button 
                 onClick={() => setIsPrivacyModalOpen(true)}
-                className="hover:underline"
+                className="hover:underline whitespace-nowrap"
               >
                 Privacy Policy
               </button>
               <button 
                 onClick={() => setIsTermsModalOpen(true)}
-                className="hover:underline"
+                className="hover:underline whitespace-nowrap"
               >
                 Terms of Service
               </button>
               <button 
                 onClick={() => setIsCookiesModalOpen(true)}
-                className="hover:underline"
+                className="hover:underline whitespace-nowrap"
               >
                 Cookies Settings
               </button>
+              </div>
             </div>
           </div>
         </div>
