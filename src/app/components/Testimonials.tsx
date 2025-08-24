@@ -13,7 +13,7 @@ export default function Testimonials() {
         <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
           <div className="absolute -top-12">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm bg-gray-100">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white shadow-sm bg-gray-100">
               <Image
                 src="/images/akua.png"
                 alt="Akua Donkor"
@@ -46,7 +46,7 @@ export default function Testimonials() {
         <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
           <div className="absolute -top-12">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm bg-gray-100">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white shadow-sm bg-gray-100">
               <Image
                 src="/images/ataa.png"
                 alt="Ataa Ayi"
@@ -82,7 +82,7 @@ export default function Testimonials() {
         <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative 
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
           <div className="absolute -top-12">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm bg-gray-100">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white shadow-sm bg-gray-100">
               <Image
                 src="/images/diana.png"
                 alt="Diana Asamoah"
