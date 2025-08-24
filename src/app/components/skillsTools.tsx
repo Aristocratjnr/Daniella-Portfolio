@@ -24,13 +24,13 @@ export function SkillsTools() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {/* Figma Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
-                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+              className="flex items-center rounded-2xl  overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="w-20 h-20 bg-[#B5A49A] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="flex w-[120px] h-[100px] px-8 py-6 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#B5A49A]">
                 <Image 
                   src="/images/skill-icons_figma-light.png" 
                   alt="Figma" 
@@ -39,7 +39,7 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="flex-1 px-6 h-12 flex items-center">
+              <div className="inline-flex h-[77px] pr-4 pl-8 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
                   FIGMA, FIGJAM, & ITS TOOLS
                 </h3>
@@ -48,13 +48,13 @@ export function SkillsTools() {
 
             {/* Canva Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
-                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+              className="flex items-center rounded-2xl overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="w-20 h-20 bg-[#B5A49A] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="flex w-[120px] h-[100px] px-8 py-6 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#B5A49A]">
                 <Image 
                   src="/images/devicon_canva.png" 
                   alt="Canva" 
@@ -63,7 +63,7 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="flex-1 px-6 h-12 flex items-center">
+              <div className="inline-flex h-[77px] pr-4 pl-8 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
                   CANVA & ITS TOOLS
                 </h3>
@@ -72,16 +72,16 @@ export function SkillsTools() {
           </div>
 
           {/* Middle Row - 2 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
             {/* Photoshop Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
-                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+              className="flex items-center rounded-2xl overflow-visible mr-4
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <div className="w-20 h-20 bg-[#B5A49A] rounded-2xl flex items-center justify-center flex-shrink-1">
+              <div className="flex w-[120px] h-[100px] px-8 py-6 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#B5A49A]">
                 <Image 
                   src="/images/devicon_photoshop.png" 
                   alt="Photoshop" 
@@ -90,8 +90,8 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="flex-1 px-6 h-12 flex items-center">
-                <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
+              <div className="inline-flex min-w-max h-[77px] pr-6 pl-8 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
+                <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide whitespace-nowrap">
                   ADOBE PHOTOSHOP & ITS TOOLS
                 </h3>
               </div>
@@ -99,13 +99,13 @@ export function SkillsTools() {
 
             {/* PixelCut Card */}
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
-                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+              className="flex items-center rounded-2xl overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <div className="w-20 h-20 bg-[#B5A49A] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="flex w-[120px] h-[100px] px-8 py-6 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#B5A49A]">
                 <Image 
                   src="/images/arcticons_pixel-icon-pack-1.png" 
                   alt="PixelCut" 
@@ -114,7 +114,7 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="flex-1 px-6 h-12 flex items-center">
+              <div className="inline-flex h-[77px] pr-4 pl-8 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
                   PIXELCUT & ITS TOOLS
                 </h3>
@@ -125,13 +125,13 @@ export function SkillsTools() {
           {/* Bottom Row - 1 centered card */}
           <div className="flex justify-center">
             <motion.div 
-              className="flex items-center bg-[#F2EEED] rounded-2xl shadow-sm border border-gray-200 overflow-hidden
-                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+              className="flex items-center rounded-2xl overflow-hidden
+                transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)]"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              <div className="w-20 h-20 bg-[#B5A49A] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="flex w-[120px] h-[100px] px-8 py-6 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#B5A49A]">
                 <Image 
                   src="/images/hugeicons_study-desk.png" 
                   alt="Learning" 
@@ -140,7 +140,7 @@ export function SkillsTools() {
                   className="w-10 h-10"
                 />
               </div>
-              <div className="flex-1 px-6 h-12 flex items-center">
+              <div className="inline-flex h-[77px] pr-4 pl-8 justify-center items-center flex-shrink-0 rounded-[30px] bg-[#F2EEED] shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
                 <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
                   OPEN TO & STILL DISCOVERING & LEARNING MORE DESIGN TOOLS
                 </h3>
