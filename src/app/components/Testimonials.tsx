@@ -8,7 +8,7 @@ export default function Testimonials() {
     <div className="w-full bg-white py-12">
       <h1 className="text-3xl md:text-5xl font-bold text-center text-[#6E4D42] mb-16 md:mb-20 px-4">Testimonials</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 md:gap-8 px-4 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 md:gap-8 px-4 max-w-5xl mx-auto">
         {/* First Testimonial */}
         <div className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
           bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30">
