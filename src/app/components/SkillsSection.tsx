@@ -13,20 +13,20 @@ const SkillsSection = () => {
     },
     {
       title: "SPARTANS",
-      description: "An interactive automated interface for both admin and customers",
+      description: "An interactive automated car wash web interface for both admin and customers",
       icon: "/images/car.png",
       color: "#C1B1AB",
     },
     {
       title: "TULAUNDRY",
       description: "An interactive collective laundry services web interface for both admin and customers",
-      icon: "/images/lamp.png",
+      icon: "/images/machine.png",
       color: "#C1B1AB",
     },
     {
       title: "KITCHEN & CLOSETS",
       description: "An interactive kitchen & closet furniture web app interface for both admin and customers",
-      icon: "/images/machine.png",
+      icon: "/images/car.png",
       color: "#C1B1AB",
     },
   ]

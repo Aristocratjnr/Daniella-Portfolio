@@ -387,7 +387,7 @@ const photoCards = [
                   >
                     <option value="website">Website Development</option>
                     <option value="mobile">Mobile App</option>
-                    <option value="design">UI/UX Design</option>
+                    <option value="design">E-Commerce</option>
                     <option value="other">Other</option>
                   </select>
                 </div>
@@ -413,10 +413,10 @@ const photoCards = [
                     onChange={handleInputChange}
                     className="w-full px-3 py-1.5 text-sm rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white"
                   >
-                    <option value="1000-5000">$1,000 - $5,000</option>
-                    <option value="5000-20000">$5,000 - $20,000</option>
-                    <option value="20000-50000">$20,000 - $50,000</option>
-                    <option value="50000+">$50,000+</option>
+                    <option value="1000-5000">₵1,000 - ₵5,000</option>
+                    <option value="5000-20000">₵5,000 - ₵20,000</option>
+                    <option value="20000-50000">₵20,000 - ₵50,000</option>
+                    <option value="50000+">₵50,000+</option>
                   </select>
                 </div>
 
