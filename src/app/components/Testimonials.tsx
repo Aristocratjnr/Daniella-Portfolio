@@ -33,9 +33,11 @@ export default function Testimonials() {
             </p>
             
             <div className="flex mt-auto">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
-              ))}
+              <div style={{ border: '0.1px solid #000', borderRadius: '8px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -64,11 +66,13 @@ export default function Testimonials() {
         </p>
 
         <div className="flex mt-auto">
-              {[...Array(4)].map((_, i) => (
-                <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
-              ))}
-              {/* Half Star */}
-              <Star className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} style={{clipPath: 'inset(0 50% 0 0)'}} />
+              <div style={{ border: '0.1px solid #000', borderRadius: '8px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
+                {[...Array(4)].map((_, i) => (
+                  <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
+                ))}
+                {/* Half Star */}
+                <Star className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} style={{clipPath: 'inset(0 50% 0 0)'}} />
+              </div>
         </div>
         </div>
         </div>
@@ -98,9 +102,11 @@ export default function Testimonials() {
             </p>
             
             <div className="flex mt-auto">
-                {[...Array(4)].map((_, i) => (
-                  <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
-                ))}
+                <div style={{ border: '0.1px solid #000', borderRadius: '4px', padding: '2px 8px', display: 'flex', gap: '2px' }}>
+                  {[...Array(4)].map((_, i) => (
+                    <Star key={i} className="w-6 h-5 text-[#D9D9D9]" fill="currentColor" strokeWidth={1.5} />
+                  ))}
+                </div>
             </div>
           </div>
         </div>
