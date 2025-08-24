@@ -26,7 +26,7 @@ const SkillsSection = () => {
     {
       title: "KITCHEN & CLOSETS",
       description: "An interactive kitchen & closet furniture web app interface for both admin and customers",
-      icon: "/images/car.png",
+      icon: "/images/lamp.png",
       color: "#C1B1AB",
     },
   ]
