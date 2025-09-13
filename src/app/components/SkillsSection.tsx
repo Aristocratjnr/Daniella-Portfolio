@@ -54,20 +54,26 @@ const SkillsSection = () => {
       description: "An interactive kitchen & closet furniture web app interface for both admin and customers",
       icon: "/images/lamp.png",
       color: "#C1B1AB",
-      tags: ["UI/UX Design", "E-commerce", "Web App"]
+      tags: ["UI/UX Design", "E-commerce", "Web App"],
+      links: [
+        {
+          label: "View Prototype",
+          url: "https://www.figma.com/design/OYIx8LWmLcdBCAyhGHUBLb/H.C.I_DCIT302__G52?node-id=15-4"
+        }
+      ]
     },
   ]
 
   return (
     <section id="projects" className="min-h-screen px-4 sm:px-6 py-12 md:py-16 lg:py-20 overflow-hidden bg-[#F5F1ED]">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left side - Illustration */}
-          <div className="order-2 lg:order-1 relative flex flex-col lg:flex-row items-center justify-center mt-8 lg:mt-0">
+          <div className="order-2 lg:order-1 relative flex flex-col lg:flex-row items-center justify-center lg:items-start lg:justify-start">
             <h2 className="hidden lg:block text-5xl xl:text-6xl font-bold text-gray-800 transform -rotate-90 absolute -left-16 top-1/2 -translate-y-1/2 origin-center mr-2 whitespace-nowrap">
               MY PROJECTS
             </h2>
-            <h2 className="lg:hidden text-4xl font-bold text-gray-800 mb-6 text-center w-full">
+            <h2 className="lg:hidden text-3xl sm:text-4xl font-bold text-gray-800 mb-8 text-center w-full">
               MY PROJECTS
             </h2>
             {/* Animated Illustration */}
@@ -95,40 +101,53 @@ const SkillsSection = () => {
           </div>
 
           {/* Right side - Project cards */}
-          <div className="order-1 lg:order-2 space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          <div className="order-1 lg:order-2 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="relative group overflow-visible transition-all duration-500 hover:transform hover:transition-transform"
+                  className="relative group w-full transition-all duration-300"
                   style={{
                     perspective: '1000px',
                     transformStyle: 'preserve-3d',
                   }}
                 >
                   {/* 3D Card Container */}
-                  <div className="relative h-full transition-transform duration-500 group-hover:translate-z-10 group-hover:translate-y-[-10px]"
+                  <div className="relative h-full transition-all duration-300 hover:translate-z-10 hover:-translate-y-1"
                     style={{
                       transformStyle: 'preserve-3d',
                       transform: 'rotateX(0deg) rotateY(0deg)',
-                      transition: 'transform 0.5s ease-out',
+                      transition: 'transform 0.3s ease-out',
                     }}
                   >
                     {/* Main card with slanted top */}
                     <div 
-                      className="relative z-10 h-auto min-h-[280px] p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                      className="relative z-10 h-full min-h-[240px] p-5 sm:p-6 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between mx-auto group/card"
                       style={{
-                        width: '240px',
-                        flexShrink: 0,
+                        width: '100%',
+                        maxWidth: '320px',
                         clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
-                        marginTop: '1.75rem',
+                        marginTop: '1.5rem',
                         backgroundColor: project.color || '#ffffff',
                         borderColor: 'rgba(0,0,0,0.1)',
                         transform: 'translateZ(20px)',
                         backfaceVisibility: 'hidden',
-                        borderRadius: '20px',
+                        borderRadius: '16px',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
                       }}
                     >
+                      {/* Inner glow effect */}
+                      <div 
+                        className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
+                        style={{
+                          background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%)',
+                          zIndex: 0,
+                        }}
+                      />
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/20 to-white/0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                     {/* Top accent bar */}
                     <div 
                       className="absolute top-0 left-0 right-0 h-3"
@@ -136,11 +155,10 @@ const SkillsSection = () => {
                         background: 'linear-gradient(90deg, rgba(0,0,0,0.05), transparent)'
                       }}
                     />
-                    <div className="mt-1 flex-1 flex flex-col">
-                      <div className="flex items-start justify-between mb-4 sm:mb-5">
-                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center bg-white shadow-sm" 
+                    <div className="mt-1 flex-1 flex flex-col h-full">
+                      <div className="flex items-start justify-between mb-3 sm:mb-4">
+                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center bg-white shadow-sm p-2" 
                           style={{
-                            padding: '0.5rem',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
                           }}
                         >
@@ -150,14 +168,17 @@ const SkillsSection = () => {
                             width={24}
                             height={24}
                             className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
+                            priority
                           />
                         </div>
                       </div>
 
-                      <h3 className="text-xl font-bold text-gray-800 mb-3 tracking-wide uppercase font-sans">{project.title}</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3 tracking-wide uppercase font-sans">
+                        {project.title}
+                      </h3>
                       <div className="flex-1 flex flex-col items-start">
-                        <p className="text-black text-xs sm:text-sm md:text-base leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-3 mb-3">
-                          <span className="inline-block transform transition-all duration-300 hover:scale-105 hover:text-gray-800">
+                        <p className="text-black text-xs sm:text-sm leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-3 mb-3">
+                          <span className="inline-block transition-colors duration-200 hover:text-gray-700">
                             {project.description}
                           </span>
                         </p>
@@ -165,8 +186,8 @@ const SkillsSection = () => {
                         {/* Tags */}
                         {project.tags && (
                           <div className="flex flex-wrap gap-1.5 mb-3">
-                            {project.tags.map((tag, i) => (
-                              <span key={i} className="text-xs px-2 py-0.5 bg-gray-100 rounded-full">
+                            {project.tags.slice(0, 2).map((tag, i) => (
+                              <span key={i} className="text-[10px] sm:text-xs px-2 py-0.5 bg-gray-100 rounded-full">
                                 {tag}
                               </span>
                             ))}
@@ -182,7 +203,7 @@ const SkillsSection = () => {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block w-full text-center text-xs sm:text-sm px-3 py-2 bg-[#563C33] text-[#F2EEED] hover:bg-[#33241E] rounded-lg transition-colors duration-200 font-medium"
+                                className="block w-full text-center text-xs sm:text-sm px-3 py-1.5 sm:py-2 bg-[#563C33] text-[#F2EEED] hover:bg-[#33241E] rounded-lg transition-colors duration-200 font-medium"
                               >
                                 {link.label}
                               </a>
@@ -193,9 +214,9 @@ const SkillsSection = () => {
                     </div>
                   </div>
                   
-                  {/* 3D Shadow effect */}
+                  {/* 3D Shadow effect with glow */}
                   <div 
-                    className="absolute inset-0 bg-gray-200 rounded-lg transition-all duration-500 group-hover:opacity-70"
+                    className="absolute inset-0 bg-gray-200 rounded-lg transition-all duration-500 group-hover:opacity-70 group-hover:shadow-[0_0_25px_rgba(161,98,7,0.1)] group-hover:shadow-amber-100/50"
                     style={{
                       clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
                       zIndex: 0,
