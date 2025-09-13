@@ -102,6 +102,8 @@ const photoCards = [
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<{success: boolean; message: string} | null>(null);
     const modalRef = useRef<HTMLDivElement>(null);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const scrollThumbRef = useRef<HTMLDivElement>(null);
     const [formData, setFormData] = useState<FormData>({
       name: '',
       email: '',
@@ -202,6 +204,168 @@ const photoCards = [
       };
     }, [isQuoteModalOpen]);
 
+    // Handle mobile scroll indicator
+    useEffect(() => {
+      const scrollContainer = scrollContainerRef.current;
+      const scrollThumb = scrollThumbRef.current;
+      
+      if (scrollContainer && scrollThumb) {
+        const handleScroll = () => {
+          const scrollPercentage = (scrollContainer.scrollLeft / (scrollContainer.scrollWidth - scrollContainer.clientWidth)) * 100;
+          const thumbPosition = Math.min(Math.max(scrollPercentage, 0), 100);
+          
+          // Calculate the maximum translation to keep the thumb within the track
+          const trackElement = scrollThumb.closest('.scrollbar-track');
+          const trackWidth = trackElement ? trackElement.clientWidth : 0;
+          const thumbWidth = scrollThumb.clientWidth;
+          const translation = (trackWidth - thumbWidth) * (thumbPosition / 100);
+          
+          // Apply transform with a spring-like effect
+          scrollThumb.style.transform = `translateX(${translation}px) scaleX(${1 + (scrollPercentage > 0 && scrollPercentage < 100 ? 0.1 : 0)})`;
+          
+          // Add a pulsing effect when scrolling
+          scrollThumb.style.opacity = '1';
+          const timeoutId = scrollThumb.getAttribute('data-timeout-id');
+          if (timeoutId) {
+            window.clearTimeout(parseInt(timeoutId));
+          }
+          
+          const newTimeoutId = window.setTimeout(() => {
+            scrollThumb.style.opacity = '0.85';
+          }, 800);
+          
+          scrollThumb.setAttribute('data-timeout-id', newTimeoutId.toString());
+          
+          // Update animation state for cards based on scroll position
+          const cardsContainer = scrollContainer.querySelector('.cards-container');
+          if (cardsContainer) {
+            const cards = Array.from(cardsContainer.children) as HTMLElement[];
+            cards.forEach((card, index) => {
+              // Calculate a staggered animation effect based on scroll position and card index
+              const offset = scrollPercentage * 0.2 - (index * 0.5);
+              card.style.transform = `translateY(${Math.sin(offset) * 5}px)`;
+            });
+          }
+        };
+        
+        // Set initial thumb width based on viewport vs content ratio
+        const updateThumbWidth = () => {
+          const ratio = scrollContainer.clientWidth / scrollContainer.scrollWidth;
+          const minWidth = 40; // Minimum width in pixels
+          const trackElement = scrollThumb.closest('.scrollbar-track');
+          const trackWidth = trackElement ? trackElement.clientWidth : 100;
+          const calculatedWidth = Math.max(ratio * 100, (minWidth / trackWidth) * 100);
+          scrollThumb.style.width = `${calculatedWidth}%`;
+          
+          // Apply a wobble animation when width is updated
+          scrollThumb.animate([
+            { transform: 'scaleX(1.2)', easing: 'ease-out' },
+            { transform: 'scaleX(0.9)', easing: 'ease-in' },
+            { transform: 'scaleX(1.05)', easing: 'ease-out' },
+            { transform: 'scaleX(0.95)', easing: 'ease-in' },
+            { transform: 'scaleX(1)', easing: 'ease-out' }
+          ], {
+            duration: 600,
+            fill: 'forwards'
+          });
+        };
+        
+        // Auto-scroll animation for demonstration
+        let autoScrollInterval: number | null = null;
+        let scrollDirection = 1; // 1 for right, -1 for left
+        let isUserScrolling = false;
+        let userScrollTimeout: number | null = null;
+        
+        const startAutoScroll = () => {
+          if (autoScrollInterval) return;
+          
+          autoScrollInterval = window.setInterval(() => {
+            if (isUserScrolling) return;
+            
+            // Check if we need to change direction
+            if (scrollDirection > 0 && scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth - 5) {
+              scrollDirection = -1;
+              
+              // Add bounce effect when changing direction
+              const trackElement = scrollThumb.closest('.scrollbar-track');
+              if (trackElement) {
+                trackElement.animate([
+                  { boxShadow: '0 0 0 rgba(110, 77, 66, 0)' },
+                  { boxShadow: '0 0 10px rgba(110, 77, 66, 0.6)' },
+                  { boxShadow: '0 0 0 rgba(110, 77, 66, 0)' }
+                ], {
+                  duration: 800,
+                  easing: 'ease-out'
+                });
+              }
+              
+            } else if (scrollDirection < 0 && scrollContainer.scrollLeft <= 5) {
+              scrollDirection = 1;
+              
+              // Add bounce effect when changing direction
+              const trackElement = scrollThumb.closest('.scrollbar-track');
+              if (trackElement) {
+                trackElement.animate([
+                  { boxShadow: '0 0 0 rgba(110, 77, 66, 0)' },
+                  { boxShadow: '0 0 10px rgba(110, 77, 66, 0.6)' },
+                  { boxShadow: '0 0 0 rgba(110, 77, 66, 0)' }
+                ], {
+                  duration: 800,
+                  easing: 'ease-out'
+                });
+              }
+            }
+            
+            scrollContainer.scrollBy({ left: scrollDirection * 1, behavior: 'auto' });
+          }, 50);
+        };
+        
+        const stopAutoScroll = () => {
+          if (autoScrollInterval) {
+            window.clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+          }
+        };
+        
+        // Handle user scroll to pause auto-scroll
+        const handleUserScroll = () => {
+          isUserScrolling = true;
+          
+          if (userScrollTimeout) {
+            window.clearTimeout(userScrollTimeout);
+          }
+          
+          userScrollTimeout = window.setTimeout(() => {
+            isUserScrolling = false;
+          }, 3000);
+        };
+        
+        updateThumbWidth();
+        window.addEventListener('resize', updateThumbWidth);
+        scrollContainer.addEventListener('scroll', handleScroll);
+        scrollContainer.addEventListener('touchstart', handleUserScroll);
+        scrollContainer.addEventListener('mousedown', handleUserScroll);
+        
+        // Start auto-scroll after a delay
+        const initialTimeout = window.setTimeout(() => {
+          startAutoScroll();
+        }, 2000);
+        
+        // Run once to initialize
+        handleScroll();
+        
+        return () => {
+          window.removeEventListener('resize', updateThumbWidth);
+          scrollContainer.removeEventListener('scroll', handleScroll);
+          scrollContainer.removeEventListener('touchstart', handleUserScroll);
+          scrollContainer.removeEventListener('mousedown', handleUserScroll);
+          stopAutoScroll();
+          if (userScrollTimeout) window.clearTimeout(userScrollTimeout);
+          window.clearTimeout(initialTimeout);
+        };
+      }
+    }, []);
+
     return (
       <>
       <section className="py-16 px-4 bg-white">
@@ -235,7 +399,8 @@ const photoCards = [
             <p className="text-gray-500 text-sm">Trusted by 6+ Clients</p>
           </div>
   
-          <div className="relative h-[540px] flex items-center justify-center overflow-hidden">
+          {/* Desktop View - Hidden on mobile */}
+          <div className="relative h-[540px] items-center justify-center overflow-hidden hidden md:flex">
             {/* Phone Mockups arranged in concave arc */}
             <div className="relative w-[1250px] h-[600px]">
               {photoCards.map((card, index) => (
@@ -270,6 +435,50 @@ const photoCards = [
                   />
                 </svg>
               </div>
+            </div>
+          </div>
+
+          {/* Mobile View with Scrollbar - Hidden on desktop */}
+          <div className="md:hidden relative">
+            <div ref={scrollContainerRef} className="overflow-x-auto scrollbar-container pb-0">
+              <div className="flex space-x-6 px-4 py-8 min-w-max cards-container">
+                {photoCards.map((card, index) => (
+                  <div 
+                    key={index}
+                    className="relative flex-shrink-0 rounded-[20px] overflow-hidden border-[0.5px] border-solid border-gray-300 shadow-lg photo-card-mobile"
+                    style={{ 
+                      width: `${card.width}px`, 
+                      height: `${card.height}px`,
+                      animationDelay: `${index * 0.2}s`
+                    }}
+                    onMouseDown={() => triggerHapticFeedback(10)}
+                    onMouseUp={() => triggerHapticFeedback(5)}
+                    onTouchStart={() => triggerHapticFeedback(10)}
+                    onTouchEnd={() => triggerHapticFeedback(5)}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent opacity-60 z-10"></div>
+                    <Image 
+                      className="object-cover w-full h-full" 
+                      alt={card.alt} 
+                      src={card.src || "/placeholder.svg"} 
+                      width={card.width}
+                      height={card.height}
+                      fill={false}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-3 text-xs font-medium text-white bg-gradient-to-t from-black/70 to-transparent z-20 opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      {card.alt}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Enhanced Scrollbar indicator - positioned slightly above the bottom */}
+            <div className="scrollbar-track relative mx-auto max-w-[250px] mb-4">
+              <div 
+                ref={scrollThumbRef} 
+                className="scroll-thumb" 
+                style={{ width: '30%' }}
+              ></div>
             </div>
           </div>
       {/* Button Section */}

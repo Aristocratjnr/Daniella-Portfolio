@@ -135,3 +135,182 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom scrollbar for mobile portfolio showcase */
+@media (max-width: 768px) {
+  .scrollbar-container::-webkit-scrollbar {
+    height: 0;  /* Hide the default scrollbar */
+    width: 0;
+  }
+  
+  .scrollbar-container {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Custom scrollbar track */
+  .scrollbar-track {
+    position: relative;
+    height: 4px;
+    background: rgba(229, 231, 235, 0.4);
+    border-radius: 10px;
+    margin: -30px auto 25px;
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 20;
+    transition: height 0.3s ease;
+  }
+  
+  .scrollbar-track::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(51, 36, 30, 0) 0%, 
+      rgba(51, 36, 30, 0.05) 25%, 
+      rgba(51, 36, 30, 0.05) 75%, 
+      rgba(51, 36, 30, 0) 100%
+    );
+    pointer-events: none;
+  }
+  
+  .scrollbar-track:hover {
+    height: 6px;
+  }
+  
+  /* Custom scrollbar indicator */
+  .scroll-thumb {
+    height: 100%;
+    background: linear-gradient(90deg, #33241E, #6E4D42);
+    border-radius: 10px;
+    transition: transform 0.2s ease, width 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: pulseGlow 2s infinite alternate;
+  }
+  
+  /* Animation for the scrollbar thumb glow */
+  @keyframes pulseGlow {
+    0% {
+      box-shadow: 0 0 2px rgba(110, 77, 66, 0.3), 
+                  0 0 0px rgba(110, 77, 66, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(110, 77, 66, 0.6), 
+                  0 0 15px rgba(110, 77, 66, 0.4);
+    }
+  }
+  
+  .scroll-thumb::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 10px;
+    animation: shimmer 3s infinite linear;
+  }
+  
+  /* Shimmer animation for the scrollbar */
+  @keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  /* Photo card animations */
+  .photo-card-mobile {
+    transition: transform 0.4s ease-out, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .photo-card-mobile:hover, .photo-card-mobile:active {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+  }
+  
+  /* Add a subtle shine effect on hover */
+  .photo-card-mobile::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(25deg);
+    transition: transform 0.7s;
+    pointer-events: none;
+  }
+  
+  .photo-card-mobile:hover::after {
+    transform: rotate(25deg) translate(450%, 0);
+  }
+  
+  /* Animation for side-by-side movement */
+  @keyframes slideCards {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-15px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .cards-container {
+    animation: slideCards 15s infinite ease-in-out;
+    will-change: transform;
+  }
+  
+  /* Floating animation for cards */
+  @keyframes floatCard {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .photo-card-mobile:nth-child(odd) {
+    animation: floatCard 3s infinite ease-in-out;
+  }
+  
+  .photo-card-mobile:nth-child(even) {
+    animation: floatCard 4s infinite ease-in-out reverse;
+  }
+  
+  /* Pause animations when user is interacting */
+  .scrollbar-container:active .cards-container,
+  .scrollbar-container:active .photo-card-mobile {
+    animation-play-state: paused;
+  }
+}
