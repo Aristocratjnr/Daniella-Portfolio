@@ -94,8 +94,8 @@ const Methodologies = () => {
               <p className="text-xs text-gray-800 leading-tight">
                 Prototypes, ranging from low-fidelity paper mockups to high-fidelity interactive prototypes, are created to test and refine the design.
               </p>
-              <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <Image src="/images/Vector.png" alt="Prototype icon" width={40} height={40} className="object-contain w-10 h-10" />
+              <div className="absolute bottom-4 left-4 flex flex-col items-center">
+                <Image src="/images/Vector.png" alt="Prototype icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
                 <span className="font-medium text-xs text-black">Prototype</span>
               </div>
               {/* Number box positioned at bottom right */}
@@ -112,8 +112,8 @@ const Methodologies = () => {
               <p className="text-xs text-gray-800 leading-tight">
                 Prototypes are tested with real users to gather feedback and identify areas for improvement. This iterative process helps refine the design based on user input.
               </p>
-              <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <Image src="/images/testing.png" alt="Testing icon" width={40} height={40} className="object-contain w-10 h-10" />
+              <div className="absolute bottom-4 left-4 flex flex-col items-center">
+                <Image src="/images/testing.png" alt="Testing icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
                 <span className="font-medium text-xs text-black">Testing</span>
               </div>
               {/* Number box positioned at bottom right */}
@@ -130,8 +130,8 @@ const Methodologies = () => {
               <p className="text-xs text-gray-800 leading-tight">
                 Based on the testing results, the design is iterated upon, and the process repeats until a satisfactory user experience is achieved.
               </p>
-              <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                <Image src="/images/rotate.png" alt="Iterate icon" width={40} height={40} className="object-contain w-10 h-10" />
+              <div className="absolute bottom-4 left-4 flex flex-col items-center">
+                <Image src="/images/rotate.png" alt="Iterate icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
                 <span className="font-medium text-xs text-black">Iterate</span>
               </div>
               {/* Number box positioned at bottom right */}
