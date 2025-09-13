@@ -67,8 +67,8 @@ const projects = [
       borderColor: "border-l-[#563C33]",
       links: [
         {
-          label: "Coming Soon",
-          url: "#"
+          label: "View Prototype",
+          url: "https://www.figma.com/design/OYIx8LWmLcdBCAyhGHUBLb/H.C.I_DCIT302__G52?node-id=15-4"
         }
       ]
     },
@@ -93,8 +93,8 @@ const projects = [
       borderColor: "border-l-[#563C33]",
       links: [
         {
-          label: "Coming Soon",
-          url: "#"
+          label: "View Prototype",
+          url: "https://www.figma.com/design/OYIx8LWmLcdBCAyhGHUBLb/H.C.I_DCIT302__G52?node-id=226-66"
         }
       ]
     },
