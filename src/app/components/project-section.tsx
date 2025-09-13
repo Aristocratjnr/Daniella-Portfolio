@@ -7,42 +7,51 @@ export default function ProjectsSection() {
     const categories = ["Web Design", "Mobile App Design", "Wireframe", "Prototype", "Dashboard"]
     const containerRef = useRef<HTMLDivElement | null>(null)
     
-    // Add CSS for scrollbar and animation
+    // Handle smooth infinite scroll
     useEffect(() => {
-      // Apply CSS to hide scrollbar and set up animation
-      const style = document.createElement('style');
-      style.textContent = `
-        .scrollbar-none::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-none {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
+      const container = containerRef.current;
+      if (!container) return;
+
+      const containerWidth = container.scrollWidth / 2; // Since we duplicate the content
+      let animationFrameId: number;
+      let startTime: number | null = null;
+      const duration = 15000; // 15 seconds for one full loop
+      let animationDirection = 1; // 1 for left, -1 for right
+
+      const animate = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = (elapsed % duration) / duration;
         
-        @keyframes slideLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
+        // Calculate the new position
+        const offset = progress * containerWidth * animationDirection;
+        container.style.transform = `translateX(-${offset}px)`;
         
-        .sliding-text {
-          display: flex;
-          white-space: nowrap;
-          animation: slideLeft 15s linear infinite;
-        }
-        
-        .sliding-text:hover {
-          animation-play-state: paused;
-        }
-      `;
-      document.head.appendChild(style);
-      
+        // Continue the animation
+        animationFrameId = requestAnimationFrame(animate);
+      };
+
+      // Start the animation
+      animationFrameId = requestAnimationFrame(animate);
+
+      // Pause on hover
+      const handleMouseEnter = () => {
+        cancelAnimationFrame(animationFrameId);
+      };
+
+      const handleMouseLeave = () => {
+        startTime = performance.now() - ((performance.now() - (startTime || 0)) % duration);
+        animationFrameId = requestAnimationFrame(animate);
+      };
+
+      container.addEventListener('mouseenter', handleMouseEnter);
+      container.addEventListener('mouseleave', handleMouseLeave);
+
+      // Cleanup
       return () => {
-        document.head.removeChild(style);
+        cancelAnimationFrame(animationFrameId);
+        container.removeEventListener('mouseenter', handleMouseEnter);
+        container.removeEventListener('mouseleave', handleMouseLeave);
       };
     }, []);
 
@@ -70,12 +79,20 @@ export default function ProjectsSection() {
           {/* Category navigation (horizontal sliding text) */}
           <div className="w-full max-w-6xl mx-4 sm:mx-6 md:mx-8 lg:mx-auto bg-[#A58D84] px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-xl shadow-lg overflow-hidden">
             <div className="relative overflow-hidden">
-              <div ref={containerRef} className="sliding-text scrollbar-none">
-                {/* Display categories twice to create seamless loop effect */}
+              <div 
+                ref={containerRef}
+                className="flex w-max"
+                style={{
+                  whiteSpace: 'nowrap',
+                  transition: 'transform 0.1s linear',
+                  willChange: 'transform'
+                }}
+              >
+                {/* Duplicate the content for seamless looping */}
                 {[...categories, ...categories].map((category, index) => (
                   <div
                     key={`${category}-${index}`}
-                    className="flex items-center group px-6 py-3"
+                    className="flex items-center group px-6 py-3 flex-shrink-0"
                   >
                     <span className="text-sm sm:text-base md:text-lg font-light text-white whitespace-nowrap">
                       {category}
