@@ -3,6 +3,7 @@ import Image from "next/image"
 import { Poppins } from 'next/font/google'
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 const poppins = Poppins({
   weight: ['400'],
@@ -21,6 +22,7 @@ interface QuoteFormData {
 }
 
 export function Navbar() {
+  const pathname = usePathname();
   const [activeLink, setActiveLink] = useState('HOME');
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,12 +41,23 @@ export function Navbar() {
   const [submitStatus, setSubmitStatus] = useState<{success: boolean; message: string} | null>(null);
 
   useEffect(() => {
+    // Set active link based on current path
+    if (pathname === '/services') {
+      setActiveLink('SERVICES');
+    } else if (pathname === '/about') {
+      setActiveLink('ABOUT ME');
+    } else if (pathname === '/contact') {
+      setActiveLink('CONTACT ME');
+    } else if (pathname === '/') {
+      setActiveLink('HOME');
+    }
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   const validateForm = () => {
     const newErrors: Partial<Record<keyof QuoteFormData, string>> = {};
