@@ -63,26 +63,30 @@ const methods: Method[] = [
 ];
 
 const TopCard: React.FC<{ item: Method }> = ({ item }) => (
-  <div className="flex flex-col">
-    <div className="flex justify-between items-center">
-      <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center shadow-sm">
+  <div className="flex flex-col h-full">
+    <div className="bg-[#f5f5f5] p-4 pt-5 pb-32 flex-grow relative rounded-md">
+      <div className="h-[100px] overflow-y-auto pr-2">
+        <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
+      </div>
+
+      <div className="absolute bottom-4 left-4 flex flex-col items-center">
+        <Image src={item.icon} alt={`${item.title} icon`} width={40} height={40} className="object-contain w-10 h-10 mb-1" />
+        <span className="font-medium text-xs text-black">{item.title}</span>
+      </div>
+
+      <div className="absolute bottom-4 right-4 bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center shadow-sm">
         <span className="text-5xl font-extrabold text-black">{item.id}</span>
       </div>
-      <div className="flex flex-col items-center">
-        <Image src={item.icon} alt={`${item.title} icon`} width={40} height={40} className="object-contain w-10 h-10 mb-1" />
-        <h3 className="font-medium text-black">{item.title}</h3>
-      </div>
-    </div>
-    <div className="mt-3 bg-[#f5f5f5] p-4 rounded-md">
-      <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
     </div>
   </div>
 );
 
 const BottomCard: React.FC<{ item: Method }> = ({ item }) => (
   <div className="flex flex-col h-full">
-    <div className="bg-[#f5f5f5] p-4 pt-5 pb-36 flex-grow relative rounded-md">
-      <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
+    <div className="bg-[#f5f5f5] p-4 pt-5 pb-32 flex-grow relative rounded-md">
+      <div className="h-[100px] overflow-y-auto pr-2">
+        <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
+      </div>
 
       <div className="absolute bottom-4 left-4 flex flex-col items-center">
         <Image src={item.icon} alt={`${item.title} icon`} width={40} height={40} className="object-contain w-10 h-10 mb-1" />
