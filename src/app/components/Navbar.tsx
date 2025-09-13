@@ -269,7 +269,7 @@ export function Navbar() {
         </div>
 
         {/* Desktop Navigation Menu - Centered */}
-        <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
+        <div className="hidden md:flex items-center space-x-10 lg:space-x-14">
           {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((link) => (
             <a
               key={link}
@@ -281,7 +281,7 @@ export function Navbar() {
                 `#${link.toLowerCase().replace(' ', '-')}`
               }
               onClick={(e) => handleLinkClick(link, e)}
-              className={`text-[18px] font-normal leading-normal transition-colors ${
+              className={`text-[18px] font-normal leading-normal transition-colors px-1 ${
                 currentActiveLink === link
                   ? 'text-gray-900 border-b-2 border-gray-900 pb-1'
                   : 'text-gray-600 hover:text-gray-900'
