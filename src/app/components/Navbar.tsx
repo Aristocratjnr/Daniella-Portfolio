@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google'
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 
 const poppins = Poppins({
   weight: ['400'],
@@ -205,14 +206,16 @@ export function Navbar() {
       {/* Mobile menu button */}
       <div className="md:hidden flex justify-between items-center w-full">
         <div className="flex-shrink-0">
-          <Image 
-            src="/images/logo.png" 
-            alt="Daniella" 
-            width={40}
-            height={40}
-            priority
-            className="h-9 w-auto"
-          />
+          <Link href="/">
+            <Image 
+              src="/images/logo.png" 
+              alt="Daniella" 
+              width={40}
+              height={40}
+              priority
+              className="h-9 w-auto cursor-pointer hover:opacity-90 transition-opacity"
+            />
+          </Link>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
