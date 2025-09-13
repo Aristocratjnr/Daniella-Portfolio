@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { X, CheckCircle2, AlertCircle, Loader2, Send } from 'lucide-react';
 import Image from 'next/image';
 
@@ -69,11 +69,53 @@ const photoCards = [
     },
   ]
   
-  // Add haptic feedback function
-  const triggerHapticFeedback = (duration = 20) => {
+  // Add haptic feedback function with intensity control
+  const triggerHapticFeedback = (duration = 10, intensity = 0.7) => {
     if ('vibrate' in navigator) {
-      // Vibrate for the specified duration (in milliseconds)
-      navigator.vibrate(duration);
+      // Adjust duration based on intensity (0-1)
+      const adjustedDuration = Math.min(Math.max(duration * intensity, 10), 50);
+      navigator.vibrate(adjustedDuration);
+    }
+  };
+
+  // Mobile-specific animation variants
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        staggerChildren: 0.1,
+        duration: 0.5,
+        ease: "easeOut",
+        scale: { type: 'spring', stiffness: 300, damping: 20 }
+      }
+    },
+    hover: {
+      y: -5,
+      scale: 1.02,
+      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+      transition: { type: 'spring', stiffness: 400, damping: 10 }
+    },
+    tap: {
+      scale: 0.98,
+      transition: { type: 'spring', stiffness: 500, damping: 20 }
+    }
+  };
+
+  // Individual card variants for staggered animations
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+        scale: { type: 'spring', stiffness: 300, damping: 20 }
+      }
     }
   };
 
@@ -438,48 +480,91 @@ const photoCards = [
             </div>
           </div>
 
-          {/* Mobile View with Scrollbar - Hidden on desktop */}
-          <div className="md:hidden relative">
-            <div ref={scrollContainerRef} className="overflow-x-auto scrollbar-container pb-0">
-              <div className="flex space-x-6 px-4 py-8 min-w-max cards-container">
+          {/* Enhanced Mobile View with Improved Animations */}
+          <div className="md:hidden relative py-6">
+            <div 
+              ref={scrollContainerRef} 
+              className="overflow-x-auto scrollbar-container pb-4 px-4"
+              style={{
+                WebkitOverflowScrolling: 'touch',
+                scrollSnapType: 'x mandatory',
+                scrollPadding: '0 16px',
+                scrollBehavior: 'smooth'
+              }}
+            >
+              <motion.div 
+                className="flex space-x-6 px-2 min-w-max cards-container"
+                initial="hidden"
+                animate="visible"
+                variants={cardVariants}
+              >
                 {photoCards.map((card, index) => (
-                  <div 
+                  <motion.div 
                     key={index}
-                    className="relative flex-shrink-0 rounded-[20px] overflow-hidden border-[0.5px] border-solid border-gray-300 shadow-lg photo-card-mobile"
+                    variants={itemVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    className="relative flex-shrink-0 rounded-[20px] overflow-hidden border-[0.5px] border-solid border-gray-200 shadow-xl bg-white photo-card-mobile"
                     style={{ 
-                      width: `${card.width}px`, 
-                      height: `${card.height}px`,
-                      animationDelay: `${index * 0.2}s`
+                      width: `${card.width * 0.9}px`, 
+                      height: `${card.height * 0.9}px`,
+                      scrollSnapAlign: 'center',
+                      transformOrigin: 'center bottom',
+                      willChange: 'transform, opacity',
+                      WebkitBackfaceVisibility: 'hidden',
+                      WebkitTransform: 'translateZ(0)'
                     }}
-                    onMouseDown={() => triggerHapticFeedback(10)}
-                    onMouseUp={() => triggerHapticFeedback(5)}
-                    onTouchStart={() => triggerHapticFeedback(10)}
-                    onTouchEnd={() => triggerHapticFeedback(5)}
+                    onMouseDown={() => triggerHapticFeedback(10, 0.8)}
+                    onMouseUp={() => triggerHapticFeedback(5, 0.5)}
+                    onTouchStart={() => triggerHapticFeedback(8, 0.6)}
+                    onTouchEnd={() => triggerHapticFeedback(3, 0.4)}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-transparent opacity-60 z-10"></div>
-                    <Image 
-                      className="object-cover w-full h-full" 
-                      alt={card.alt} 
-                      src={card.src || "/placeholder.svg"} 
-                      width={card.width}
-                      height={card.height}
-                      fill={false}
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 p-3 text-xs font-medium text-white bg-gradient-to-t from-black/70 to-transparent z-20 opacity-0 hover:opacity-100 transition-opacity duration-300">
-                      {card.alt}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/5 to-black/30 z-10 pointer-events-none"></div>
+                    <motion.div 
+                      className="w-full h-full relative"
+                      whileInView={{ scale: 1.05 }}
+                      viewport={{ once: true, margin: '0px 0px -100px 0px' }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <Image 
+                        className="object-cover w-full h-full select-none" 
+                        alt={card.alt} 
+                        src={card.src || "/placeholder.svg"} 
+                        width={card.width}
+                        height={card.height}
+                        priority={index < 3}
+                        loading={index < 3 ? 'eager' : 'lazy'}
+                        quality={85}
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                      />
+                    </motion.div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-sm font-medium text-white bg-gradient-to-t from-black/90 via-black/60 to-transparent z-20 opacity-100 transition-all duration-500 group-hover:opacity-100">
+                      <span className="block text-sm font-semibold mb-0.5">{card.alt.split(' - ')[0]}</span>
+                      <span className="text-xs opacity-80 font-normal">{card.alt.split(' - ')[1]}</span>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
-            {/* Enhanced Scrollbar indicator - positioned slightly above the bottom */}
-            <div className="scrollbar-track relative mx-auto max-w-[250px] mb-4">
-              <div 
-                ref={scrollThumbRef} 
-                className="scroll-thumb" 
-                style={{ width: '30%' }}
-              ></div>
+            {/* Enhanced Scrollbar with Progress Indicator */}
+            <div className="scrollbar-track relative mx-auto max-w-[180px] mt-6 mb-2 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+              <motion.div 
+                ref={scrollThumbRef}
+                className="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full shadow-md"
+                initial={{ scaleX: 0.3, opacity: 0.8 }}
+                animate={{
+                  scaleX: 0.3,
+                  opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  ease: 'easeInOut'
+                }}
+              />
             </div>
+            <p className="text-xs text-center text-gray-500 mt-1">Swipe to explore more</p>
           </div>
       {/* Button Section */}
           <div className="mb-4 text-center relative pt-4 pb-6 px-4">
