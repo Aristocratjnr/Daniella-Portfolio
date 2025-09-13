@@ -11,7 +11,7 @@ const Methodologies = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-medium text-black">
+          <h2 className="text-2xl md:text-3xl font-medium text-[#33241E]">
             Core Methodologies I Follow in Designing
           </h2>
         </div>
@@ -21,15 +21,14 @@ const Methodologies = () => {
           {/* Item 1 */}
           <div className="flex flex-col">
             <div className="flex justify-between items-center">
-              {/* Number box and Title on Left */}
-              <div className="flex items-center gap-4">
-                <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center">
-                  <span className="text-4xl font-bold text-black">01</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <Image src="/images/research.png" alt="Research icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
-                  <h3 className="font-medium text-black">Research</h3>
-                </div>
+              {/* Number box on Left */}
+              <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center">
+                <span className="text-5xl font-extrabold text-black">01</span>
+              </div>
+              {/* Title and Icon on Right */}
+              <div className="flex flex-col items-center">
+                <Image src="/images/research.png" alt="Research icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
+                <h3 className="font-medium text-black">Research</h3>
               </div>
             </div>
             {/* Description Box */}
@@ -43,15 +42,14 @@ const Methodologies = () => {
           {/* Item 2 */}
           <div className="flex flex-col">
             <div className="flex justify-between items-center">
-              {/* Number box and Title on Left */}
-              <div className="flex items-center gap-4">
-                <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center">
-                  <span className="text-4xl font-bold text-black">02</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <Image src="/images/define.png" alt="Define icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
-                  <h3 className="font-medium text-black">Define</h3>
-                </div>
+              {/* Number box on Left */}
+              <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center">
+                <span className="text-5xl font-extrabold text-black">02</span>
+              </div>
+              {/* Title and Icon on Right */}
+              <div className="flex flex-col items-center">
+                <Image src="/images/define.png" alt="Define icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
+                <h3 className="font-medium text-black">Define</h3>
               </div>
             </div>
             {/* Description Box */}
@@ -65,15 +63,14 @@ const Methodologies = () => {
           {/* Item 3 */}
           <div className="flex flex-col">
             <div className="flex justify-between items-center">
-              {/* Number box and Title on Left */}
-              <div className="flex items-center gap-4">
-                <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center">
-                  <span className="text-4xl font-bold text-black">03</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <Image src="/images/idea.png" alt="Ideate icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
-                  <h3 className="font-medium text-black">Ideate</h3>
-                </div>
+              {/* Number box on Left */}
+              <div className="bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center">
+                <span className="text-5xl font-extrabold text-black">03</span>
+              </div>
+              {/* Title and Icon on Right */}
+              <div className="flex flex-col items-center">
+                <Image src="/images/idea.png" alt="Ideate icon" width={40} height={40} className="object-contain w-10 h-10 mb-1" />
+                <h3 className="font-medium text-black">Ideate</h3>
               </div>
             </div>
             {/* Description Box */}
@@ -100,7 +97,7 @@ const Methodologies = () => {
               </div>
               {/* Number box positioned at bottom right */}
               <div className="absolute bottom-4 right-4 bg-[#C1B1AB] rounded-[20px]  w-[120px] h-[112px]  flex items-center justify-center">
-                <span className="text-4xl font-bold text-black">04</span>
+                <span className="text-5xl font-extrabold text-black">04</span>
               </div>
             </div>
           </div>
@@ -118,7 +115,7 @@ const Methodologies = () => {
               </div>
               {/* Number box positioned at bottom right */}
               <div className="absolute bottom-4 right-4 bg-[#C1B1AB] rounded-[20px]  w-[120px] h-[112px]  flex items-center justify-center">
-                <span className="text-4xl font-bold text-black">05</span>
+                <span className="text-5xl font-extrabold text-black">05</span>
               </div>
             </div>
           </div>
@@ -136,7 +133,7 @@ const Methodologies = () => {
               </div>
               {/* Number box positioned at bottom right */}
               <div className="absolute bottom-4 right-4 bg-[#C1B1AB] rounded-[20px]  w-[120px] h-[112px]  flex items-center justify-center">
-                <span className="text-4xl font-bold text-black">06</span>
+                <span className="text-5xl font-extrabold text-black">06</span>
               </div>
             </div>
           </div>
