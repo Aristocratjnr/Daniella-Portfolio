@@ -64,18 +64,19 @@ const methods: Method[] = [
 
 const TopCard: React.FC<{ item: Method }> = ({ item }) => (
   <div className="flex flex-col h-full">
-    <div className="bg-[#f5f5f5] p-4 pt-5 pb-32 flex-grow relative rounded-md">
-      <div className="h-[100px] overflow-y-auto pr-2">
+    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md">
+      <div className="flex justify-between items-start mb-3">
+        <div className="bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm">
+          <span className="text-5xl font-black text-black">{item.id}</span>
+        </div>
+        <div className="flex flex-col items-center">
+          <Image src={item.icon} alt={`${item.title} icon`} width={32} height={32} className="object-contain w-8 h-8" />
+          <span className="font-medium text-xs text-black mt-1">{item.title}</span>
+        </div>
+      </div>
+      
+      <div className="h-[70px] overflow-y-auto pr-1">
         <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
-      </div>
-
-      <div className="absolute bottom-4 left-4 flex flex-col items-center">
-        <Image src={item.icon} alt={`${item.title} icon`} width={40} height={40} className="object-contain w-10 h-10 mb-1" />
-        <span className="font-medium text-xs text-black">{item.title}</span>
-      </div>
-
-      <div className="absolute bottom-4 right-4 bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center shadow-sm">
-        <span className="text-5xl font-extrabold text-black">{item.id}</span>
       </div>
     </div>
   </div>
@@ -83,18 +84,18 @@ const TopCard: React.FC<{ item: Method }> = ({ item }) => (
 
 const BottomCard: React.FC<{ item: Method }> = ({ item }) => (
   <div className="flex flex-col h-full">
-    <div className="bg-[#f5f5f5] p-4 pt-5 pb-32 flex-grow relative rounded-md">
-      <div className="h-[100px] overflow-y-auto pr-2">
+    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md">
+      <div className="h-[100px] overflow-y-auto pr-1">
         <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
       </div>
 
-      <div className="absolute bottom-4 left-4 flex flex-col items-center">
-        <Image src={item.icon} alt={`${item.title} icon`} width={40} height={40} className="object-contain w-10 h-10 mb-1" />
+      <div className="absolute bottom-3 left-4 flex flex-col items-center">
+        <Image src={item.icon} alt={`${item.title} icon`} width={32} height={32} className="object-contain w-8 h-8 mb-1" />
         <span className="font-medium text-xs text-black">{item.title}</span>
       </div>
 
-      <div className="absolute bottom-4 right-4 bg-[#C1B1AB] rounded-[20px] w-[120px] h-[112px] flex items-center justify-center shadow-sm">
-        <span className="text-5xl font-extrabold text-black">{item.id}</span>
+      <div className="absolute bottom-3 right-4 bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm">
+        <span className="text-5xl font-black text-black">{item.id}</span>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ export default function ProjectsSection() {
       let animationFrameId: number;
       let startTime: number | null = null;
       const duration = 15000; // 15 seconds for one full loop
-      let animationDirection = 1; // 1 for left, -1 for right
+      const animationDirection = 1; // 1 for left, -1 for right
 
       const animate = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
