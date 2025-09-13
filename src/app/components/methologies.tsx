@@ -76,7 +76,7 @@ const TopCard: React.FC<{ item: Method }> = ({ item }) => (
       </div>
       
       <div className="h-[70px] overflow-y-auto pr-1">
-        <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
+        <p className="text-sm text-gray-800 leading-tight">{item.description}</p>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@ const BottomCard: React.FC<{ item: Method }> = ({ item }) => (
   <div className="flex flex-col h-full">
     <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md">
       <div className="h-[100px] overflow-y-auto pr-1">
-        <p className="text-xs text-gray-800 leading-tight">{item.description}</p>
+        <p className="text-sm text-gray-800 leading-tight">{item.description}</p>
       </div>
 
       <div className="absolute bottom-3 left-4 flex flex-col items-center">
@@ -109,7 +109,7 @@ const Methodologies: React.FC = () => {
     <section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-medium text-[#33241E]">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#33241E] leading-tight">
             Core Methodologies I Follow in Designing
           </h2>
         </div>

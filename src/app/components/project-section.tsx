@@ -65,14 +65,14 @@ export default function ProjectsSection() {
         {/* Content overlay */}
         <div className="relative z-10 flex flex-col items-center pt-20 pb-20 px-6">
           {/* Main heading */}
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center tracking-tight">PROJECTS</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center tracking-tight drop-shadow-lg">PROJECTS</h1>
 
           {/* Description paragraph */}
           <div className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16">
-            <p className="text-gray-700 text-center leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4 md:px-6">
-              It&apos;s not just a gallery of final products; it&apos;s a showcase of my thought process, your problem-solving
-              abilities, and the impact of your work. As a UI/UX designer, I need to turn each project into a compelling
-              story for an aesthetic and interactive User Experience
+            <p className="text-gray-600 text-center leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4 md:px-6 font-light tracking-wide">
+              It&apos;s not just a gallery of final products; it&apos;s a showcase of my thought process, problem-solving
+              abilities, and the impact of my work. As a UI/UX designer, I transform each project into a compelling
+              story that delivers an aesthetic and interactive user experience.
             </p>
           </div>
 
