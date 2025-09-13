@@ -1,12 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+type ProjectLink = {
+  label: string;
+  url: string;
+};
+
 type ProjectCardProps = {
   title: string;
   description: string;
   tags: string[];
   imageUrl: string;
-  projectUrl: string;
+  links: ProjectLink[];
 };
 
 export default function ProjectCard({
@@ -14,7 +19,7 @@ export default function ProjectCard({
   description,
   tags,
   imageUrl,
-  projectUrl,
+  links,
 }: ProjectCardProps) {
   return (
     <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -39,25 +44,32 @@ export default function ProjectCard({
             </span>
           ))}
         </div>
-        <Link
-          href={projectUrl}
-          className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
-        >
-          View Project
-          <svg
-            className="w-4 h-4 ml-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 5l7 7m0 0l-7 7m7-7H3"
-            />
-          </svg>
-        </Link>
+        <div className="space-y-2">
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
+            >
+              {link.label}
+              <svg
+                className="w-4 h-4 ml-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

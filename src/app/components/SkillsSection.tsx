@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const SkillsSection = () => {
   const projects = [
@@ -10,24 +11,50 @@ const SkillsSection = () => {
       description: "A first aid guide built with web and mobile app interface",
       icon: "/images/aid.png",
       color: "#C1B1AB",
+      tags: ["UI/UX Design", "Mobile App", "Web App"],
+      links: [
+        {
+          label: "Mobile Version",
+          url: "https://www.figma.com/design/EGiI5c7KMuLuXKZxi8c4S4/LIFELINE?node-id=384-71&t=CduuPsOgiC6eC8my-1"
+        },
+        {
+          label: "WebApp Version",
+          url: "https://www.figma.com/design/EGiI5c7KMuLuXKZxi8c4S4/LIFELINE?node-id=1-2&t=CduuPsOgiC6eC8my-1"
+        }
+      ]
     },
     {
       title: "SPARTANS",
       description: "An interactive automated car wash web interface for both admin and customers",
       icon: "/images/car.png",
       color: "#C1B1AB",
+      tags: ["UI/UX Design", "Web App", "Dashboard"],
+      links: [
+        {
+          label: "View Prototype",
+          url: "https://www.figma.com/proto/UjcYdOgAU9Eayvlo5Z4YTB/Spartans?page-id=119%3A1941&node-id=119-2430&viewport=2%2C144%2C0.17&t=gJglwKfjvaZJ3WGy-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=306%3A1543"
+        }
+      ]
     },
     {
       title: "TULAUNDRY",
       description: "An interactive collective laundry services web interface for both admin and customers",
       icon: "/images/machine.png",
       color: "#C1B1AB",
+      tags: ["UI/UX Design", "Web App", "Dashboard"],
+      links: [
+        {
+          label: "View Live Website",
+          url: "https://tulundry.onrender.com/"
+        }
+      ]
     },
     {
       title: "KITCHEN & CLOSETS",
       description: "An interactive kitchen & closet furniture web app interface for both admin and customers",
       icon: "/images/lamp.png",
       color: "#C1B1AB",
+      tags: ["UI/UX Design", "E-commerce", "Web App"]
     },
   ]
 
@@ -89,7 +116,7 @@ const SkillsSection = () => {
                   >
                     {/* Main card with slanted top */}
                     <div 
-                      className="relative z-10 h-auto min-h-[211px] p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                      className="relative z-10 h-auto min-h-[280px] p-6 sm:p-7 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
                       style={{
                         width: '240px',
                         flexShrink: 0,
@@ -128,41 +155,69 @@ const SkillsSection = () => {
                       </div>
 
                       <h3 className="text-xl font-bold text-gray-800 mb-3 tracking-wide uppercase font-sans">{project.title}</h3>
-                      <div className="flex-1 flex items-start">
-                        <p className="text-black text-xs sm:text-sm md:text-base leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-4">
+                      <div className="flex-1 flex flex-col items-start">
+                        <p className="text-black text-xs sm:text-sm md:text-base leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-3 mb-3">
                           <span className="inline-block transform transition-all duration-300 hover:scale-105 hover:text-gray-800">
                             {project.description}
                           </span>
                         </p>
+                        
+                        {/* Tags */}
+                        {project.tags && (
+                          <div className="flex flex-wrap gap-1.5 mb-3">
+                            {project.tags.map((tag, i) => (
+                              <span key={i} className="text-xs px-2 py-0.5 bg-gray-100 rounded-full">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                        
+                        {/* Links */}
+                        {project.links && project.links.length > 0 && (
+                          <div className="mt-auto w-full space-y-1.5">
+                            {project.links.map((link, linkIndex) => (
+                              <a
+                                key={linkIndex}
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full text-center text-xs sm:text-sm px-3 py-2 bg-[#563C33] text-[#F2EEED] hover:bg-[#33241E] rounded-lg transition-colors duration-200 font-medium"
+                              >
+                                {link.label}
+                              </a>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
                   
-                    {/* 3D Shadow effect */}
-                    <div 
-                      className="absolute inset-0 bg-gray-200 rounded-lg transition-all duration-500 group-hover:opacity-70"
-                      style={{
-                        clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
-                        zIndex: 0,
-                        transform: 'translateZ(0)',
-                        filter: 'blur(8px)',
-                        opacity: 0.6,
-                        margin: '0 10px 10px 0',
-                      }}
-                    />
-                    
-                    {/* Edge highlight */}
-                    <div 
-                      className="absolute inset-0 border-2 border-white/30 rounded-lg pointer-events-none"
-                      style={{
-                        clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
-                        zIndex: 15,
-                        transform: 'translateZ(1px)',
-                        boxShadow: 'inset 0 0 15px rgba(255,255,255,0.5)'
-                      }}
-                    />
-                  </div>
+                  {/* 3D Shadow effect */}
+                  <div 
+                    className="absolute inset-0 bg-gray-200 rounded-lg transition-all duration-500 group-hover:opacity-70"
+                    style={{
+                      clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
+                      zIndex: 0,
+                      transform: 'translateZ(0)',
+                      filter: 'blur(8px)',
+                      opacity: 0.6,
+                      margin: '0 10px 10px 0',
+                    }}
+                  />
+                  
+                  {/* Edge highlight */}
+                  <div 
+                    className="absolute inset-0 border-2 border-white/30 rounded-lg pointer-events-none"
+                    style={{
+                      clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
+                      zIndex: 15,
+                      transform: 'translateZ(1px)',
+                      boxShadow: 'inset 0 0 15px rgba(255,255,255,0.5)'
+                    }}
+                  />
                 </div>
+              </div>
               ))}
             </div>
 
