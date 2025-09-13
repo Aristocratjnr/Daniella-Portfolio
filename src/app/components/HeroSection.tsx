@@ -9,20 +9,20 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <motion.div 
-      className="min-h-screen bg-[#A58D84] flex items-center justify-center p-4 pt-16 sm:pt-20 md:pt-24 lg:pt-32"
+      className="min-h-screen bg-[#A58D84] flex items-start sm:items-center justify-center px-2 pt-16 pb-8 sm:py-12 md:pt-16 lg:pt-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.8 }}
     >
       {/* Animated Background */}
-    <div className="max-w-6xl w-full mx-4 sm:mx-6 md:mx-8 lg:mx-auto relative">
+    <div className="max-w-6xl w-full mx-auto px-2 sm:px-4 md:px-6 relative">
         {/* Pronounced 3D shadow effect */}
-        <div className="absolute -bottom-4 left-0 right-0 h-16 z-0 overflow-visible pointer-events-none">
-          <div className="absolute left-1/2 -translate-x-1/2 w-[98%] h-8 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-60 transform -skew-y-6 scale-y-75 origin-bottom"></div>
-          <div className="absolute left-1/2 -translate-x-1/2 w-[96%] h-6 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-40 -bottom-2 transform -skew-y-3 scale-y-85 origin-bottom"></div>
-          <div className="absolute left-1/2 -translate-x-1/2 w-[94%] h-4 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-20 -bottom-4"></div>
+        <div className="absolute -bottom-3 sm:-bottom-4 left-0 right-0 h-12 sm:h-16 z-0 overflow-visible pointer-events-none">
+          <div className="absolute left-1/2 -translate-x-1/2 w-[98%] h-6 sm:h-8 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-60 transform -skew-y-6 scale-y-75 origin-bottom"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[96%] h-4 sm:h-6 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-40 -bottom-1.5 sm:-bottom-2 transform -skew-y-3 scale-y-85 origin-bottom"></div>
+          <div className="absolute left-1/2 -translate-x-1/2 w-[94%] h-3 sm:h-4 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-20 -bottom-3 sm:-bottom-4"></div>
         </div>
-        <div className="bg-[#F0E6E0]/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden shadow-lg z-10">
+        <div className="bg-[#F0E6E0]/80 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative overflow-hidden shadow-lg z-10 mt-4 sm:mt-0">
           {/* Decorative Elements */}
           <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-[#6E4D42] rounded-full -mr-12 -mt-12 sm:-mr-16 sm:-mt-16 md:-mr-24 md:-mt-24 lg:-mr-32 lg:-mt-32 transition-all duration-300"></div>
           <div 
@@ -52,49 +52,49 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             {/* Left Content */}
-            <div className="space-y-5 sm:space-y-6 md:space-y-8">
+            <div className="space-y-3 sm:space-y-4 md:space-y-6">
               <div>
-                <p className="text-[#6E4D42] text-md sm:text-base md:text-lg font-medium mb-1 sm:mb-2">Hi, I am Daniella Asiedu</p>
-                <h1 className="text-5xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-3 sm:mb-4 md:mb-6">
+                <p className="text-[#6E4D42] text-sm xs:text-base sm:text-lg font-medium mb-1 sm:mb-2">Hi, I am Daniella Asiedu</p>
+                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-2 sm:mb-4 md:mb-6">
                   UI/UX DESIGNER
                 </h1>
-                <div className="h-1 w-10 sm:w-12 md:w-16 bg-[#B5A394] mb-3 sm:mb-4 md:mb-6"></div>
+                <div className="h-1 w-8 sm:w-12 md:w-16 bg-[#B5A394] mb-2 sm:mb-4 md:mb-6"></div>
               </div>
 
-              <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+              <div className="space-y-2 sm:space-y-3 md:space-y-4">
+                <p className="text-gray-600 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
                   I&apos;m a UI/UX Designer who solves complex problems to create products people love to use.
                 </p>
                 
-                <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+                <p className="text-gray-600 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
                   I blend a passion for human-centered design with strategic thinking to craft intuitive and effective digital experiences. Simplicity in UI/UX is what I always aim to achieve.
                 </p>
               </div>
                 {/* Stats Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6">
+              <div className="grid grid-cols-3 gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 mt-3 sm:mt-4">
                 <div className="relative group">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-[#B5A394] via-[#6E4D42] to-[#B5A394] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
+                  <div className="absolute -inset-1 sm:-inset-1.5 bg-gradient-to-r from-[#B5A394] via-[#6E4D42] to-[#B5A394] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
                     maskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
                   }}></div>
-                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/40 hover:scale-[1.02] hover:border-white/60">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-                    <div className="relative z-10">
-                      <p className="text-black/80 text-[10px] xs:text-xs font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">EXPERIENCE</p>
-                      <p className="text-black text-xs sm:text-sm md:text-base">3+ years</p>
+                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg p-1.5 sm:p-2 md:p-3 shadow-sm hover:shadow transition-all duration-200 hover:bg-white/40 hover:scale-[1.02] hover:border-white/60">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg"></div>
+                    <div className="relative z-10 flex flex-col justify-center h-full">
+                      <p className="text-black/80 text-[8px] xs:text-[9px] sm:text-xs font-medium uppercase tracking-wider leading-tight">EXPERIENCE</p>
+                      <p className="text-black text-xs sm:text-sm font-semibold">3+ yrs</p>
                     </div>
                   </div>
                 </div>
                 <div className="relative group">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-[#6E4D42] via-[#B5A394] to-[#6E4D42] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
+                  <div className="absolute -inset-1 sm:-inset-1.5 bg-gradient-to-r from-[#6E4D42] via-[#B5A394] to-[#6E4D42] rounded-lg sm:rounded-xl md:rounded-2xl blur opacity-0 group-hover:opacity-70 transition-all duration-500" style={{
                     maskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
                   }}></div>
-                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/40 hover:scale-[1.02] hover:border-white/60">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-                    <div className="relative z-10">
-                      <p className="text-black/80 text-[10px] xs:text-xs font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">PROJECTS</p>
-                      <p className="text-black text-xs sm:text-sm md:text-base">10+ Designs</p>
+                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg p-1.5 sm:p-2 md:p-3 shadow-sm hover:shadow transition-all duration-200 hover:bg-white/40 hover:scale-[1.02] hover:border-white/60">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg"></div>
+                    <div className="relative z-10 flex flex-col justify-center h-full">
+                      <p className="text-black/80 text-[8px] xs:text-[9px] sm:text-xs font-medium uppercase tracking-wider leading-tight">PROJECTS</p>
+                      <p className="text-black text-xs sm:text-sm font-semibold">10+</p>
                     </div>
                   </div>
                 </div>
@@ -103,21 +103,21 @@ export default function HeroSection() {
                     maskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, white 10%, white 90%, transparent 100%)',
                   }}></div>
-                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg sm:rounded-xl p-2 sm:p-3 md:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/40 hover:scale-[1.02] hover:border-white/60">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg sm:rounded-xl md:rounded-2xl"></div>
-                    <div className="relative z-10">
-                      <p className="text-black/80 text-[10px] xs:text-xs font-medium mb-0.5 sm:mb-1 uppercase tracking-wider">CLIENTS</p>
-                      <p className="text-black text-xs sm:text-sm md:text-base">20+</p>
+                  <div className="relative backdrop-blur-xl bg-white/30 border border-white/40 rounded-lg p-1.5 sm:p-2 md:p-3 shadow-sm hover:shadow transition-all duration-200 hover:bg-white/40 hover:scale-[1.02] hover:border-white/60">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg"></div>
+                    <div className="relative z-10 flex flex-col justify-center h-full">
+                      <p className="text-black/80 text-[8px] xs:text-[9px] sm:text-xs font-medium uppercase tracking-wider leading-tight">CLIENTS</p>
+                      <p className="text-black text-xs sm:text-sm font-semibold">20+</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="pt-4">
-                <Link href="/about">
+                <Link href="/about" className="block w-full">
                   <Button
                     variant="default"
-                    className="w-full xs:w-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-6 py-3.5 sm:px-7 sm:py-4.5 md:px-9 md:py-5 text-sm sm:text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-xl hover:shadow-2xl relative overflow-hidden"
+                    className="w-full max-w-[280px] mx-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-8 py-4 text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl relative overflow-hidden"
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     About Me
