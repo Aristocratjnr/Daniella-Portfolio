@@ -77,7 +77,7 @@ export default function ProjectsSection() {
           </div>
 
           {/* Category navigation (horizontal sliding text) */}
-          <div className="w-full max-w-6xl mx-4 sm:mx-6 md:mx-8 lg:mx-auto bg-[#A58D84] px-4 sm:px-6 md:px-8 py-4 md:py-6 rounded-xl shadow-lg overflow-hidden">
+          <div className="w-full max-w-6xl mx-4 sm:mx-6 md:mx-8 lg:mx-auto bg-[#A58D84] px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-xl shadow-lg overflow-hidden">
             <div className="relative overflow-hidden">
               <div 
                 ref={containerRef}
