@@ -223,8 +223,8 @@ const SkillsSection = () => {
 
             {/* See More button */}
             <div className="flex justify-center sm:justify-end mt-6 sm:mt-8">
-              <button 
-                type="button"
+              <Link 
+                href="/services"
                 className="relative bg-white/90 backdrop-blur-sm rounded-full px-5 sm:px-6 py-2.5 sm:py-3 border border-black flex items-center gap-2 hover:bg-white transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-lg hover:shadow-blue-200/50"
                 aria-label="View more projects"
               >
@@ -238,7 +238,7 @@ const SkillsSection = () => {
                   className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
                   aria-hidden="true"
                 />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import AnimatedBackground from "./AnimatedBackground";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HeroSection() {
   return (
@@ -113,20 +114,22 @@ export default function HeroSection() {
               </div>
 
               <div className="pt-4">
-                <Button
-                  variant="default"
-                  className="w-full xs:w-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-6 py-3.5 sm:px-7 sm:py-4.5 md:px-9 md:py-5 text-sm sm:text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-xl hover:shadow-2xl relative overflow-hidden"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  About Me
-                  <Image 
-                    src="/images/hand.png" 
-                    alt="" 
-                    width={20}
-                    height={20}
-                    className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
-                  />
-                </Button>
+                <Link href="/about">
+                  <Button
+                    variant="default"
+                    className="w-full xs:w-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-6 py-3.5 sm:px-7 sm:py-4.5 md:px-9 md:py-5 text-sm sm:text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-xl hover:shadow-2xl relative overflow-hidden"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    About Me
+                    <Image 
+                      src="/images/hand.png" 
+                      alt="" 
+                      width={20}
+                      height={20}
+                      className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
+                    />
+                  </Button>
+                </Link>
               </div>
             </div>
 
