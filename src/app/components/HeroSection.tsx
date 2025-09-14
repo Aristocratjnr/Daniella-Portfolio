@@ -201,13 +201,7 @@ export default function HeroSection() {
                 
                 {/* Profile Image Container */}
                 <motion.div 
-                  className="relative z-10 flex-shrink-0"
-                  style={{
-                    width: '442px',
-                    height: '590px',
-                    aspectRatio: '218/291',
-                    borderRadius: '476.5px'
-                  }}
+                  className="relative z-10 flex-shrink-0 w-[280px] h-[373px] sm:w-[350px] sm:h-[467px] md:w-[400px] md:h-[534px] lg:w-[442px] lg:h-[590px] rounded-full overflow-hidden"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 10 }}
                 >
