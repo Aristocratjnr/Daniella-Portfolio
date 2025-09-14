@@ -505,6 +505,7 @@ export function Footer() {
                   href={
                     item === 'HOME' ? '/' :
                     item === 'ABOUT ME' ? '/about' :
+                    item === 'SERVICES' ? '/services' :
                     item === 'CONTACT ME' ? '/contact' :
                     `#${item.toLowerCase().replace(' ', '-')}`
                   }
