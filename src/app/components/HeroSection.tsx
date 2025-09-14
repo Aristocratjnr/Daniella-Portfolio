@@ -113,7 +113,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-2 sm:pt-4 -mt-2 sm:mt-0">
                 <Link href="/about" className="block w-full">
                   <Button
                     variant="default"
