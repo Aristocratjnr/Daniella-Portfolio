@@ -336,7 +336,7 @@ export default function ContactPage() {
                 Message Sent Successfully!
               </DialogTitle>
               <DialogDescription className="text-center text-gray-600 mt-2">
-                Thank you for reaching out, {watch('firstName') || 'there'}! I'll get back to you at{' '}
+                Thank you for reaching out, {watch('firstName') || 'there'}! I&apos;ll get back to you at{' '}
                 <span className="font-medium text-gray-900">{watch('email') || 'your email'}</span> as soon as possible.
               </DialogDescription>
             </div>
