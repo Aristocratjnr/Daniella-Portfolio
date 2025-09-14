@@ -100,35 +100,54 @@ export function Navbar() {
     setSubmitStatus(null);
     
     try {
-      // Here you would typically send the form data to your backend
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setSubmitStatus({
-        success: true,
-        message: 'Your quote request has been sent successfully! We\'ll get back to you soon.'
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to_email: 'daniellaasiedu755@gmail.com',
+          from_email: formData.email,
+          from_name: formData.name,
+          contact: formData.phone,
+          message: `Project Type: ${formData.projectType}
+Timeline: ${formData.timeline}
+Budget: ${formData.budget}
+
+Project Details:
+${formData.message}`
+        }),
       });
-      
-      // Reset form after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        projectType: 'website',
-        timeline: '1-2 weeks',
-        budget: '1000-5000',
-        message: ''
-      });
-      
-      // Close modal after 3 seconds
-      setTimeout(() => {
-        setIsQuoteModalOpen(false);
-        setSubmitStatus(null);
-      }, 3000);
-      
-    } catch {
+
+      if (response.ok) {
+        setSubmitStatus({
+          success: true,
+          message: 'Your quote request has been sent successfully! We\'ll get back to you soon.'
+        });
+        
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          projectType: 'website',
+          timeline: '1-2 weeks',
+          budget: '1000-5000',
+          message: ''
+        });
+        
+        // Close modal after 3 seconds
+        setTimeout(() => {
+          setIsQuoteModalOpen(false);
+          setSubmitStatus(null);
+        }, 3000);
+      } else {
+        const errorData = await response.json();
+        console.error('Error sending email:', errorData);
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmitStatus({
         success: false,
         message: 'Something went wrong. Please try again later.'

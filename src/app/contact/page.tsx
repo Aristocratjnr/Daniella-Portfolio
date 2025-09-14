@@ -146,14 +146,32 @@ export default function ContactPage() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
-    // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', data);
-      setIsDialogOpen(true);
-      reset();
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to_email: 'daniellaasiedu755@gmail.com',
+          from_email: data.email,
+          from_name: `${data.firstName} ${data.lastName}`,
+          message: data.message,
+          contact: 'N/A' // Not collected in this form
+        }),
+      });
+
+      if (response.ok) {
+        setIsDialogOpen(true);
+        reset();
+      } else {
+        const errorData = await response.json();
+        console.error('Error sending email:', errorData);
+        alert('Failed to send message. Please try again later.');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
+      alert('An error occurred. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -310,21 +328,23 @@ export default function ContactPage() {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <div className="flex flex-col items-center justify-center space-y-4 pt-4">
-              <div className="bg-green-100 p-3 rounded-full">
-                <CheckCircle2 className="h-8 w-8 text-green-600" />
+            <div className="mx-auto flex flex-col items-center justify-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                <CheckCircle2 className="h-10 w-10 text-green-600" />
               </div>
-              <DialogTitle className="text-2xl font-bold text-center">Message Sent!</DialogTitle>
-              <DialogDescription className="text-center text-gray-600">
-                Thank you for reaching out. I&apos;ll get back to you as soon as possible.
+              <DialogTitle className="text-center text-2xl font-semibold text-gray-900">
+                Message Sent Successfully!
+              </DialogTitle>
+              <DialogDescription className="text-center text-gray-600 mt-2">
+                Thank you for reaching out, {watch('firstName') || 'there'}! I'll get back to you at{' '}
+                <span className="font-medium text-gray-900">{watch('email') || 'your email'}</span> as soon as possible.
               </DialogDescription>
             </div>
           </DialogHeader>
           <div className="flex justify-center mt-6">
             <Button 
-              type="button"
               onClick={() => setIsDialogOpen(false)}
-              className="bg-black text-white hover:bg-gray-800 px-6 py-2 rounded-lg"
+              className="px-8 py-2 bg-[#B5A394] hover:bg-[#9c8e82] text-white font-medium rounded-lg transition-colors"
             >
               Close
             </Button>

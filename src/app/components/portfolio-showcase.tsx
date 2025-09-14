@@ -194,35 +194,61 @@ const photoCards = [
       setIsSubmitting(true);
       
       try {
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        setSubmitStatus({
-          success: true,
-          message: 'Your quote request has been sent! We\'ll get back to you soon.'
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            to_email: 'daniellaasiedu755@gmail.com',
+            from_email: formData.email,
+            from_name: formData.name,
+            contact: formData.phone,
+            message: `Project Type: ${formData.projectType}
+Timeline: ${formData.timeline}
+Budget: ${formData.budget}
+
+Project Details:
+${formData.message}`
+          }),
         });
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          projectType: 'website',
-          timeline: '1-2 weeks',
-          budget: '1000-5000',
-          message: ''
-        });
-        
-        // Close modal after delay
-        setTimeout(() => {
-          setIsQuoteModalOpen(false);
-          setSubmitStatus(null);
-        }, 3000);
-        
-      } catch {
+
+        if (response.ok) {
+          setSubmitStatus({
+            success: true,
+            message: 'Your quote request has been sent! We\'ll get back to you soon.'
+          });
+          
+          // Reset form
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            projectType: 'website',
+            timeline: '1-2 weeks',
+            budget: '1000-5000',
+            message: ''
+          });
+          
+          // Close modal after 3 seconds
+          setTimeout(() => {
+            setIsQuoteModalOpen(false);
+            setSubmitStatus(null);
+          }, 3000);
+        } else {
+          // Handle error response
+          const errorData = await response.json();
+          console.error('Error sending email:', errorData);
+          setSubmitStatus({
+            success: false,
+            message: 'Failed to send message. Please try again later.'
+          });
+        }
+      } catch (error) {
+        console.error('Error sending email:', error);
         setSubmitStatus({
           success: false,
-          message: 'Something went wrong. Please try again later.'
+          message: 'Failed to send message. Please try again later.'
         });
       } finally {
         setIsSubmitting(false);
