@@ -284,7 +284,7 @@ ${formData.message}`
       if (scrollContainer && scrollThumb) {
         let rafId: number | null = null;
         let lastScrollLeft = -1;
-        const handleScroll = () => {
+        const handleScroll = (_e?: Event) => {
           const maxScroll = Math.max(scrollContainer.scrollWidth - scrollContainer.clientWidth, 0);
           if (maxScroll === 0) {
             // No overflow; pin thumb to start and set full width
@@ -427,7 +427,7 @@ ${formData.message}`
         window.addEventListener('resize', updateThumbWidth);
         scrollContainer.addEventListener('scroll', handleScroll);
         // Update position continuously during touch move
-        scrollContainer.addEventListener('touchmove', handleScroll, { passive: true } as any);
+        scrollContainer.addEventListener('touchmove', handleScroll, { passive: true } as AddEventListenerOptions);
         scrollContainer.addEventListener('touchstart', handleUserScroll);
         scrollContainer.addEventListener('mousedown', handleUserScroll);
         
@@ -444,7 +444,7 @@ ${formData.message}`
           window.removeEventListener('resize', updateThumbWidth);
           scrollContainer.removeEventListener('scroll', handleScroll);
           scrollContainer.removeEventListener('touchstart', handleUserScroll);
-          scrollContainer.removeEventListener('touchmove', handleScroll as any);
+          scrollContainer.removeEventListener('touchmove', handleScroll);
           scrollContainer.removeEventListener('mousedown', handleUserScroll);
           stopAutoScroll();
           if (userScrollTimeout) window.clearTimeout(userScrollTimeout);
@@ -452,7 +452,7 @@ ${formData.message}`
           if (rafId) cancelAnimationFrame(rafId);
         };
       }
-    }, []);
+    }, [thumbX]);
 
     return (
       <>
