@@ -136,6 +136,17 @@ html {
   }
 }
 
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scrollbar-color: transparent transparent;  /* Firefox */
+}
+
 /* Custom scrollbar for mobile portfolio showcase */
 @media (max-width: 768px) {
   .scrollbar-container::-webkit-scrollbar {

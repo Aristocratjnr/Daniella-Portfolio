@@ -1,44 +1,58 @@
 "use client"
 
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function ProjectsSection() {
     const categories = ["Web Design", "Mobile App Design", "Wireframe", "Prototype", "Dashboard"]
     const containerRef = useRef<HTMLDivElement | null>(null)
+    const [scrollProgress, setScrollProgress] = useState(0)
     
+    // Handle scroll position tracking
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        const updateScrollProgress = () => {
+            const scrollWidth = container.scrollWidth - container.clientWidth;
+            const scrollPosition = container.scrollLeft;
+            const progress = (scrollPosition / scrollWidth) * 100;
+            setScrollProgress(progress || 0);
+        };
+
+        container.addEventListener('scroll', updateScrollProgress);
+        return () => container.removeEventListener('scroll', updateScrollProgress);
+    }, []);
+
     // Handle smooth infinite scroll
     useEffect(() => {
       const container = containerRef.current;
       if (!container) return;
 
-      const containerWidth = container.scrollWidth / 2; // Since we duplicate the content
+      const containerWidth = container.scrollWidth / 2;
       let animationFrameId: number;
       let startTime: number | null = null;
-      const duration = 15000; // 15 seconds for one full loop
-      const animationDirection = 1; // 1 for left, -1 for right
+      const duration = 15000;
+      const animationDirection = 1;
 
       const animate = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const elapsed = timestamp - startTime;
         const progress = (elapsed % duration) / duration;
         
-        // Calculate the new position
         const offset = progress * containerWidth * animationDirection;
         container.style.transform = `translateX(-${offset}px)`;
         
-        // Continue the animation
+        // Update scroll progress during animation
+        const scrollWidth = container.scrollWidth - container.clientWidth;
+        const scrollProgress = (offset / scrollWidth) * 100;
+        setScrollProgress(scrollProgress || 0);
+        
         animationFrameId = requestAnimationFrame(animate);
       };
 
-      // Start the animation
       animationFrameId = requestAnimationFrame(animate);
-
-      // Pause on hover
-      const handleMouseEnter = () => {
-        cancelAnimationFrame(animationFrameId);
-      };
-
+      const handleMouseEnter = () => cancelAnimationFrame(animationFrameId);
       const handleMouseLeave = () => {
         startTime = performance.now() - ((performance.now() - (startTime || 0)) % duration);
         animationFrameId = requestAnimationFrame(animate);
@@ -47,7 +61,6 @@ export default function ProjectsSection() {
       container.addEventListener('mouseenter', handleMouseEnter);
       container.addEventListener('mouseleave', handleMouseLeave);
 
-      // Cleanup
       return () => {
         cancelAnimationFrame(animationFrameId);
         container.removeEventListener('mouseenter', handleMouseEnter);
@@ -81,11 +94,14 @@ export default function ProjectsSection() {
             <div className="relative overflow-hidden">
               <div 
                 ref={containerRef}
-                className="flex w-max"
+                className="flex w-max scrollbar-hide"
                 style={{
                   whiteSpace: 'nowrap',
                   transition: 'transform 0.1s linear',
-                  willChange: 'transform'
+                  willChange: 'transform',
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  WebkitOverflowScrolling: 'touch'
                 }}
               >
                 {/* Duplicate the content for seamless looping */}
@@ -108,6 +124,17 @@ export default function ProjectsSection() {
                     </div>
                   </div>
                 ))}
+              </div>
+              
+              {/* Scroll Indicator */}
+              <div className="w-full h-1 bg-gray-200 bg-opacity-30 rounded-full mt-4 overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-amber-400 to-amber-600 rounded-full transition-all duration-300 ease-out"
+                  style={{ 
+                    width: `calc(100% / ${categories.length})`,
+                    transform: `translateX(${scrollProgress * (1 - 1/categories.length)}%)`
+                  }}
+                />
               </div>
             </div>
           </div>

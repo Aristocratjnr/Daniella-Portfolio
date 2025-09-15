@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useMotionValue, useSpring } from 'framer-motion';
 import { X, CheckCircle2, AlertCircle, Loader2, Send } from 'lucide-react';
 import Image from 'next/image';
 
@@ -146,6 +146,10 @@ const photoCards = [
     const modalRef = useRef<HTMLDivElement>(null);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const scrollThumbRef = useRef<HTMLDivElement>(null);
+    // Motion value for thumb translation to avoid transform conflicts with Framer
+    const thumbX = useMotionValue(0);
+    const springThumbX = useSpring(thumbX, { stiffness: 300, damping: 30 });
+    const [thumbWidthPct, setThumbWidthPct] = useState(30);
     const [formData, setFormData] = useState<FormData>({
       name: '',
       email: '',
@@ -278,18 +282,26 @@ ${formData.message}`
       const scrollThumb = scrollThumbRef.current;
       
       if (scrollContainer && scrollThumb) {
+        let rafId: number | null = null;
+        let lastScrollLeft = -1;
         const handleScroll = () => {
-          const scrollPercentage = (scrollContainer.scrollLeft / (scrollContainer.scrollWidth - scrollContainer.clientWidth)) * 100;
+          const maxScroll = Math.max(scrollContainer.scrollWidth - scrollContainer.clientWidth, 0);
+          if (maxScroll === 0) {
+            // No overflow; pin thumb to start and set full width
+            thumbX.set(0);
+            return;
+          }
+          const scrollPercentage = (scrollContainer.scrollLeft / maxScroll) * 100;
           const thumbPosition = Math.min(Math.max(scrollPercentage, 0), 100);
           
           // Calculate the maximum translation to keep the thumb within the track
           const trackElement = scrollThumb.closest('.scrollbar-track');
-          const trackWidth = trackElement ? trackElement.clientWidth : 0;
+          const trackWidth = trackElement && trackElement.clientWidth > 0 ? trackElement.clientWidth : scrollContainer.clientWidth;
           const thumbWidth = scrollThumb.clientWidth;
           const translation = (trackWidth - thumbWidth) * (thumbPosition / 100);
           
-          // Apply transform with a spring-like effect
-          scrollThumb.style.transform = `translateX(${translation}px) scaleX(${1 + (scrollPercentage > 0 && scrollPercentage < 100 ? 0.1 : 0)})`;
+          // Drive translation via motion value to avoid transform override
+          thumbX.set(translation);
           
           // Add a pulsing effect when scrolling
           scrollThumb.style.opacity = '1';
@@ -315,27 +327,30 @@ ${formData.message}`
             });
           }
         };
+
+        // rAF polling in case scroll events are throttled/missed during touch swipes
+        const tick = () => {
+          if (scrollContainer.scrollLeft !== lastScrollLeft) {
+            lastScrollLeft = scrollContainer.scrollLeft;
+            handleScroll();
+          }
+          rafId = window.requestAnimationFrame(tick);
+        };
         
         // Set initial thumb width based on viewport vs content ratio
         const updateThumbWidth = () => {
+          const maxScroll = Math.max(scrollContainer.scrollWidth - scrollContainer.clientWidth, 0);
+          if (maxScroll === 0) {
+            setThumbWidthPct(100);
+            thumbX.set(0);
+            return;
+          }
           const ratio = scrollContainer.clientWidth / scrollContainer.scrollWidth;
           const minWidth = 40; // Minimum width in pixels
           const trackElement = scrollThumb.closest('.scrollbar-track');
-          const trackWidth = trackElement ? trackElement.clientWidth : 100;
+          const trackWidth = trackElement && trackElement.clientWidth > 0 ? trackElement.clientWidth : scrollContainer.clientWidth;
           const calculatedWidth = Math.max(ratio * 100, (minWidth / trackWidth) * 100);
-          scrollThumb.style.width = `${calculatedWidth}%`;
-          
-          // Apply a wobble animation when width is updated
-          scrollThumb.animate([
-            { transform: 'scaleX(1.2)', easing: 'ease-out' },
-            { transform: 'scaleX(0.9)', easing: 'ease-in' },
-            { transform: 'scaleX(1.05)', easing: 'ease-out' },
-            { transform: 'scaleX(0.95)', easing: 'ease-in' },
-            { transform: 'scaleX(1)', easing: 'ease-out' }
-          ], {
-            duration: 600,
-            fill: 'forwards'
-          });
+          setThumbWidthPct(calculatedWidth);
         };
         
         // Auto-scroll animation for demonstration
@@ -411,6 +426,8 @@ ${formData.message}`
         updateThumbWidth();
         window.addEventListener('resize', updateThumbWidth);
         scrollContainer.addEventListener('scroll', handleScroll);
+        // Update position continuously during touch move
+        scrollContainer.addEventListener('touchmove', handleScroll, { passive: true } as any);
         scrollContainer.addEventListener('touchstart', handleUserScroll);
         scrollContainer.addEventListener('mousedown', handleUserScroll);
         
@@ -421,15 +438,18 @@ ${formData.message}`
         
         // Run once to initialize
         handleScroll();
+        rafId = window.requestAnimationFrame(tick);
         
         return () => {
           window.removeEventListener('resize', updateThumbWidth);
           scrollContainer.removeEventListener('scroll', handleScroll);
           scrollContainer.removeEventListener('touchstart', handleUserScroll);
+          scrollContainer.removeEventListener('touchmove', handleScroll as any);
           scrollContainer.removeEventListener('mousedown', handleUserScroll);
           stopAutoScroll();
           if (userScrollTimeout) window.clearTimeout(userScrollTimeout);
           window.clearTimeout(initialTimeout);
+          if (rafId) cancelAnimationFrame(rafId);
         };
       }
     }, []);
@@ -576,18 +596,11 @@ ${formData.message}`
             <div className="scrollbar-track relative mx-auto max-w-[180px] mt-6 mb-2 h-1.5 bg-gray-200 rounded-full overflow-hidden">
               <motion.div 
                 ref={scrollThumbRef}
-                className="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full shadow-md"
-                initial={{ scaleX: 0.3, opacity: 0.8 }}
-                animate={{
-                  scaleX: 0.3,
-                  opacity: [0.8, 1, 0.8],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: 'reverse',
-                  ease: 'easeInOut'
-                }}
+                className="scroll-thumb absolute left-0 top-0 h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full shadow-md"
+                style={{ x: springThumbX, width: `${thumbWidthPct}%` }}
+                initial={{ opacity: 0.9 }}
+                animate={{ opacity: [0.9, 1, 0.9] }}
+                transition={{ duration: 2, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
               />
             </div>
             <p className="text-xs text-center text-gray-500 mt-1">Swipe to explore more</p>
