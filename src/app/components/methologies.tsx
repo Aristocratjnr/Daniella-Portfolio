@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 type Method = {
   id: string;
@@ -62,67 +63,124 @@ const methods: Method[] = [
   },
 ];
 
-const TopCard: React.FC<{ item: Method }> = ({ item }) => (
-  <div className="flex flex-col h-full">
-    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md">
-      <div className="flex justify-between items-start mb-3">
-        <div className="bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm">
+const TopCard: React.FC<{ item: Method; index: number }> = ({ item, index }) => (
+  <motion.div 
+    className="flex flex-col h-full"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ 
+      duration: 0.6, 
+      delay: index * 0.1,
+      ease: [0.16, 1, 0.3, 1]
+    }}
+    whileHover={{ 
+      y: -5,
+      transition: { duration: 0.3 }
+    }}
+  >
+    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md transition-all duration-300 hover:shadow-lg">
+      <motion.div 
+        className="flex justify-between items-start mb-3"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 + (index * 0.1) }}
+      >
+        <motion.div 
+          className="bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm"
+          whileHover={{ scale: 1.05, rotate: 2 }}
+          transition={{ type: 'spring', stiffness: 300 }}
+        >
           <span className="text-5xl font-black text-black">{item.id}</span>
-        </div>
-        <div className="flex flex-col items-center">
+        </motion.div>
+        <motion.div 
+          className="flex flex-col items-center"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: 'spring', stiffness: 400 }}
+        >
           <Image src={item.icon} alt={`${item.title} icon`} width={32} height={32} className="object-contain w-8 h-8" />
           <span className="font-medium text-xs text-black mt-1">{item.title}</span>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       
-      <div className="h-[70px] overflow-y-auto pr-1">
+      <motion.div 
+        className="h-[70px] overflow-y-auto pr-1"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4 + (index * 0.1) }}
+      >
         <p className="text-sm text-gray-800 leading-tight">{item.description}</p>
-      </div>
+      </motion.div>
     </div>
-  </div>
+  </motion.div>
 );
 
-const BottomCard: React.FC<{ item: Method }> = ({ item }) => (
-  <div className="flex flex-col h-full">
-    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md">
-      <div className="h-[100px] overflow-y-auto pr-1">
+const BottomCard: React.FC<{ item: Method; index: number }> = ({ item, index }) => (
+  <motion.div 
+    className="flex flex-col h-full"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-50px" }}
+    transition={{ 
+      duration: 0.6, 
+      delay: index * 0.1,
+      ease: [0.16, 1, 0.3, 1]
+    }}
+    whileHover={{ 
+      y: -5,
+      transition: { duration: 0.3 }
+    }}
+  >
+    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md transition-all duration-300 hover:shadow-lg">
+      <motion.div 
+        className="h-[100px] overflow-y-auto pr-1"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 + (index * 0.1) }}
+      >
         <p className="text-sm text-gray-800 leading-tight">{item.description}</p>
-      </div>
+      </motion.div>
 
-      <div className="absolute bottom-3 left-4 flex flex-col items-center">
+      <motion.div 
+        className="absolute bottom-3 left-4 flex flex-col items-center"
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: 'spring', stiffness: 400 }}
+      >
         <Image src={item.icon} alt={`${item.title} icon`} width={32} height={32} className="object-contain w-8 h-8 mb-1" />
         <span className="font-medium text-xs text-black">{item.title}</span>
-      </div>
+      </motion.div>
 
-      <div className="absolute bottom-3 right-4 bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm">
+      <motion.div 
+        className="absolute bottom-3 right-4 bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm"
+        whileHover={{ scale: 1.05, rotate: -2 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
         <span className="text-5xl font-black text-black">{item.id}</span>
-      </div>
+      </motion.div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Methodologies: React.FC = () => {
-  const topItems = methods.filter((m) => m.position === 'top');
-  const bottomItems = methods.filter((m) => m.position === 'bottom');
-
   return (
     <section className="py-16 px-4 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium text-[#33241E] leading-tight">
-            Core Methodologies I Follow in Designing
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
-          {topItems.map((item) => (
-            <TopCard key={item.id} item={item} />
-          ))}
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">My Design Process</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">A structured approach to creating exceptional user experiences</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {bottomItems.map((item) => (
-            <BottomCard key={item.id} item={item} />
+          {methods.map((item, index) => (
+            <div key={item.id} className="h-full">
+              {item.position === 'top' ? 
+                <TopCard item={item} index={index} /> : 
+                <BottomCard item={item} index={index} />
+              }
+            </div>
           ))}
         </div>
       </div>
