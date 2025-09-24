@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "./AnimatedBackground";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
@@ -26,15 +26,27 @@ export default function HeroSection() {
   };
   return (
     <motion.div 
-      className="min-h-screen bg-[#A58D84] flex items-start sm:items-center justify-center px-2 pt-16 pb-8 sm:py-12 md:pt-16 lg:pt-20" 
+      className="min-h-screen bg-gradient-to-br from-[#A58D84] to-[#8a7269] flex items-start sm:items-center justify-center px-2 pt-16 pb-8 sm:py-12 md:pt-16 lg:pt-20 overflow-hidden" 
       style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 0.2, duration: 0.8 }}
+      transition={{ 
+        duration: 1,
+        ease: [0.16, 1, 0.3, 1]
+      }}
       onMouseMove={handleMouseMove}
     >
       {/* Animated Background */}
-    <div className="max-w-6xl w-full mx-auto px-2 sm:px-4 md:px-6 relative">
+      <motion.div 
+        className="max-w-6xl w-full mx-auto px-2 sm:px-4 md:px-6 relative"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ 
+          duration: 0.8,
+          delay: 0.2,
+          ease: [0.16, 1, 0.3, 1]
+        }}
+      >
         {/* Pronounced 3D shadow effect */}
         <div className="absolute -bottom-3 sm:-bottom-4 left-0 right-0 h-12 sm:h-16 z-0 overflow-visible pointer-events-none">
           <div className="absolute left-1/2 -translate-x-1/2 w-[98%] h-6 sm:h-8 bg-gradient-to-b from-[#6E4D42] to-transparent rounded-b-3xl opacity-60 transform -skew-y-6 scale-y-75 origin-bottom"></div>
@@ -81,23 +93,92 @@ export default function HeroSection() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
             >
-              <div>
-                <p className="text-[#6E4D42] text-sm xs:text-base sm:text-lg font-medium mb-1 sm:mb-2">Hi, I am Daniella Asiedu</p>
-                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-2 sm:mb-4 md:mb-6">
-                  UI/UX DESIGNER
-                </h1>
-                <div className="h-1 w-8 sm:w-12 md:w-16 bg-[#B5A394] mb-2 sm:mb-4 md:mb-6"></div>
+              <div className="overflow-hidden">
+                <motion.p 
+                  className="text-[#6E4D42] text-sm xs:text-base sm:text-lg font-medium mb-1 sm:mb-2"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.3, 
+                    duration: 0.8,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
+                  Hi, I am Daniella Asiedu
+                </motion.p>
+                <motion.h1 
+                  className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-2 sm:mb-4 md:mb-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.4, 
+                    duration: 0.9,
+                    ease: [0.22, 1, 0.36, 1],
+                    y: { type: 'spring', stiffness: 100, damping: 20 }
+                  }}
+                >
+                  <motion.span
+                    className="inline-block"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  >
+                    UI/UX DESIGNER
+                  </motion.span>
+                </motion.h1>
+                <motion.div 
+                  className="h-1 w-8 sm:w-12 md:w-16 bg-gradient-to-r from-[#B5A394] to-[#8a7269] mb-2 sm:mb-4 md:mb-6 rounded-full"
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{ 
+                    delay: 0.8, 
+                    duration: 0.8, 
+                    type: 'spring',
+                    stiffness: 200,
+                    damping: 20
+                  }}
+                />
               </div>
 
-              <div className="space-y-2 sm:space-y-3 md:space-y-4">
-                <p className="text-gray-600 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
+              <motion.div 
+                className="space-y-2 sm:space-y-3 md:space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                <motion.p 
+                  className="text-gray-700 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.7, 
+                    duration: 0.7,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  whileHover={{ 
+                    x: 5,
+                    transition: { duration: 0.3 }
+                  }}
+                >
                   I&apos;m a UI/UX Designer who solves complex problems to create products people love to use.
-                </p>
+                </motion.p>
                 
-                <p className="text-gray-600 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed">
+                <motion.p 
+                  className="text-gray-700 text-xs xs:text-sm sm:text-base md:text-lg leading-relaxed"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: 0.8, 
+                    duration: 0.7,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  whileHover={{ 
+                    x: 5,
+                    transition: { duration: 0.3 }
+                  }}
+                >
                   I blend a passion for human-centered design with strategic thinking to craft intuitive and effective digital experiences. Simplicity in UI/UX is what I always aim to achieve.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
                 {/* Stats Grid */}
               <div className="grid grid-cols-3 gap-1.5 xs:gap-2 sm:gap-3 md:gap-4 mt-3 sm:mt-4">
                 <div className="relative group">
@@ -141,24 +222,59 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <div className="pt-2 sm:pt-4 -mt-2 sm:mt-0">
+              <motion.div 
+                className="pt-2 sm:pt-4 -mt-2 sm:mt-0"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  delay: 1, 
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+              >
                 <Link href="/about" className="block w-full">
-                  <Button
-                    variant="default"
-                    className="w-full max-w-[280px] mx-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-8 py-4 text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl relative overflow-hidden"
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    whileHover={{ 
+                      scale: 1.03,
+                      transition: { 
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 10
+                      }
+                    }}
+                    whileTap={{ 
+                      scale: 0.98,
+                      transition: { 
+                        type: 'spring',
+                        stiffness: 400,
+                        damping: 20
+                      }
+                    }}
+                    transition={{ 
+                      delay: 1.1,
+                      duration: 0.6,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    About Me
-                    <Image 
-                      src="/images/hand.png" 
-                      alt="" 
-                      width={20}
-                      height={20}
-                      className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
-                    />
-                  </Button>
+                    <Button
+                      variant="default"
+                      className="w-full max-w-[280px] mx-auto backdrop-blur-lg bg-white/30 hover:bg-white/40 text-gray-900 rounded-full px-8 py-4 text-base font-medium transition-all duration-300 group border-2 border-white/40 hover:border-white/60 shadow-lg hover:shadow-xl relative overflow-hidden"
+                    >
+                      <span className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      About Me
+                      <Image 
+                        src="/images/hand.png" 
+                        alt="" 
+                        width={20}
+                        height={20}
+                        className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </Button>
+                  </motion.div>
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Right Content - Profile Image */}
@@ -251,9 +367,8 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
       <AnimatedBackground />
     </motion.div>
   )
 }
-
