@@ -6,23 +6,8 @@ import { useEffect, useRef, useState } from 'react';
 export default function ProjectsSection() {
     const categories = ["Web Design", "Mobile App Design", "Wireframe", "Prototype", "Dashboard"]
     const containerRef = useRef<HTMLDivElement | null>(null)
-    const [scrollProgress, setScrollProgress] = useState(0)
     
-    // Handle scroll position tracking
-    useEffect(() => {
-        const container = containerRef.current;
-        if (!container) return;
-
-        const updateScrollProgress = () => {
-            const scrollWidth = container.scrollWidth - container.clientWidth;
-            const scrollPosition = container.scrollLeft;
-            const progress = (scrollPosition / scrollWidth) * 100;
-            setScrollProgress(progress || 0);
-        };
-
-        container.addEventListener('scroll', updateScrollProgress);
-        return () => container.removeEventListener('scroll', updateScrollProgress);
-    }, []);
+    // Scroll position tracking removed as the scroll indicator UI has been removed
 
     // Handle smooth infinite scroll
     useEffect(() => {
@@ -42,11 +27,6 @@ export default function ProjectsSection() {
         
         const offset = progress * containerWidth * animationDirection;
         container.style.transform = `translateX(-${offset}px)`;
-        
-        // Update scroll progress during animation
-        const scrollWidth = container.scrollWidth - container.clientWidth;
-        const scrollProgress = (offset / scrollWidth) * 100;
-        setScrollProgress(scrollProgress || 0);
         
         animationFrameId = requestAnimationFrame(animate);
       };
