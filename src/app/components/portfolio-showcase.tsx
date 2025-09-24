@@ -284,7 +284,7 @@ ${formData.message}`
       if (scrollContainer && scrollThumb) {
         let rafId: number | null = null;
         let lastScrollLeft = -1;
-        const handleScroll = (_e?: Event) => {
+        const handleScroll = () => {
           const maxScroll = Math.max(scrollContainer.scrollWidth - scrollContainer.clientWidth, 0);
           if (maxScroll === 0) {
             // No overflow; pin thumb to start and set full width

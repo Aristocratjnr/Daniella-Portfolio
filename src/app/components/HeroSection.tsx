@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "./AnimatedBackground";
-import { motion, useMotionValue, useTransform, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import type React from "react";
