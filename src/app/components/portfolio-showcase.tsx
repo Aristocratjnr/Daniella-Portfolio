@@ -204,7 +204,7 @@ const photoCards = [
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            to_email: 'daniellaasiedu755@gmail.com',
+            to_email: 'davidayim01@gmail.com',
             from_email: formData.email,
             from_name: formData.name,
             contact: formData.phone,

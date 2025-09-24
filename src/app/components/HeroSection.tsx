@@ -2,17 +2,36 @@
 
 import { Button } from "@/components/ui/button";
 import AnimatedBackground from "./AnimatedBackground";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import type React from "react";
 
 export default function HeroSection() {
+  // Mouse-based parallax values
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const parallaxX = useTransform(mouseX, [-0.5, 0.5], [-18, 18]);
+  const parallaxY = useTransform(mouseY, [-0.5, 0.5], [-10, 10]);
+  const bgParallaxX = useTransform(mouseX, [-0.5, 0.5], [10, -10]);
+  const bgParallaxY = useTransform(mouseY, [-0.5, 0.5], [6, -6]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width; // 0..1
+    const y = (e.clientY - rect.top) / rect.height; // 0..1
+    mouseX.set(x - 0.5);
+    mouseY.set(y - 0.5);
+  };
   return (
     <motion.div 
-      className="min-h-screen bg-[#A58D84] flex items-start sm:items-center justify-center px-2 pt-16 pb-8 sm:py-12 md:pt-16 lg:pt-20"
+      className="min-h-screen bg-[#A58D84] flex items-start sm:items-center justify-center px-2 pt-16 pb-8 sm:py-12 md:pt-16 lg:pt-20" 
+      style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.2, duration: 0.8 }}
+      onMouseMove={handleMouseMove}
     >
       {/* Animated Background */}
     <div className="max-w-6xl w-full mx-auto px-2 sm:px-4 md:px-6 relative">
@@ -24,7 +43,10 @@ export default function HeroSection() {
         </div>
         <div className="bg-[#F0E6E0]/80 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 relative overflow-hidden shadow-lg z-10 mt-4 sm:mt-0">
           {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-[#6E4D42] rounded-full -mr-12 -mt-12 sm:-mr-16 sm:-mt-16 md:-mr-24 md:-mt-24 lg:-mr-32 lg:-mt-32 transition-all duration-300"></div>
+          <motion.div 
+            style={{ x: bgParallaxX, y: bgParallaxY }}
+            className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-[#6E4D42] rounded-full -mr-12 -mt-12 sm:-mr-16 sm:-mt-16 md:-mr-24 md:-mt-24 lg:-mr-32 lg:-mt-32 transition-all duration-300"
+          />
           <div 
             className="absolute bottom-0 left-0 bg-[#6E4D42] rounded-full -ml-16 -mb-16 sm:-ml-24 sm:-mb-24 md:-ml-36 md:-mb-36 lg:-ml-48 lg:-mb-48 flex-shrink-0 transition-all duration-300"
             style={{
@@ -52,7 +74,13 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 0.8 }}
           >
             {/* Left Content */}
-            <div className="space-y-3 sm:space-y-4 md:space-y-6">
+            <motion.div 
+              className="space-y-3 sm:space-y-4 md:space-y-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
               <div>
                 <p className="text-[#6E4D42] text-sm xs:text-base sm:text-lg font-medium mb-1 sm:mb-2">Hi, I am Daniella Asiedu</p>
                 <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight mb-2 sm:mb-4 md:mb-6">
@@ -131,7 +159,7 @@ export default function HeroSection() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Content - Profile Image */}
             <motion.div 
@@ -204,6 +232,7 @@ export default function HeroSection() {
                   className="relative z-10 flex-shrink-0 w-[280px] h-[373px] sm:w-[350px] sm:h-[467px] md:w-[400px] md:h-[534px] lg:w-[442px] lg:h-[590px] rounded-full overflow-hidden"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  style={{ x: parallaxX, y: parallaxY }}
                 >
                   <Image
                     src="/images/daniella.png"
@@ -227,3 +256,4 @@ export default function HeroSection() {
     </motion.div>
   )
 }
+
