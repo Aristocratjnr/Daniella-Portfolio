@@ -18,7 +18,10 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen">
+    <main 
+      className="min-h-screen"
+      style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
+    >
       {/* Navigation */}
       <Navbar />
       

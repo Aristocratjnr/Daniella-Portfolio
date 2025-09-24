@@ -126,16 +126,7 @@ export default function ProjectsSection() {
                 ))}
               </div>
               
-              {/* Scroll Indicator */}
-              <div className="w-full h-1 bg-gray-200 bg-opacity-30 rounded-full mt-4 overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-amber-400 to-amber-600 rounded-full transition-all duration-300 ease-out"
-                  style={{ 
-                    width: `calc(100% / ${categories.length})`,
-                    transform: `translateX(${scrollProgress * (1 - 1/categories.length)}%)`
-                  }}
-                />
-              </div>
+             
             </div>
           </div>
         </div>

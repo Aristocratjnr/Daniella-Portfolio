@@ -178,7 +178,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#A58D84] bg-opacity-95">
+    <div 
+      className="min-h-screen flex flex-col bg-[#A58D84] bg-opacity-95"
+      style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
+    >
       <Navbar />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12 sm:pb-16 flex-1">
         <div className="max-w-6xl mx-auto">

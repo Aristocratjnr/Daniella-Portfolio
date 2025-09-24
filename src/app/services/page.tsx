@@ -6,7 +6,10 @@ import MethodologiesSection from "../components/methologies"
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main 
+      className="min-h-screen flex flex-col"
+      style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
+    >
       <Navbar />
       <ProjectsSection />
       <SpecializationSection />
