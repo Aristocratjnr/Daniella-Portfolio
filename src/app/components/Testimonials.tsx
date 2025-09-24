@@ -87,7 +87,7 @@ export default function Testimonials() {
             <p className="text-gray-600 mb-4">Founder and CEO</p>
             
             <p className="text-center text-sm mb-4">
-              &ldquo;Daniella's design skills are exceptional. She created a beautiful and intuitive interface for our mobile app that our users love. Her attention to detail is remarkable.&ldquo;
+              &ldquo;Daniella&apos;s design skills are exceptional. She created a beautiful and intuitive interface for our mobile app that our users love. Her attention to detail is remarkable.&ldquo;
             </p>
             
             <div className="flex mt-auto">
@@ -231,7 +231,7 @@ export default function Testimonials() {
             <p className="text-gray-600 mb-4">Construction Manager</p>
             
             <p className="text-center text-sm mb-4">
-              &ldquo;Daniella's attention to detail and creative approach to problem-solving made our construction company's rebranding project a huge success. The new visual identity perfectly captures our values.&ldquo;
+              &ldquo;Daniella&apos;s attention to detail and creative approach to problem-solving made our construction company&apos;s rebranding project a huge success. The new visual identity perfectly captures our values.&ldquo;
             </p>
             
             <div className="flex mt-auto">

@@ -1,13 +1,11 @@
 "use client"
 
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function ProjectsSection() {
     const categories = ["Web Design", "Mobile App Design", "Wireframe", "Prototype", "Dashboard"]
     const containerRef = useRef<HTMLDivElement | null>(null)
-    
-    // Scroll position tracking removed as the scroll indicator UI has been removed
 
     // Handle smooth infinite scroll
     useEffect(() => {
