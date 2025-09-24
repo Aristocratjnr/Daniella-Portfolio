@@ -78,25 +78,84 @@ const SkillsSection = () => {
             </h2>
             {/* Animated Illustration */}
             <motion.div 
-              className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:ml-16 xl:ml-24"
-              animate={{
-                y: [0, -10, 0],
+              className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:ml-16 xl:ml-24 group"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ 
+                opacity: 1, 
+                x: 0,
+                transition: { 
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1]
+                }
               }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
+              viewport={{ once: true, margin: "-100px" }}
             >
-              <div className="relative w-full h-[400px]">
+              <motion.div 
+                className="relative w-full h-[400px]"
+                animate={{
+                  y: [0, -15, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  repeatType: "reverse"
+                }}
+              >
                 <Image
                   src="/images/woman.png"
                   alt="Woman with laptop"
                   fill
-                  className="object-contain"
+                  className="object-contain transition-transform duration-700 group-hover:scale-105"
                   priority
+                  style={{ willChange: 'transform' }}
                 />
-              </div>
+                {/* Subtle floating elements - using consistent values to prevent hydration mismatch */}
+                {[
+                  { id: 1, width: 32, height: 32, top: 20, left: 20, y: 10, x: 5 },
+                  { id: 2, width: 40, height: 40, top: 50, left: 60, y: -15, x: -8 },
+                  { id: 3, width: 28, height: 28, top: 70, left: 30, y: 5, x: 10 }
+                ].map((item) => (
+                  <motion.div
+                    key={item.id}
+                    className="absolute rounded-full bg-[#C1B1AB]/40"
+                    style={{
+                      width: `${item.width}px`,
+                      height: `${item.height}px`,
+                      top: `${item.top}%`,
+                      left: `${item.left}%`,
+                    }}
+                    animate={{
+                      y: [0, item.y, 0],
+                      x: [0, item.x, 0],
+                      opacity: [0.3, 0.6, 0.3],
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 5 + item.id,
+                      repeat: Infinity,
+                      repeatType: 'reverse',
+                      ease: 'easeInOut',
+                      delay: item.id * 0.5
+                    }}
+                  />
+                ))}
+              </motion.div>
+              {/* Subtle glow effect */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-[#C1B1AB]/20 to-transparent rounded-full blur-xl -z-10"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ 
+                  opacity: [0, 0.5, 0],
+                  scale: [0.8, 1.2, 1],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  ease: 'easeInOut'
+                }}
+              />
             </motion.div>
           </div>
 
@@ -138,28 +197,38 @@ const SkillsSection = () => {
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
                       }}
                     >
-                      {/* Inner glow effect */}
-                      <div 
-                        className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
-                        style={{
-                          background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 70%)',
-                          zIndex: 0,
-                        }}
-                      />
-                      {/* Glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/20 to-white/0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                      {/* 3D depth effect - reduced brightness */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-white/10 opacity-0 group-hover/card:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                    
+                    {/* Hover highlight - reduced intensity */}
+                    <div 
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-70 transition-opacity duration-400 pointer-events-none"
+                      style={{
+                        background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 80%)',
+                      }}
+                    />
+                    
+                    {/* Edge highlight - more subtle */}
+                    <div className="absolute inset-0 rounded-2xl border border-white/20 opacity-0 group-hover/card:opacity-70 transition-opacity duration-400 pointer-events-none" />
                     {/* Top accent bar */}
                     <div 
                       className="absolute top-0 left-0 right-0 h-3"
                       style={{
-                        background: 'linear-gradient(90deg, rgba(0,0,0,0.05), transparent)'
+                        background: 'linear-gradient(90deg, rgba(0,0,0,0.03), transparent)'
                       }}
                     />
-                    <div className="mt-1 flex-1 flex flex-col h-full">
+                    <div className="relative z-10 mt-1 flex-1 flex flex-col h-full">
                       <div className="flex items-start justify-between mb-3 sm:mb-4">
-                        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center bg-white shadow-sm p-2" 
+                        <motion.div 
+                          className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center bg-white p-2"
                           style={{
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                            boxShadow: '0 2px 6px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04)',
+                            transform: 'translateZ(0)'
+                          }}
+                          whileHover={{
+                            scale: 1.05,
+                            boxShadow: '0 3px 8px rgba(0,0,0,0.08)',
+                            transition: { duration: 0.2 }
                           }}
                         >
                           <Image 
@@ -170,7 +239,7 @@ const SkillsSection = () => {
                             className="w-5 h-5 sm:w-6 sm:h-6 object-contain"
                             priority
                           />
-                        </div>
+                        </motion.div>
                       </div>
 
                       <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3 tracking-wide uppercase font-sans">
