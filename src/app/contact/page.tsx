@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { motion } from 'framer-motion';
 import * as z from 'zod';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -177,145 +178,349 @@ export default function ContactPage() {
     }
   };
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+        ease: [0.16, 1, 0.3, 1] as any
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1] as any
+      }
+    }
+  };
+
   return (
-    <div 
+    <motion.div 
       className="min-h-screen flex flex-col bg-[#A58D84] bg-opacity-95"
       style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <Navbar />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-12 sm:pb-16 flex-1">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 min-h-[calc(100vh-12rem)]">
+          <motion.div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 min-h-[calc(100vh-12rem)]"
+            initial="hidden"
+            animate="visible"
+            variants={container}
+          >
             {/* Contact Info Section */}
-            <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-6 sm:space-y-8 bg-white/5 backdrop-blur-sm rounded-2xl lg:rounded-r-none">
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Contact Me</h1>
-                <p className="text-white text-base sm:text-lg font-medium">Let&apos;s connect and build something great together!</p>
-                <p className="text-white text-sm sm:text-base font-medium">I would love to hear from YOU</p>
-              </div>
+            <motion.div 
+              className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-6 sm:space-y-8 bg-white/5 backdrop-blur-sm rounded-2xl lg:rounded-r-none"
+              variants={item}
+              whileHover={{ 
+                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                transition: { duration: 0.3 }
+              }}
+            >
+              <motion.div className="space-y-4" variants={item}>
+                <motion.h1 
+                  className="text-3xl sm:text-4xl md:text-5xl font-bold text-white"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                >
+                  Contact Me
+                </motion.h1>
+                <motion.p 
+                  className="text-white text-base sm:text-lg font-medium"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                  Let&apos;s connect and build something great together!
+                </motion.p>
+                <motion.p 
+                  className="text-white text-sm sm:text-base font-medium"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                >
+                  I would love to hear from YOU
+                </motion.p>
+              </motion.div>
 
-              <div className="space-y-6 sm:space-y-8">
-                <div className="p-4 sm:p-5 bg-white/10 rounded-xl backdrop-blur-sm">
+              <motion.div className="space-y-6 sm:space-y-8" variants={container}>
+                <motion.div 
+                  className="p-4 sm:p-5 bg-white/10 rounded-xl backdrop-blur-sm group"
+                  variants={item}
+                  whileHover={{ 
+                    y: -5,
+                    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                    transition: { duration: 0.2 }
+                  }}
+                >
                   <h3 className="text-white text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Email</h3>
                   <p className="text-white/80 text-xs sm:text-sm mb-1">Connect with me via:</p>
-                  <a href="mailto:daniellaasiedu755@gmail.com" className="text-white font-medium hover:underline text-sm sm:text-base">daniellaasiedu755@gmail.com</a>
-                </div>
+                  <a 
+                    href="mailto:daniellaasiedu755@gmail.com" 
+                    className="text-white font-medium hover:underline text-sm sm:text-base relative inline-block"
+                  >
+                    <span className="relative z-10">daniellaasiedu755@gmail.com</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
+                  </a>
+                </motion.div>
 
-                <div className="p-4 sm:p-5 bg-white/10 rounded-xl backdrop-blur-sm">
+                <motion.div 
+                  className="p-4 sm:p-5 bg-white/10 rounded-xl backdrop-blur-sm group"
+                  variants={item}
+                  whileHover={{ 
+                    y: -5,
+                    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                    transition: { duration: 0.2 }
+                  }}
+                >
                   <h3 className="text-white text-lg sm:text-xl font-semibold mb-2 sm:mb-3">Phone</h3>
                   <p className="text-white/80 text-xs sm:text-sm mb-1">Get in Touch with me via:</p>
-                  <a href="tel:0203430787" className="text-white font-medium hover:underline text-sm sm:text-base">020 343 0787</a>
-                </div>
-              </div>
-            </div>
+                  <a 
+                    href="tel:0203430787" 
+                    className="text-white font-medium hover:underline text-sm sm:text-base relative inline-block"
+                  >
+                    <span className="relative z-10">020 343 0787</span>
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
+                  </a>
+                </motion.div>
+              </motion.div>
+            </motion.div>
 
             {/* Contact Form Section */}
-            <div className="bg-[#F2EEED] rounded-2xl lg:rounded-l-none p-6 sm:p-8 lg:p-10 shadow-xl">
+            <motion.div 
+              className="bg-[#F2EEED] rounded-2xl lg:rounded-l-none p-6 sm:p-8 lg:p-10 shadow-xl"
+              variants={item}
+              whileHover={{ 
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+                transition: { duration: 0.3 }
+              }}
+            >
               <div className="h-full flex flex-col">
-                <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-6 sm:mb-8">Write me a message</h2>
+                <motion.h2 
+                  className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-6 sm:mb-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                  Write me a message
+                </motion.h2>
                 
-                <form onSubmit={handleSubmit(onSubmit)} className="flex-1 flex flex-col">
-                  <div className="space-y-5 sm:space-y-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-                      <div className="space-y-1.5">
+                <motion.form 
+                  onSubmit={handleSubmit(onSubmit)} 
+                  className="flex-1 flex flex-col"
+                  variants={container}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <motion.div className="space-y-5 sm:space-y-6" variants={container}>
+                    <motion.div 
+                      className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5"
+                      variants={container}
+                    >
+                      <motion.div 
+                        className="space-y-1.5"
+                        variants={item}
+                      >
                         <label className="text-gray-700 text-sm font-medium">First name <span className="text-red-500">*</span></label>
-                        <Input
-                          type="text"
-                          className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.firstName ? 'border-red-500' : ''}`}
-                          disabled={isSubmitting}
-                          {...register('firstName')}
-                        />
+                        <motion.div whileHover={{ scale: 1.01 }}>
+                          <Input
+                            type="text"
+                            className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.firstName ? 'border-red-500' : ''}`}
+                            disabled={isSubmitting}
+                            {...register('firstName')}
+                          />
+                        </motion.div>
                         {errors.firstName && (
-                          <p className="text-red-500 text-xs mt-1">{errors.firstName.message}</p>
+                          <motion.p 
+                            className="text-red-500 text-xs mt-1"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {errors.firstName.message}
+                          </motion.p>
                         )}
-                      </div>
-                      <div className="space-y-1.5">
+                      </motion.div>
+                      <motion.div 
+                        className="space-y-1.5"
+                        variants={item}
+                      >
                         <label className="text-gray-700 text-sm font-medium">Last name <span className="text-red-500">*</span></label>
-                        <Input
-                          type="text"
-                          className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.lastName ? 'border-red-500' : ''}`}
-                          disabled={isSubmitting}
-                          {...register('lastName')}
-                        />
+                        <motion.div whileHover={{ scale: 1.01 }}>
+                          <Input
+                            type="text"
+                            className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.lastName ? 'border-red-500' : ''}`}
+                            disabled={isSubmitting}
+                            {...register('lastName')}
+                          />
+                        </motion.div>
                         {errors.lastName && (
-                          <p className="text-red-500 text-xs mt-1">{errors.lastName.message}</p>
+                          <motion.p 
+                            className="text-red-500 text-xs mt-1"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {errors.lastName.message}
+                          </motion.p>
                         )}
-                      </div>
-                    </div>
+                      </motion.div>
+                    </motion.div>
 
-                    <div className="space-y-1.5">
+                    <motion.div 
+                      className="space-y-1.5"
+                      variants={item}
+                    >
                       <label className="text-gray-700 text-sm font-medium">Email Address <span className="text-red-500">*</span></label>
-                      <Input
-                        type="email"
-                        className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.email ? 'border-red-500' : ''}`}
-                        disabled={isSubmitting}
-                        {...register('email')}
-                      />
+                      <motion.div whileHover={{ scale: 1.01 }}>
+                        <Input
+                          type="email"
+                          className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.email ? 'border-red-500' : ''}`}
+                          disabled={isSubmitting}
+                          {...register('email')}
+                        />
+                      </motion.div>
                       {errors.email && (
-                        <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+                        <motion.p 
+                          className="text-red-500 text-xs mt-1"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {errors.email.message}
+                        </motion.p>
                       )}
-                    </div>
+                    </motion.div>
 
-                    <div className="space-y-1.5">
+                    <motion.div 
+                      className="space-y-1.5"
+                      variants={item}
+                    >
                       <label className="text-gray-700 text-sm font-medium">Message <span className="text-red-500">*</span></label>
-                      <Textarea
-                        rows={4}
-                        className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 resize-none transition-all ${errors.message ? 'border-red-500' : ''}`}
-                        disabled={isSubmitting}
-                        {...register('message')}
-                      />
+                      <motion.div whileHover={{ scale: 1.01 }}>
+                        <Textarea
+                          rows={4}
+                          className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 resize-none transition-all ${errors.message ? 'border-red-500' : ''}`}
+                          disabled={isSubmitting}
+                          {...register('message')}
+                        />
+                      </motion.div>
                       {errors.message && (
-                        <p className="text-red-500 text-xs mt-1">{errors.message.message}</p>
+                        <motion.p 
+                          className="text-red-500 text-xs mt-1"
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {errors.message.message}
+                        </motion.p>
                       )}
-                    </div>
+                    </motion.div>
 
-                    <div className="flex items-center space-x-2 pt-1">
-                      <Checkbox 
-                        id="privacy"
-                        className={`h-5 w-5 rounded-md border-gray-300 data-[state=checked]:bg-black ${errors.privacy ? 'border-red-500' : ''}`}
-                        disabled={isSubmitting}
-                        checked={watch('privacy')}
-                        onCheckedChange={(checked) => setValue('privacy', checked === true)}
-                      />
+                    <motion.div 
+                      className="flex items-center space-x-2 pt-1"
+                      variants={item}
+                    >
+                      <motion.div whileHover={{ scale: 1.05 }}>
+                        <Checkbox 
+                          id="privacy"
+                          className={`h-5 w-5 rounded-md border-gray-300 data-[state=checked]:bg-black ${errors.privacy ? 'border-red-500' : ''}`}
+                          disabled={isSubmitting}
+                          checked={watch('privacy')}
+                          onCheckedChange={(checked) => setValue('privacy', checked === true)}
+                        />
+                      </motion.div>
                       <label htmlFor="privacy" className="text-gray-700 text-sm">
                         I agree to the{' '}
-                        <button 
+                        <motion.button 
                           type="button" 
                           onClick={(e) => {
                             e.preventDefault();
                             setIsPrivacyModalOpen(true);
                           }} 
-                          className="text-black font-medium hover:underline focus:outline-none"
+                          className="text-black font-medium hover:underline focus:outline-none relative group"
+                          whileHover={{ color: '#563C33' }}
                         >
-                          Privacy & Policy
-                        </button>
+                          <span className="relative z-10">Privacy & Policy</span>
+                          <span className="absolute bottom-0 left-0 w-0 h-px bg-[#563C33] group-hover:w-full transition-all duration-300"></span>
+                        </motion.button>
                       </label>
-                    </div>
+                    </motion.div>
                     {errors.privacy && (
-                      <p className="text-red-500 text-xs mt-1">{errors.privacy.message}</p>
+                      <motion.p 
+                        className="text-red-500 text-xs mt-1"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {errors.privacy.message}
+                      </motion.p>
                     )}
-                  </div>
+                  </motion.div>
 
-                  <div className="mt-8 sm:mt-auto pt-4">
-                    <Button
-                      type="submit"
-                      className="w-full bg-[#33241E] hover:bg-gray-900 text-white rounded-xl px-6 py-3.5 sm:py-4 text-base sm:text-lg font-medium transition-all duration-200 transform hover:scale-[1.02] active:scale-100 disabled:opacity-70 disabled:cursor-not-allowed"
-                      disabled={isSubmitting}
+                  <motion.div 
+                    className="mt-8 sm:mt-auto pt-4"
+                    variants={item}
+                  >
+                    <motion.div
+                      whileHover={{ 
+                        scale: 1.02,
+                        transition: { duration: 0.2 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      {isSubmitting ? (
-                        <>
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          Sending...
-                        </>
-                      ) : (
-                        'Send'
-                      )}
-                    </Button>
-                  </div>
-                </form>
+                      <Button
+                        type="submit"
+                        className="w-full bg-[#33241E] hover:bg-gray-900 text-white rounded-xl px-6 py-3.5 sm:py-4 text-base sm:text-lg font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
+                        disabled={isSubmitting}
+                      >
+                        <span className="relative z-10 flex items-center justify-center">
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <span>Send Message</span>
+                              <svg 
+                                className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-200" 
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24" 
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path 
+                                  strokeLinecap="round" 
+                                  strokeLinejoin="round" 
+                                  strokeWidth={2} 
+                                  d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                                />
+                              </svg>
+                            </>
+                          )}
+                        </span>
+                        <span className="absolute inset-0 bg-[#563C33] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                      </Button>
+                    </motion.div>
+                  </motion.div>
+                </motion.form>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
       <PortfolioShowcase />
@@ -331,29 +536,55 @@ export default function ContactPage() {
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <div className="mx-auto flex flex-col items-center justify-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <CheckCircle2 className="h-10 w-10 text-green-600" />
-              </div>
-              <DialogTitle className="text-center text-2xl font-semibold text-gray-900">
-                Message Sent Successfully!
-              </DialogTitle>
-              <DialogDescription className="text-center text-gray-600 mt-2">
-                Thank you for reaching out, {watch('firstName') || 'there'}! I&apos;ll get back to you at{' '}
-                <span className="font-medium text-gray-900">{watch('email') || 'your email'}</span> as soon as possible.
-              </DialogDescription>
-            </div>
-          </DialogHeader>
-          <div className="flex justify-center mt-6">
-            <Button 
-              onClick={() => setIsDialogOpen(false)}
-              className="px-8 py-2 bg-[#B5A394] hover:bg-[#9c8e82] text-white font-medium rounded-lg transition-colors"
+            <motion.div 
+              className="mx-auto flex flex-col items-center justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              Close
-            </Button>
-          </div>
+              <motion.div 
+                className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.1, duration: 0.4, type: 'spring', stiffness: 200 }}
+              >
+                <CheckCircle2 className="h-10 w-10 text-green-600" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.3 }}
+              >
+                <DialogTitle className="text-center text-2xl font-semibold text-gray-900">
+                  Message Sent Successfully!
+                </DialogTitle>
+                <DialogDescription className="text-center text-gray-600 mt-2">
+                  Thank you for reaching out, {watch('firstName') || 'there'}! I&apos;ll get back to you at{' '}
+                  <span className="font-medium text-gray-900">{watch('email') || 'your email'}</span> as soon as possible.
+                </DialogDescription>
+              </motion.div>
+            </motion.div>
+          </DialogHeader>
+          <motion.div 
+            className="flex justify-center mt-6"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.3 }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Button 
+                onClick={() => setIsDialogOpen(false)}
+                className="px-8 py-2 bg-[#B5A394] hover:bg-[#9c8e82] text-white font-medium rounded-lg transition-colors"
+              >
+                Close
+              </Button>
+            </motion.div>
+          </motion.div>
         </DialogContent>
       </Dialog>
-    </div>
+    </motion.div>
   )
 }

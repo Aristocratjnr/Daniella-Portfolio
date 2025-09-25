@@ -497,10 +497,28 @@ export function Footer() {
         </div>
 
         {/* Navigation */}
-        <nav className="bg-white/90 rounded-3xl p-4 backdrop-blur-sm border border-black">
+        <motion.nav 
+          className="bg-white/90 rounded-3xl p-4 backdrop-blur-sm border border-black"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
+        >
           <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
-            {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((item) => (
-              <li key={item}>
+            {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((item, index) => (
+              <motion.li 
+                key={item}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  duration: 0.3, 
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
+                whileHover={{ scale: 1.05 }}
+                className="relative group"
+              >
                 <Link 
                   href={
                     item === 'HOME' ? '/' :
@@ -509,14 +527,27 @@ export function Footer() {
                     item === 'CONTACT ME' ? '/contact' :
                     `#${item.toLowerCase().replace(' ', '-')}`
                   }
-                  className="text-sm sm:text-base font-medium text-gray-800 hover:text-gray-600 transition-colors whitespace-nowrap"
+                  className="relative text-sm sm:text-base font-medium text-gray-800 hover:text-[#563C33] transition-colors whitespace-nowrap px-2 py-1"
                 >
-                  {item}
+                  <motion.span
+                    className="relative z-10"
+                    whileHover={{ 
+                      color: '#563C33',
+                      transition: { duration: 0.2 }
+                    }}
+                  >
+                    {item}
+                  </motion.span>
+                  <motion.span 
+                    className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#563C33] group-hover:w-full transition-all duration-300"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: '100%' }}
+                  />
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </nav>
+        </motion.nav>
 
         {/* Copyright */}
         <div className="bg-[#C1B1AB] rounded-3xl p-6 backdrop-blur-sm border border-black">

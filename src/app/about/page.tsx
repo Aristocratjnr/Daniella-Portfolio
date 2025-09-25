@@ -3,7 +3,8 @@
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import Image from 'next/image';
-import { motion, Variants, useMotionValue, useTransform } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, Variants, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { ReasonsSection } from '../components/reasons-section';
 import { SkillsTools } from '../components/skillsTools';
 import Testimonials from '../components/Testimonials';
@@ -43,6 +44,93 @@ export default function AboutPage() {
     }
   };
 
+  // Smooth sliding text animation variants with fixed dimensions
+  const textVariants: Variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 50 : -50,
+      opacity: 0,
+      position: 'absolute' as const,
+      width: '100%',
+      display: 'inline-block'
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      position: 'relative' as const,
+      width: '100%',
+      display: 'inline-block',
+      transition: {
+        x: { 
+          type: 'tween',
+          ease: [0.25, 0.1, 0.25, 1],
+          duration: 0.6
+        },
+        opacity: { 
+          duration: 0.4,
+          ease: [0.25, 0.1, 0.25, 1]
+        }
+      }
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -30 : 30,
+      opacity: 0,
+      position: 'absolute' as const,
+      width: '100%',
+      display: 'inline-block',
+      transition: {
+        x: { 
+          type: 'tween',
+          ease: [0.25, 0.1, 0.25, 1],
+          duration: 0.4
+        },
+        opacity: { 
+          duration: 0.3,
+          ease: [0.25, 0.1, 0.25, 1]
+        }
+      }
+    })
+  };
+
+  // Text to cycle through
+  const roles = [
+    'I\'m Daniella',  // First item is the initial state
+    'a UI/UX Designer',
+    'a Strategist',
+    'a Communicator',
+    'a Problem Solver',
+    'a Creative Thinker'
+  ];
+  
+  const [roleIndex, setRoleIndex] = useState(0); // Start with first role (I'm Daniella)
+  const [direction, setDirection] = useState(1);
+  const [showInitial, setShowInitial] = useState(true);
+
+  // Auto-rotate text with better timing
+  useEffect(() => {
+    // Start with "I'm Daniella" for 2.5 seconds
+    const initialTimer = setTimeout(() => {
+      setShowInitial(false);
+      setDirection(1);
+      setRoleIndex(1); // Move to first role after initial delay
+    }, 2500);
+
+    // Then rotate through roles every 4 seconds
+    const rotationTimer = setInterval(() => {
+      if (showInitial) return; // Don't rotate until initial delay is done
+      setDirection(prev => -prev); // Alternate direction
+      setRoleIndex((prev: number) => {
+        // Skip the first item (I'm Daniella) in the rotation
+        const nextIndex = (prev + 1) % roles.length;
+        return nextIndex === 0 ? 1 : nextIndex;
+      });
+    }, 4000);
+    
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(rotationTimer);
+    };
+  }, [roles.length, showInitial]);
+
   return (
     <motion.div 
       className="min-h-screen bg-[#A58D84] overflow-x-hidden"
@@ -71,15 +159,29 @@ export default function AboutPage() {
               transition={{ type: 'spring', stiffness: 100, damping: 30 }}
             >
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-                  <span className="inline-block">
-                    Hello,
-                  </span>
-                  <br />
-                  <span className="text-black text-5xl md:text-6xl lg:text-7xl font-extrabold drop-shadow-[0_0_8px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-500">
-                    I&apos;m Daniella!
-                  </span>
-                </h1>
+                <div className="space-y-2">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
+                    <span className="inline-block">
+                      Hello,
+                    </span>
+                    <br />
+                    <div className="relative inline-block min-w-[250px] h-[1.2em] overflow-hidden">
+                      <AnimatePresence mode="wait" custom={direction}>
+                        <motion.span 
+                          key={roleIndex}
+                          className="absolute left-0 top-0 text-black text-4xl md:text-5xl lg:text-6xl font-extrabold drop-shadow-[0_0_8px_rgba(0,0,0,0.15)] hover:drop-shadow-[0_0_20px_rgba(0,0,0,0.3)]"
+                          custom={direction}
+                          variants={textVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                        >
+                          {roles[roleIndex]}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                  </h1>
+                </div>
                 
                 <div className="space-y-4 text-white text-base md:text-lg leading-relaxed">
                   <p>
