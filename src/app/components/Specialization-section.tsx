@@ -10,7 +10,7 @@ const container: Variants = {
     transition: {
       staggerChildren: 0.15,
       delayChildren: 0.2,
-      ease: [0.16, 1, 0.3, 1] as any
+      ease: [0.16, 1, 0.3, 1] as const
     }
   }
 };
@@ -22,14 +22,14 @@ const item: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.16, 1, 0.3, 1] as any
+      ease: [0.16, 1, 0.3, 1] as const
     }
   },
   hover: {
     y: -5,
     transition: {
       duration: 0.3,
-      ease: [0.4, 0, 0.2, 1] as any
+      ease: [0.4, 0, 0.2, 1] as const
     }
   }
 };
@@ -41,7 +41,7 @@ const fadeInUp: Variants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.16, 1, 0.3, 1] as any
+      ease: [0.16, 1, 0.3, 1] as const
     }
   }
 };
@@ -159,7 +159,7 @@ const projects = [
   
   export default function SpecializationSection() {
     return (
-      <section className="py-16 px-4 bg-white">
+      <section className="py-16 px-4 bg-white dark:bg-gray-900">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div 
@@ -169,8 +169,8 @@ const projects = [
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeInUp}
           >
-            <h2 className="text-4xl font-bold text-black mb-4">My Specialization</h2>
-            <p className="text-xl text-[#33241E]">Projects I Designed Including Collaborations</p>
+            <h2 className="text-4xl font-bold text-black dark:text-gray-100 mb-4">My Specialization</h2>
+            <p className="text-xl text-[#33241E] dark:text-[#C1B1AB]">Projects I Designed Including Collaborations</p>
           </motion.div>
   
           {/* Projects Grid */}
@@ -184,7 +184,7 @@ const projects = [
             {projects.map((project) => (
               <motion.div
                 key={project.id}
-                className={`bg-[#F2EEED] rounded-xl p-6 relative before:absolute before:-left-0.5 before:top-0 before:w-2 before:h-16 before:bg-[#563C33] before:rounded-l-full overflow-hidden group`}
+                className={`bg-[#F2EEED] dark:bg-gray-800 rounded-xl p-6 relative before:absolute before:-left-0.5 before:top-0 before:w-2 before:h-16 before:bg-[#563C33] dark:before:bg-[#876D60] before:rounded-l-full overflow-hidden group`}
                 variants={item}
                 whileHover={{ 
                   y: -8,
@@ -196,7 +196,7 @@ const projects = [
                 }}
               >
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-[#563C33]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-[#563C33]/5 dark:from-[#876D60]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                 />
@@ -215,9 +215,9 @@ const projects = [
                   />
                 </motion.div>
   
-                <h3 className="text-lg font-medium text-black mb-3 tracking-wide">{project.title}</h3>
+                <h3 className="text-lg font-medium text-black dark:text-gray-100 mb-3 tracking-wide">{project.title}</h3>
   
-                <p className="text-black text-sm leading-relaxed mb-3">{project.description}</p>
+                <p className="text-black dark:text-gray-300 text-sm leading-relaxed mb-3">{project.description}</p>
                 
                 {project.links && project.links.length > 0 && (
                   <div className="mt-auto space-y-2">
@@ -227,7 +227,7 @@ const projects = [
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block w-full text-center text-xs sm:text-sm px-3 py-2 bg-[#563C33]/90 backdrop-blur-sm text-[#F2EEED] hover:bg-[#33241E] border border-white/10 rounded-lg font-medium shadow-lg hover:shadow-xl hover:shadow-[#563C33]/20 relative overflow-hidden group"
+                        className="block w-full text-center text-xs sm:text-sm px-3 py-2 bg-[#563C33]/90 dark:bg-[#876D60]/90 backdrop-blur-sm text-[#F2EEED] hover:bg-[#33241E] dark:hover:bg-[#563C33] border border-white/10 dark:border-gray-700/30 rounded-lg font-medium shadow-lg hover:shadow-xl hover:shadow-[#563C33]/20 dark:hover:shadow-[#876D60]/30 relative overflow-hidden group"
                         whileHover={{ 
                           scale: 1.02,
                           transition: { duration: 0.2 }
@@ -235,7 +235,7 @@ const projects = [
                       >
                         <span className="relative z-10">{link.label}</span>
                         <motion.span 
-                          className="absolute inset-0 bg-[#33241E] origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"
+                          className="absolute inset-0 bg-[#33241E] dark:bg-[#563C33] origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out"
                           initial={{ scaleX: 0 }}
                         />
                       </motion.a>

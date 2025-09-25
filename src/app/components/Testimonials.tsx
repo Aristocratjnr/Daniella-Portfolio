@@ -37,9 +37,9 @@ const item: Variants = {
 
 export default function Testimonials() {
   return (
-    <div className="w-full bg-white py-12">
+    <div className="w-full bg-white dark:bg-gray-900 py-12">
       <motion.h1 
-        className="text-3xl md:text-5xl font-bold text-center text-[#6E4D42] mb-16 md:mb-20 px-4"
+        className="text-3xl md:text-5xl font-bold text-center text-[#6E4D42] dark:text-[#A58D84] mb-16 md:mb-20 px-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -57,8 +57,8 @@ export default function Testimonials() {
       >
         {/* First Testimonial */}
         <motion.div 
-          className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
-          bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+          className="flex-1 border border-gray-900 dark:border-gray-700 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
+          bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] dark:hover:shadow-[0_8px_30px_rgba(110,77,66,0.05)] hover:border-[#A58D84]/30 dark:hover:border-[#A58D84]/40"
           variants={item}
           whileHover={{ 
             y: -8,
@@ -71,7 +71,7 @@ export default function Testimonials() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white shadow-sm bg-gray-100 transform transition-transform duration-300 hover:scale-105">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-700 transform transition-transform duration-300 hover:scale-105">
               <Image
                 src="/images/akua.png"
                 alt="Akua Donkor"
@@ -83,16 +83,16 @@ export default function Testimonials() {
           </motion.div>
           
           <div className="pt-12 flex flex-col items-center">
-            <h3 className="text-xl font-bold">Akua Donkor</h3>
-            <p className="text-gray-600 mb-4">Founder and CEO</p>
+            <h3 className="text-xl font-bold dark:text-gray-100">Akua Donkor</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">Founder and CEO</p>
             
-            <p className="text-center text-sm mb-4">
+            <p className="text-center text-sm mb-4 dark:text-gray-300">
               &ldquo;Daniella&apos;s design skills are exceptional. She created a beautiful and intuitive interface for our mobile app that our users love. Her attention to detail is remarkable.&ldquo;
             </p>
             
             <div className="flex mt-auto">
               <motion.div 
-                className="border border-gray-200 rounded-md p-1 flex gap-0.5"
+                className="border border-gray-200 dark:border-gray-700 rounded-md p-1 flex gap-0.5"
                 initial={false}
                 whileHover={{ 
                   boxShadow: '0 4px 12px rgba(110, 77, 66, 0.1)',
@@ -122,8 +122,8 @@ export default function Testimonials() {
         
         {/* Second Testimonial */}
         <motion.div 
-          className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
-          bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+          className="flex-1 border border-gray-900 dark:border-gray-700 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
+          bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] dark:hover:shadow-[0_8px_30px_rgba(110,77,66,0.05)] hover:border-[#A58D84]/30 dark:hover:border-[#A58D84]/40"
           variants={item}
           whileHover={{ 
             y: -8,
@@ -136,7 +136,7 @@ export default function Testimonials() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white shadow-sm bg-gray-100 transform transition-transform duration-300 hover:scale-105">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-700 transform transition-transform duration-300 hover:scale-105">
               <Image
                 src="/images/ataa.png"
                 alt="Ataa Ayi"
@@ -148,10 +148,10 @@ export default function Testimonials() {
           </motion.div>
           
           <div className="pt-12 flex flex-col items-center">
-            <h3 className="text-xl font-bold">Ataa Ayi</h3>
-            <p className="text-gray-600 mb-4">Product Manager</p>
+            <h3 className="text-xl font-bold dark:text-gray-100">Ataa Ayi</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">Product Manager</p>
             
-            <p className="text-center text-sm mb-4">
+            <p className="text-center text-sm mb-4 dark:text-gray-300">
               &ldquo;Working with Daniella was a pleasure. She transformed our website with her creative design solutions and improved our user engagement significantly. Highly recommended!&ldquo;
             </p>
             
@@ -201,8 +201,8 @@ export default function Testimonials() {
         
         {/* Third Testimonial */}
         <motion.div 
-          className="flex-1 border border-gray-900 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
-          bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] hover:border-[#A58D84]/30"
+          className="flex-1 border border-gray-900 dark:border-gray-700 rounded-3xl p-4 md:p-6 flex flex-col items-center relative h-[340px] max-w-xs mx-auto w-full
+          bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(110,77,66,0.1)] dark:hover:shadow-[0_8px_30px_rgba(110,77,66,0.05)] hover:border-[#A58D84]/30 dark:hover:border-[#A58D84]/40"
           variants={item}
           whileHover={{ 
             y: -8,
@@ -215,7 +215,7 @@ export default function Testimonials() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white shadow-sm bg-gray-100 transform transition-transform duration-300 hover:scale-105">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-1 border-white dark:border-gray-700 shadow-sm bg-gray-100 dark:bg-gray-700 transform transition-transform duration-300 hover:scale-105">
               <Image
                 src="/images/diana.png"
                 alt="Diana Asamoah"
@@ -227,10 +227,10 @@ export default function Testimonials() {
           </motion.div>
           
           <div className="pt-12 flex flex-col items-center">
-            <h3 className="text-xl font-bold">Diana Asamoah</h3>
-            <p className="text-gray-600 mb-4">Construction Manager</p>
+            <h3 className="text-xl font-bold dark:text-gray-100">Diana Asamoah</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-4">Construction Manager</p>
             
-            <p className="text-center text-sm mb-4">
+            <p className="text-center text-sm mb-4 dark:text-gray-300">
               &ldquo;Daniella&apos;s attention to detail and creative approach to problem-solving made our construction company&apos;s rebranding project a huge success. The new visual identity perfectly captures our values.&ldquo;
             </p>
             

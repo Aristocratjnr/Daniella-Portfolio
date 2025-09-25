@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <main 
-      className="min-h-screen"
+      className="min-h-screen bg-background text-foreground transition-colors duration-300"
       style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
     >
       {/* Navigation */}

@@ -65,15 +65,15 @@ const SkillsSection = () => {
   ]
 
   return (
-    <section id="projects" className="min-h-screen px-4 sm:px-6 py-12 md:py-16 lg:py-20 overflow-hidden bg-[#F5F1ED]">
+    <section id="projects" className="min-h-screen px-4 sm:px-6 py-12 md:py-16 lg:py-20 overflow-hidden bg-[#F5F1ED] dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-2 sm:px-4">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left side - Illustration */}
           <div className="order-2 lg:order-1 relative flex flex-col lg:flex-row items-center justify-center lg:items-start lg:justify-start">
-            <h2 className="hidden lg:block text-5xl xl:text-6xl font-bold text-gray-800 transform -rotate-90 absolute -left-16 top-1/2 -translate-y-1/2 origin-center mr-2 whitespace-nowrap">
+            <h2 className="hidden lg:block text-5xl xl:text-6xl font-bold text-gray-800 dark:text-gray-100 transform -rotate-90 absolute -left-16 top-1/2 -translate-y-1/2 origin-center mr-2 whitespace-nowrap">
               MY PROJECTS
             </h2>
-            <h2 className="lg:hidden text-3xl sm:text-4xl font-bold text-gray-800 mb-8 text-center w-full">
+            <h2 className="lg:hidden text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-8 text-center w-full">
               MY PROJECTS
             </h2>
             {/* Animated Illustration */}
@@ -118,7 +118,7 @@ const SkillsSection = () => {
                 ].map((item) => (
                   <motion.div
                     key={item.id}
-                    className="absolute rounded-full bg-[#C1B1AB]/40"
+                    className="absolute rounded-full bg-[#C1B1AB]/40 dark:bg-[#8a7269]/50"
                     style={{
                       width: `${item.width}px`,
                       height: `${item.height}px`,
@@ -143,7 +143,7 @@ const SkillsSection = () => {
               </motion.div>
               {/* Subtle glow effect */}
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-br from-[#C1B1AB]/20 to-transparent rounded-full blur-xl -z-10"
+                className="absolute inset-0 bg-gradient-to-br from-[#C1B1AB]/20 dark:from-[#8a7269]/30 to-transparent rounded-full blur-xl -z-10"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ 
                   opacity: [0, 0.5, 0],
@@ -181,13 +181,12 @@ const SkillsSection = () => {
                   >
                     {/* Main card with slanted top */}
                     <div 
-                      className="relative z-10 h-full min-h-[240px] p-5 sm:p-6 bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between mx-auto group/card"
+                      className="relative z-10 h-full min-h-[240px] p-5 sm:p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between mx-auto group/card"
                       style={{
                         width: '100%',
                         maxWidth: '320px',
                         clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
                         marginTop: '1.5rem',
-                        backgroundColor: project.color || '#ffffff',
                         borderColor: 'rgba(0,0,0,0.1)',
                         transform: 'translateZ(20px)',
                         backfaceVisibility: 'hidden',
@@ -197,19 +196,28 @@ const SkillsSection = () => {
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
                       }}
                     >
+                      {/* Light mode color overlay */}
+                      <div 
+                        className="absolute inset-0 opacity-70 dark:opacity-0" 
+                        style={{ 
+                          backgroundColor: project.color || '#ffffff',
+                          borderRadius: '16px',
+                        }}
+                      />
+                      
                       {/* 3D depth effect - reduced brightness */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 to-white/10 opacity-0 group-hover/card:opacity-80 transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/50 dark:from-gray-700/50 to-white/10 dark:to-gray-800/10 opacity-0 group-hover/card:opacity-80 transition-opacity duration-500 pointer-events-none" />
                     
                     {/* Hover highlight - reduced intensity */}
                     <div 
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-70 transition-opacity duration-400 pointer-events-none"
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover/card:opacity-70 transition-opacity duration-400 pointer-events-none dark:group-hover/card:opacity-40"
                       style={{
                         background: 'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 80%)',
                       }}
                     />
                     
                     {/* Edge highlight - more subtle */}
-                    <div className="absolute inset-0 rounded-2xl border border-white/20 opacity-0 group-hover/card:opacity-70 transition-opacity duration-400 pointer-events-none" />
+                    <div className="absolute inset-0 rounded-2xl border border-white/20 dark:border-gray-600/20 opacity-0 group-hover/card:opacity-70 transition-opacity duration-400 pointer-events-none" />
                     {/* Top accent bar */}
                     <div 
                       className="absolute top-0 left-0 right-0 h-3"
@@ -220,7 +228,7 @@ const SkillsSection = () => {
                     <div className="relative z-10 mt-1 flex-1 flex flex-col h-full">
                       <div className="flex items-start justify-between mb-3 sm:mb-4">
                         <motion.div 
-                          className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center bg-white p-2"
+                          className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg flex items-center justify-center bg-white dark:bg-gray-700 p-2"
                           style={{
                             boxShadow: '0 2px 6px rgba(0,0,0,0.06), 0 1px 1px rgba(0,0,0,0.04)',
                             transform: 'translateZ(0)'
@@ -242,12 +250,12 @@ const SkillsSection = () => {
                         </motion.div>
                       </div>
 
-                      <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3 tracking-wide uppercase font-sans">
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-100 mb-2 sm:mb-3 tracking-wide uppercase font-sans">
                         {project.title}
                       </h3>
                       <div className="flex-1 flex flex-col items-start">
-                        <p className="text-black text-xs sm:text-sm leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-3 mb-3">
-                          <span className="inline-block transition-colors duration-200 hover:text-gray-700">
+                        <p className="text-black dark:text-gray-200 text-xs sm:text-sm leading-normal sm:leading-relaxed font-light tracking-wide line-clamp-3 mb-3">
+                          <span className="inline-block transition-colors duration-200 hover:text-gray-700 dark:hover:text-gray-300">
                             {project.description}
                           </span>
                         </p>
@@ -256,7 +264,7 @@ const SkillsSection = () => {
                         {project.tags && (
                           <div className="flex flex-wrap gap-1.5 mb-3">
                             {project.tags.slice(0, 2).map((tag, i) => (
-                              <span key={i} className="text-[10px] sm:text-xs px-2 py-0.5 bg-gray-100 rounded-full">
+                              <span key={i} className="text-[10px] sm:text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 rounded-full">
                                 {tag}
                               </span>
                             ))}
@@ -272,7 +280,7 @@ const SkillsSection = () => {
                                 href={link.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block w-full text-center text-xs sm:text-sm px-3 py-1.5 sm:py-2 bg-[#563C33] text-[#F2EEED] hover:bg-[#33241E] rounded-lg transition-colors duration-200 font-medium"
+                                className="block w-full text-center text-xs sm:text-sm px-3 py-1.5 sm:py-2 bg-[#563C33] dark:bg-[#6E4D42] text-[#F2EEED] hover:bg-[#33241E] dark:hover:bg-[#563C33] rounded-lg transition-colors duration-200 font-medium"
                               >
                                 {link.label}
                               </a>
@@ -285,7 +293,7 @@ const SkillsSection = () => {
                   
                   {/* 3D Shadow effect with glow */}
                   <div 
-                    className="absolute inset-0 bg-gray-200 rounded-lg transition-all duration-500 group-hover:opacity-70 group-hover:shadow-[0_0_25px_rgba(161,98,7,0.1)] group-hover:shadow-amber-100/50"
+                    className="absolute inset-0 bg-gray-200 dark:bg-gray-600 rounded-lg transition-all duration-500 group-hover:opacity-70 group-hover:shadow-[0_0_25px_rgba(161,98,7,0.1)] group-hover:shadow-amber-100/50 dark:group-hover:shadow-gray-700/50"
                     style={{
                       clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
                       zIndex: 0,
@@ -298,7 +306,7 @@ const SkillsSection = () => {
                   
                   {/* Edge highlight */}
                   <div 
-                    className="absolute inset-0 border-2 border-white/30 rounded-lg pointer-events-none"
+                    className="absolute inset-0 border-2 border-white/30 dark:border-gray-600/30 rounded-lg pointer-events-none"
                     style={{
                       clipPath: 'polygon(0 12%, 100% 0, 100% 100%, 0 100%)',
                       zIndex: 15,
@@ -315,11 +323,11 @@ const SkillsSection = () => {
             <div className="flex justify-center sm:justify-end mt-10 sm:mt-8">
               <Link 
                 href="/services"
-                className="relative bg-white/90 backdrop-blur-sm rounded-full px-5 sm:px-6 py-2.5 sm:py-3 border border-black flex items-center gap-2 hover:bg-white transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-lg hover:shadow-blue-200/50"
+                className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full px-5 sm:px-6 py-2.5 sm:py-3 border border-black dark:border-gray-600 flex items-center gap-2 hover:bg-white dark:hover:bg-gray-700 transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-lg hover:shadow-blue-200/50 dark:hover:shadow-blue-900/30"
                 aria-label="View more projects"
               >
-                <span className="relative z-10 text-gray-800 font-medium text-sm sm:text-base">See More?</span>
-                <span className="absolute inset-0 bg-gradient-to-r from-blue-200/60 via-blue-100/40 to-transparent -translate-x-full group-hover:translate-x-0 transition-all duration-700"></span>
+                <span className="relative z-10 text-gray-800 dark:text-gray-200 font-medium text-sm sm:text-base">See More?</span>
+                <span className="absolute inset-0 bg-gradient-to-r from-blue-200/60 dark:from-blue-800/40 via-blue-100/40 dark:via-blue-700/30 to-transparent -translate-x-full group-hover:translate-x-0 transition-all duration-700"></span>
                 <Image 
                   src="/images/hand.png" 
                   alt="" 

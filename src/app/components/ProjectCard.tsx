@@ -22,7 +22,7 @@ export default function ProjectCard({
   links,
 }: ProjectCardProps) {
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 dark:shadow-gray-900">
       <div className="relative h-48 w-full">
         <Image
           src={imageUrl}
@@ -32,13 +32,13 @@ export default function ProjectCard({
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-gray-100">{title}</h3>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="bg-gray-100 text-gray-800 text-xs px-3 py-1 rounded-full"
+              className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs px-3 py-1 rounded-full"
             >
               {tag}
             </span>
@@ -51,7 +51,7 @@ export default function ProjectCard({
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
+              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium inline-flex items-center"
             >
               {link.label}
               <svg

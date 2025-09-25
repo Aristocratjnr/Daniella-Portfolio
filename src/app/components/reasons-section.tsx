@@ -25,7 +25,7 @@ export function ReasonsSection() {
   });
 
   return (
-    <div className="bg-white w-full overflow-hidden">
+    <div className="bg-white dark:bg-gray-900 w-full overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +38,7 @@ export function ReasonsSection() {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-[#6E4D42] mb-4"
+            className="text-3xl md:text-4xl font-bold text-[#6E4D42] dark:text-[#C1B1AB] mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -47,7 +47,7 @@ export function ReasonsSection() {
             3 Reasons to Choose Me
           </motion.h2>
           <motion.div 
-            className="w-16 h-1 bg-[#C1B1AB] mx-auto"
+            className="w-16 h-1 bg-[#C1B1AB] dark:bg-[#876D60] mx-auto"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -58,12 +58,12 @@ export function ReasonsSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
         {/* Problem Solver Card */}
         <motion.div 
-          className="bg-[#F2EEED] rounded-2xl p-6 relative border border-gray-100 h-full flex flex-col min-h-[400px] max-w-[280px] mx-auto overflow-hidden group"
+          className="bg-[#F2EEED] dark:bg-gray-800 rounded-2xl p-6 relative border border-gray-100 dark:border-gray-700 h-full flex flex-col min-h-[400px] max-w-[280px] mx-auto overflow-hidden group"
           {...getCardAnimation(0)}
         >
           {/* Animated background elements */}
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-[#F2EEED] to-[#e8e2e0] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute inset-0 bg-gradient-to-br from-[#F2EEED] to-[#e8e2e0] dark:from-gray-700 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             initial={{ scale: 0.8, opacity: 0 }}
             whileHover={{ scale: 1, opacity: 1 }}
           />
@@ -107,7 +107,7 @@ export function ReasonsSection() {
           >
             <div className="mb-6">
               <motion.div 
-                className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300"
+                className="w-16 h-16 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center mb-4 group-hover:bg-white/90 dark:group-hover:bg-gray-700/90 transition-colors duration-300"
                 whileHover={{ rotate: 5, scale: 1.05 }}
               >
                 <Image 
@@ -119,7 +119,7 @@ export function ReasonsSection() {
                 />
               </motion.div>
               <motion.h3 
-                className="text-lg font-light text-black uppercase tracking-wider mb-4"
+                className="text-lg font-light text-black dark:text-gray-100 uppercase tracking-wider mb-4"
                 whileHover={{ x: 5 }}
                 transition={{ type: 'spring', stiffness: 400 }}
               >
@@ -128,7 +128,7 @@ export function ReasonsSection() {
             </div>
             
             <motion.p 
-              className="text-sm text-black leading-relaxed"
+              className="text-sm text-black dark:text-gray-300 leading-relaxed"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -140,11 +140,11 @@ export function ReasonsSection() {
         
         {/* Build for People Card */}
         <motion.div 
-          className="bg-[#F2EEED] rounded-2xl p-6 relative border border-gray-100 h-full flex flex-col min-h-[400px] max-w-[280px] mx-auto overflow-hidden group"
+          className="bg-[#F2EEED] dark:bg-gray-800 rounded-2xl p-6 relative border border-gray-100 dark:border-gray-700 h-full flex flex-col min-h-[400px] max-w-[280px] mx-auto overflow-hidden group"
           {...getCardAnimation(1)}
         >
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-[#F2EEED] to-[#e8e2e0] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute inset-0 bg-gradient-to-br from-[#F2EEED] to-[#e8e2e0] dark:from-gray-700 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             initial={{ scale: 0.8, opacity: 0 }}
             whileHover={{ scale: 1, opacity: 1 }}
           />
@@ -187,7 +187,7 @@ export function ReasonsSection() {
           >
             <div className="mb-6">
               <motion.div 
-                className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300"
+                className="w-16 h-16 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center mb-4 group-hover:bg-white/90 dark:group-hover:bg-gray-700/90 transition-colors duration-300"
                 whileHover={{ rotate: 5, scale: 1.05 }}
               >
                 <Image 
@@ -199,7 +199,7 @@ export function ReasonsSection() {
                 />
               </motion.div>
               <motion.h3 
-                className="text-lg font-light text-black uppercase tracking-wider mb-4"
+                className="text-lg font-light text-black dark:text-gray-100 uppercase tracking-wider mb-4"
                 whileHover={{ x: 5 }}
                 transition={{ type: 'spring', stiffness: 400 }}
               >
@@ -208,7 +208,7 @@ export function ReasonsSection() {
             </div>
             
             <motion.p 
-              className="text-sm text-black leading-relaxed"
+              className="text-sm text-black dark:text-gray-300 leading-relaxed"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -220,11 +220,11 @@ export function ReasonsSection() {
         
         {/* Deliver Results Card */}
         <motion.div 
-          className="bg-[#F2EEED] rounded-2xl p-6 relative border border-gray-100 h-full flex flex-col min-h-[400px] max-w-[280px] mx-auto overflow-hidden group"
+          className="bg-[#F2EEED] dark:bg-gray-800 rounded-2xl p-6 relative border border-gray-100 dark:border-gray-700 h-full flex flex-col min-h-[400px] max-w-[280px] mx-auto overflow-hidden group"
           {...getCardAnimation(2)}
         >
           <motion.div 
-            className="absolute inset-0 bg-gradient-to-br from-[#F2EEED] to-[#e8e2e0] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute inset-0 bg-gradient-to-br from-[#F2EEED] to-[#e8e2e0] dark:from-gray-700 dark:to-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             initial={{ scale: 0.8, opacity: 0 }}
             whileHover={{ scale: 1, opacity: 1 }}
           />
@@ -267,7 +267,7 @@ export function ReasonsSection() {
           >
             <div className="mb-6">
               <motion.div 
-                className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300"
+                className="w-16 h-16 bg-white/80 dark:bg-gray-700/80 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center mb-4 group-hover:bg-white/90 dark:group-hover:bg-gray-700/90 transition-colors duration-300"
                 whileHover={{ rotate: 5, scale: 1.05 }}
               >
                 <Image 
@@ -279,7 +279,7 @@ export function ReasonsSection() {
                 />
               </motion.div>
               <motion.h3 
-                className="text-lg font-light text-black uppercase tracking-wider mb-4"
+                className="text-lg font-light text-black dark:text-gray-100 uppercase tracking-wider mb-4"
                 whileHover={{ x: 5 }}
                 transition={{ type: 'spring', stiffness: 400 }}
               >
@@ -288,7 +288,7 @@ export function ReasonsSection() {
             </div>
             
             <motion.p 
-              className="text-sm text-black leading-relaxed"
+              className="text-sm text-black dark:text-gray-300 leading-relaxed"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}

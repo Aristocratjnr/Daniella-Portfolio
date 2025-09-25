@@ -79,7 +79,7 @@ const TopCard: React.FC<{ item: Method; index: number }> = ({ item, index }) => 
       transition: { duration: 0.3 }
     }}
   >
-    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md transition-all duration-300 hover:shadow-lg">
+    <div className="bg-[#f5f5f5] dark:bg-gray-800 p-4 pt-3 pb-20 flex-grow relative rounded-md transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-700/30">
       <motion.div 
         className="flex justify-between items-start mb-3"
         initial={{ opacity: 0 }}
@@ -88,11 +88,11 @@ const TopCard: React.FC<{ item: Method; index: number }> = ({ item, index }) => 
         transition={{ delay: 0.3 + (index * 0.1) }}
       >
         <motion.div 
-          className="bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm"
+          className="bg-[#C1B1AB] dark:bg-[#876D60] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm"
           whileHover={{ scale: 1.05, rotate: 2 }}
           transition={{ type: 'spring', stiffness: 300 }}
         >
-          <span className="text-5xl font-black text-black">{item.id}</span>
+          <span className="text-5xl font-black text-black dark:text-gray-100">{item.id}</span>
         </motion.div>
         <motion.div 
           className="flex flex-col items-center"
@@ -100,7 +100,7 @@ const TopCard: React.FC<{ item: Method; index: number }> = ({ item, index }) => 
           transition={{ type: 'spring', stiffness: 400 }}
         >
           <Image src={item.icon} alt={`${item.title} icon`} width={32} height={32} className="object-contain w-8 h-8" />
-          <span className="font-medium text-xs text-black mt-1">{item.title}</span>
+          <span className="font-medium text-xs text-black dark:text-gray-200 mt-1">{item.title}</span>
         </motion.div>
       </motion.div>
       
@@ -111,7 +111,7 @@ const TopCard: React.FC<{ item: Method; index: number }> = ({ item, index }) => 
         viewport={{ once: true }}
         transition={{ delay: 0.4 + (index * 0.1) }}
       >
-        <p className="text-sm text-gray-800 leading-tight">{item.description}</p>
+        <p className="text-sm text-gray-800 dark:text-gray-300 leading-tight">{item.description}</p>
       </motion.div>
     </div>
   </motion.div>
@@ -133,7 +133,7 @@ const BottomCard: React.FC<{ item: Method; index: number }> = ({ item, index }) 
       transition: { duration: 0.3 }
     }}
   >
-    <div className="bg-[#f5f5f5] p-4 pt-3 pb-20 flex-grow relative rounded-md transition-all duration-300 hover:shadow-lg">
+    <div className="bg-[#f5f5f5] dark:bg-gray-800 p-4 pt-3 pb-20 flex-grow relative rounded-md transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-700/30">
       <motion.div 
         className="h-[100px] overflow-y-auto pr-1"
         initial={{ opacity: 0 }}
@@ -141,7 +141,7 @@ const BottomCard: React.FC<{ item: Method; index: number }> = ({ item, index }) 
         viewport={{ once: true }}
         transition={{ delay: 0.3 + (index * 0.1) }}
       >
-        <p className="text-sm text-gray-800 leading-tight">{item.description}</p>
+        <p className="text-sm text-gray-800 dark:text-gray-300 leading-tight">{item.description}</p>
       </motion.div>
 
       <motion.div 
@@ -150,15 +150,15 @@ const BottomCard: React.FC<{ item: Method; index: number }> = ({ item, index }) 
         transition={{ type: 'spring', stiffness: 400 }}
       >
         <Image src={item.icon} alt={`${item.title} icon`} width={32} height={32} className="object-contain w-8 h-8 mb-1" />
-        <span className="font-medium text-xs text-black">{item.title}</span>
+        <span className="font-medium text-xs text-black dark:text-gray-200">{item.title}</span>
       </motion.div>
 
       <motion.div 
-        className="absolute bottom-3 right-4 bg-[#C1B1AB] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm"
+        className="absolute bottom-3 right-4 bg-[#C1B1AB] dark:bg-[#876D60] rounded-[20px] w-[90px] h-[90px] flex items-center justify-center shadow-sm"
         whileHover={{ scale: 1.05, rotate: -2 }}
         transition={{ type: 'spring', stiffness: 300 }}
       >
-        <span className="text-5xl font-black text-black">{item.id}</span>
+        <span className="text-5xl font-black text-black dark:text-gray-100">{item.id}</span>
       </motion.div>
     </div>
   </motion.div>
@@ -166,11 +166,11 @@ const BottomCard: React.FC<{ item: Method; index: number }> = ({ item, index }) 
 
 const Methodologies: React.FC = () => {
   return (
-    <section className="py-16 px-4 bg-white">
+    <section className="py-16 px-4 bg-white dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">My Design Process</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">A structured approach to creating exceptional user experiences</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">My Design Process</h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">A structured approach to creating exceptional user experiences</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

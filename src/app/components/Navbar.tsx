@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Send, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const poppins = Poppins({
   weight: ['400'],
@@ -219,9 +220,10 @@ ${formData.message}`
   }, [activeLink]);
 
   return (
-    <nav ref={navbarRef} className={`w-full fixed top-0 left-0 bg-[#F2EEED] text-gray-900 px-4 sm:px-6 py-3 z-50 transition-all duration-300 ${
+    <nav ref={navbarRef} className={`w-full fixed top-0 left-0 bg-background text-foreground px-4 sm:px-6 py-3 z-50 transition-all duration-300 ${
       isScrolled ? 'shadow-md py-2' : 'py-3'
     } ${poppins.className}`}>
+      {/* Theme Toggle Button - Moved to navigation */}
       {/* Mobile menu button */}
       <div className="md:hidden flex justify-between items-center w-full">
         <div className="flex-shrink-0">
@@ -238,7 +240,7 @@ ${formData.message}`
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-gray-900 hover:text-gray-700 focus:outline-none"
+          className="text-foreground hover:text-muted-foreground focus:outline-none"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -247,7 +249,7 @@ ${formData.message}`
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-[#F2EEED] absolute left-0 right-0 top-full px-4 py-3 shadow-lg">
+        <div className="md:hidden bg-background absolute left-0 right-0 top-full px-4 py-3 shadow-lg">
           <div className="flex flex-col space-y-4">
             {['HOME', 'ABOUT ME', 'SERVICES', 'CONTACT ME'].map((link) => (
               <a
@@ -262,19 +264,24 @@ ${formData.message}`
                 onClick={(e) => handleLinkClick(link, e)}
                 className={`text-lg font-medium leading-normal transition-colors px-4 py-2 rounded-lg ${
                   currentActiveLink === link
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-muted-foreground hover:bg-muted'
                 }`}
               >
                 {link}
               </a>
             ))}
-            <button 
-              onClick={() => setIsQuoteModalOpen(true)}
-              className="inline-flex items-center justify-center px-6 py-2 border border-gray-900 text-sm font-medium rounded-md text-gray-900 hover:bg-gray-900 hover:text-white transition-colors"
-            >
-              REQUEST QUOTE
-            </button>
+            <div className="flex flex-col space-y-4 pt-2">
+              <button 
+                onClick={() => setIsQuoteModalOpen(true)}
+                className="inline-flex items-center justify-center px-6 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                REQUEST QUOTE
+              </button>
+              <div className="flex justify-center">
+                <ThemeToggle />
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -305,8 +312,8 @@ ${formData.message}`
               onClick={(e) => handleLinkClick(link, e)}
               className={`text-[18px] font-normal leading-normal transition-colors px-1 ${
                 currentActiveLink === link
-                  ? 'text-gray-900 border-b-2 border-gray-900 pb-1'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'text-foreground border-b-2 border-primary pb-1'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               {link}
@@ -314,11 +321,14 @@ ${formData.message}`
           ))}
         </div>
 
-        {/* Desktop Contact Button */}
-        <div className="hidden md:flex flex-shrink-0">
+        {/* Desktop Right Side - Quote Button and Theme Toggle */}
+        <div className="hidden md:flex items-center space-x-4">
+          <div className="flex-shrink-0">
+            <ThemeToggle />
+          </div>
           <button 
             onClick={() => setIsQuoteModalOpen(true)}
-            className="inline-flex items-center px-6 py-2 border border-gray-900 text-sm font-medium rounded-md text-gray-900 hover:bg-gray-900 hover:text-white transition-colors"
+            className="inline-flex items-center px-6 py-2 border border-primary text-sm font-medium rounded-md text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
           >
             REQUEST QUOTE
           </button>
@@ -329,7 +339,7 @@ ${formData.message}`
       {isQuoteModalOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
           <div 
-            className="relative bg-white/90 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-2xl max-h-[90vh] my-4 overflow-y-auto shadow-2xl border border-white/20"
+            className="relative bg-card/90 backdrop-blur-lg rounded-xl sm:rounded-2xl p-4 sm:p-6 w-full max-w-[95vw] sm:max-w-[90vw] md:max-w-2xl max-h-[90vh] my-4 overflow-y-auto shadow-2xl border border-border"
           >
             <button 
               onClick={() => !isSubmitting && setIsQuoteModalOpen(false)}
@@ -340,8 +350,8 @@ ${formData.message}`
             </button>
             
             <div className="text-center mb-4 sm:mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Request a Quote</h2>
-              <p className="text-sm sm:text-base text-gray-600 mt-1 sm:mt-2">Fill out the form below and we&apos;ll get back to you shortly</p>
+              <h2 className="text-xl sm:text-2xl font-bold text-card-foreground">Request a Quote</h2>
+              <p className="text-sm sm:text-base text-muted-foreground mt-1 sm:mt-2">Fill out the form below and we&apos;ll get back to you shortly</p>
             </div>
             
             {submitStatus ? (
@@ -360,55 +370,55 @@ ${formData.message}`
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Full Name <span className="text-red-600">*</span></label>
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name <span className="text-red-600 dark:text-red-400">*</span></label>
                     <input
                       type="text"
                       id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} bg-background text-foreground`}
                       placeholder="Junior David"
                     />
                     {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Email <span className="text-red-600">*</span></label>
+                    <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email <span className="text-red-600 dark:text-red-400">*</span></label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} bg-background text-foreground`}
                       placeholder="junior@example.com"
                     />
                     {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Phone Number <span className="text-red-600">*</span></label>
+                    <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone Number <span className="text-red-600 dark:text-red-400">*</span></label>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] focus:border-transparent ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                      className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent ${errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} bg-background text-foreground`}
                       placeholder="+233 551784926"
                     />
                     {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
                   </div>
                   
                   <div>
-                    <label htmlFor="projectType" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Project Type</label>
+                    <label htmlFor="projectType" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Project Type</label>
                     <select
                       id="projectType"
                       name="projectType"
                       value={formData.projectType}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent bg-background text-foreground"
                     >
                       <option value="website">Website</option>
                       <option value="web-app">Web Application</option>
@@ -419,13 +429,13 @@ ${formData.message}`
                   </div>
                   
                   <div>
-                    <label htmlFor="timeline" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Timeline</label>
+                    <label htmlFor="timeline" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Timeline</label>
                     <select
                       id="timeline"
                       name="timeline"
                       value={formData.timeline}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent bg-background text-foreground"
                     >
                       <option value="1-2 weeks">1-2 weeks</option>
                       <option value="2-4 weeks">2-4 weeks</option>
@@ -436,13 +446,13 @@ ${formData.message}`
                   </div>
                   
                   <div>
-                    <label htmlFor="budget" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Budget Range</label>
+                    <label htmlFor="budget" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Budget Range</label>
                     <select
                       id="budget"
                       name="budget"
                       value={formData.budget}
                       onChange={handleInputChange}
-                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 focus:ring-2 focus:ring-[#33241E] focus:border-transparent"
+                      className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent bg-background text-foreground"
                     >
                       <option value="1000-5000">₵1,000 - ₵5,000</option>
                       <option value="5000-10000">₵5,000 - ₵10,000</option>
@@ -454,14 +464,14 @@ ${formData.message}`
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1">Project Details <span className="text-red-600">*</span></label>
+                  <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Project Details <span className="text-red-600 dark:text-red-400">*</span></label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg ${errors.message ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#33241E] focus:border-transparent`}
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-700'} focus:ring-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] focus:border-transparent bg-background text-foreground`}
                     placeholder="Tell us about your project..."
                   />
                   {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message}</p>}
@@ -471,7 +481,7 @@ ${formData.message}`
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent rounded-md shadow-sm text-sm sm:text-base font-medium text-white bg-[#33241E] hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#33241E] disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 border border-transparent rounded-md shadow-sm text-sm sm:text-base font-medium text-white bg-[#33241E] dark:bg-[#A08D87] hover:bg-gray-900 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#33241E] dark:focus:ring-[#A08D87] disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>

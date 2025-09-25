@@ -62,13 +62,13 @@ const PrivacyPolicyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div 
         ref={modalRef}
-        className="bg-white/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border border-white/20"
+        className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg rounded-2xl p-6 sm:p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-2xl border border-white/20 dark:border-gray-700/20"
       >
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-800">Privacy Policy</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Privacy Policy</h2>
           <button 
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 transition-colors"
+            className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
             aria-label="Close privacy policy"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -77,7 +77,7 @@ const PrivacyPolicyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
           </button>
         </div>
         
-        <div className="prose prose-sm sm:prose text-gray-700 space-y-4">
+        <div className="prose prose-sm sm:prose text-gray-700 dark:text-gray-300 space-y-4">
           <p className="font-medium">Last updated: August 20, 2025</p>
           
           <h3 className="text-lg font-semibold mt-6">1. Information We Collect</h3>
@@ -105,13 +105,13 @@ const PrivacyPolicyModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () 
           </ul>
           
           <h3 className="text-lg font-semibold mt-6">5. Contact Us</h3>
-          <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:daniellaasiedu755@gmail.com" className="text-blue-600 hover:underline">daniellaasiedu755@gmail.com</a>.</p>
+          <p>If you have any questions about this Privacy Policy, please contact us at           <a href="mailto:daniellaasiedu755@gmail.com" className="text-blue-600 dark:text-blue-400 hover:underline">daniellaasiedu755@gmail.com</a>.</p>
         </div>
         
         <div className="mt-8 flex justify-end">
           <button
             onClick={onClose}
-            className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+            className="px-6 py-2 bg-black dark:bg-gray-800 text-white rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 transition-colors"
           >
             Close
           </button>
@@ -186,7 +186,7 @@ export default function ContactPage() {
       transition: {
         staggerChildren: 0.1,
         delayChildren: 0.2,
-        ease: [0.16, 1, 0.3, 1] as any
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
       }
     }
   };
@@ -198,14 +198,14 @@ export default function ContactPage() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1] as any
+        ease: [0.16, 1, 0.3, 1] as [number, number, number, number]
       }
     }
   };
 
   return (
     <motion.div 
-      className="min-h-screen flex flex-col bg-[#A58D84] bg-opacity-95"
+      className="min-h-screen flex flex-col bg-[#A58D84] dark:bg-gray-900 bg-opacity-95 transition-colors duration-300"
       style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -222,7 +222,7 @@ export default function ContactPage() {
           >
             {/* Contact Info Section */}
             <motion.div 
-              className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-6 sm:space-y-8 bg-white/5 backdrop-blur-sm rounded-2xl lg:rounded-r-none"
+              className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center space-y-6 sm:space-y-8 bg-white/5 dark:bg-white/5 backdrop-blur-sm rounded-2xl lg:rounded-r-none"
               variants={item}
               whileHover={{ 
                 boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
@@ -258,7 +258,7 @@ export default function ContactPage() {
 
               <motion.div className="space-y-6 sm:space-y-8" variants={container}>
                 <motion.div 
-                  className="p-4 sm:p-5 bg-white/10 rounded-xl backdrop-blur-sm group"
+                  className="p-4 sm:p-5 bg-white/10 dark:bg-white/5 rounded-xl backdrop-blur-sm group"
                   variants={item}
                   whileHover={{ 
                     y: -5,
@@ -278,7 +278,7 @@ export default function ContactPage() {
                 </motion.div>
 
                 <motion.div 
-                  className="p-4 sm:p-5 bg-white/10 rounded-xl backdrop-blur-sm group"
+                  className="p-4 sm:p-5 bg-white/10 dark:bg-white/5 rounded-xl backdrop-blur-sm group"
                   variants={item}
                   whileHover={{ 
                     y: -5,
@@ -301,7 +301,7 @@ export default function ContactPage() {
 
             {/* Contact Form Section */}
             <motion.div 
-              className="bg-[#F2EEED] rounded-2xl lg:rounded-l-none p-6 sm:p-8 lg:p-10 shadow-xl"
+              className="bg-[#F2EEED] dark:bg-gray-800 rounded-2xl lg:rounded-l-none p-6 sm:p-8 lg:p-10 shadow-xl"
               variants={item}
               whileHover={{ 
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
@@ -310,7 +310,7 @@ export default function ContactPage() {
             >
               <div className="h-full flex flex-col">
                 <motion.h2 
-                  className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-6 sm:mb-8"
+                  className="text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-gray-100 mb-6 sm:mb-8"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
@@ -334,11 +334,11 @@ export default function ContactPage() {
                         className="space-y-1.5"
                         variants={item}
                       >
-                        <label className="text-gray-700 text-sm font-medium">First name <span className="text-red-500">*</span></label>
+                        <label className="text-gray-700 dark:text-gray-300 text-sm font-medium">First name <span className="text-red-500 dark:text-red-400">*</span></label>
                         <motion.div whileHover={{ scale: 1.01 }}>
                           <Input
                             type="text"
-                            className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.firstName ? 'border-red-500' : ''}`}
+                            className={`bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-gray-400 dark:focus:border-gray-500 focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-500 transition-all ${errors.firstName ? 'border-red-500 dark:border-red-400' : ''}`}
                             disabled={isSubmitting}
                             {...register('firstName')}
                           />
@@ -358,11 +358,11 @@ export default function ContactPage() {
                         className="space-y-1.5"
                         variants={item}
                       >
-                        <label className="text-gray-700 text-sm font-medium">Last name <span className="text-red-500">*</span></label>
+                        <label className="text-gray-700 dark:text-gray-300 text-sm font-medium">Last name <span className="text-red-500 dark:text-red-400">*</span></label>
                         <motion.div whileHover={{ scale: 1.01 }}>
                           <Input
                             type="text"
-                            className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.lastName ? 'border-red-500' : ''}`}
+                            className={`bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-gray-400 dark:focus:border-gray-500 focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-500 transition-all ${errors.lastName ? 'border-red-500 dark:border-red-400' : ''}`}
                             disabled={isSubmitting}
                             {...register('lastName')}
                           />
@@ -384,11 +384,11 @@ export default function ContactPage() {
                       className="space-y-1.5"
                       variants={item}
                     >
-                      <label className="text-gray-700 text-sm font-medium">Email Address <span className="text-red-500">*</span></label>
+                      <label className="text-gray-700 dark:text-gray-300 text-sm font-medium">Email Address <span className="text-red-500 dark:text-red-400">*</span></label>
                       <motion.div whileHover={{ scale: 1.01 }}>
                         <Input
                           type="email"
-                          className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 transition-all ${errors.email ? 'border-red-500' : ''}`}
+                          className={`bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-gray-400 dark:focus:border-gray-500 focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-500 transition-all ${errors.email ? 'border-red-500 dark:border-red-400' : ''}`}
                           disabled={isSubmitting}
                           {...register('email')}
                         />
@@ -409,11 +409,11 @@ export default function ContactPage() {
                       className="space-y-1.5"
                       variants={item}
                     >
-                      <label className="text-gray-700 text-sm font-medium">Message <span className="text-red-500">*</span></label>
+                      <label className="text-gray-700 dark:text-gray-300 text-sm font-medium">Message <span className="text-red-500 dark:text-red-400">*</span></label>
                       <motion.div whileHover={{ scale: 1.01 }}>
                         <Textarea
                           rows={4}
-                          className={`bg-gray-50 border-gray-300 rounded-xl px-4 py-3 text-gray-800 focus:border-gray-400 focus:ring-1 focus:ring-gray-300 resize-none transition-all ${errors.message ? 'border-red-500' : ''}`}
+                          className={`bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-100 focus:border-gray-400 dark:focus:border-gray-500 focus:ring-1 focus:ring-gray-300 dark:focus:ring-gray-500 resize-none transition-all ${errors.message ? 'border-red-500 dark:border-red-400' : ''}`}
                           disabled={isSubmitting}
                           {...register('message')}
                         />
@@ -443,7 +443,7 @@ export default function ContactPage() {
                           onCheckedChange={(checked) => setValue('privacy', checked === true)}
                         />
                       </motion.div>
-                      <label htmlFor="privacy" className="text-gray-700 text-sm">
+                      <label htmlFor="privacy" className="text-gray-700 dark:text-gray-300 text-sm">
                         I agree to the{' '}
                         <motion.button 
                           type="button" 
@@ -451,7 +451,7 @@ export default function ContactPage() {
                             e.preventDefault();
                             setIsPrivacyModalOpen(true);
                           }} 
-                          className="text-black font-medium hover:underline focus:outline-none relative group"
+                          className="text-black dark:text-gray-100 font-medium hover:underline focus:outline-none relative group"
                           whileHover={{ color: '#563C33' }}
                         >
                           <span className="relative z-10">Privacy & Policy</span>
@@ -484,7 +484,7 @@ export default function ContactPage() {
                     >
                       <Button
                         type="submit"
-                        className="w-full bg-[#33241E] hover:bg-gray-900 text-white rounded-xl px-6 py-3.5 sm:py-4 text-base sm:text-lg font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
+                        className="w-full bg-[#33241E] hover:bg-gray-900 dark:bg-[#563C33] dark:hover:bg-[#6E4D42] text-white rounded-xl px-6 py-3.5 sm:py-4 text-base sm:text-lg font-medium transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
                         disabled={isSubmitting}
                       >
                         <span className="relative z-10 flex items-center justify-center">
@@ -543,24 +543,24 @@ export default function ContactPage() {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4"
+                className="w-16 h-16 bg-green-100 dark:bg-green-900/40 rounded-full flex items-center justify-center mb-4"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.1, duration: 0.4, type: 'spring', stiffness: 200 }}
               >
-                <CheckCircle2 className="h-10 w-10 text-green-600" />
+                <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-400" />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.3 }}
               >
-                <DialogTitle className="text-center text-2xl font-semibold text-gray-900">
+                <DialogTitle className="text-center text-2xl font-semibold text-gray-900 dark:text-gray-100">
                   Message Sent Successfully!
                 </DialogTitle>
-                <DialogDescription className="text-center text-gray-600 mt-2">
+                <DialogDescription className="text-center text-gray-600 dark:text-gray-400 mt-2">
                   Thank you for reaching out, {watch('firstName') || 'there'}! I&apos;ll get back to you at{' '}
-                  <span className="font-medium text-gray-900">{watch('email') || 'your email'}</span> as soon as possible.
+                  <span className="font-medium text-gray-900 dark:text-gray-100">{watch('email') || 'your email'}</span> as soon as possible.
                 </DialogDescription>
               </motion.div>
             </motion.div>
@@ -577,7 +577,7 @@ export default function ContactPage() {
             >
               <Button 
                 onClick={() => setIsDialogOpen(false)}
-                className="px-8 py-2 bg-[#B5A394] hover:bg-[#9c8e82] text-white font-medium rounded-lg transition-colors"
+                className="px-8 py-2 bg-[#B5A394] dark:bg-[#876D60] hover:bg-[#9c8e82] dark:hover:bg-[#6E4D42] text-white font-medium rounded-lg transition-colors"
               >
                 Close
               </Button>

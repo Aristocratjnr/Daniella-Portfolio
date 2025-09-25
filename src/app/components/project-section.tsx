@@ -6,6 +6,31 @@ import { useEffect, useRef } from 'react';
 export default function ProjectsSection() {
     const categories = ["Web Design", "Mobile App Design", "Wireframe", "Prototype", "Dashboard"]
     const containerRef = useRef<HTMLDivElement | null>(null)
+    
+    // Add CSS variable handling for dark mode
+    useEffect(() => {
+      const setDarkModeStyles = () => {
+        const isDarkMode = document.documentElement.classList.contains('dark');
+        document.documentElement.style.setProperty('--background-color', isDarkMode ? 'rgba(17, 24, 39, 0.85)' : 'transparent');
+        document.documentElement.style.setProperty('--blend-mode', isDarkMode ? 'multiply' : 'normal');
+      };
+      
+      // Initial setup
+      setDarkModeStyles();
+      
+      // Watch for theme changes (for system preference changes)
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'class') {
+            setDarkModeStyles();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, { attributes: true });
+      
+      return () => observer.disconnect();
+    }, []);
 
     // Handle smooth infinite scroll
     useEffect(() => {
@@ -51,16 +76,18 @@ export default function ProjectsSection() {
         className="bg-cover bg-center bg-no-repeat relative"
         style={{
           backgroundImage: "url('/images/service-bg.png')",
+          backgroundColor: "var(--background-color, transparent)",
+          backgroundBlendMode: "var(--blend-mode, normal)"
         }}
       >
         {/* Content overlay */}
         <div className="relative z-10 flex flex-col items-center pt-20 pb-20 px-6">
           {/* Main heading */}
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center tracking-tight drop-shadow-lg">PROJECTS</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center tracking-tight drop-shadow-lg">PROJECTS</h1>
 
           {/* Description paragraph */}
           <div className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16">
-            <p className="text-gray-600 text-center leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4 md:px-6 font-light tracking-wide">
+            <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed text-sm sm:text-base md:text-lg lg:text-xl px-2 sm:px-4 md:px-6 font-light tracking-wide">
               It&apos;s not just a gallery of final products; it&apos;s a showcase of my thought process, problem-solving
               abilities, and the impact of my work. As a UI/UX designer, I transform each project into a compelling
               story that delivers an aesthetic and interactive user experience.
@@ -68,7 +95,7 @@ export default function ProjectsSection() {
           </div>
 
           {/* Category navigation (horizontal sliding text) */}
-          <div className="w-full max-w-6xl mx-4 sm:mx-6 md:mx-8 lg:mx-auto bg-[#A58D84] px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-xl shadow-lg overflow-hidden">
+          <div className="w-full max-w-6xl mx-4 sm:mx-6 md:mx-8 lg:mx-auto bg-[#A58D84] dark:bg-[#876D60] px-4 sm:px-6 md:px-8 py-2 md:py-3 rounded-xl shadow-lg dark:shadow-gray-800/50 overflow-hidden">
             <div className="relative overflow-hidden">
               <div 
                 ref={containerRef}

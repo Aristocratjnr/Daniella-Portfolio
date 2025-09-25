@@ -61,7 +61,7 @@ function Stars({
 
 export default function AnimatedBackground() {
   return (
-    <div className="fixed inset-0 -z-10 opacity-30 pointer-events-none">
+    <div className="fixed inset-0 -z-10 opacity-30 dark:opacity-20 pointer-events-none">
       <Canvas 
         camera={{ position: [0, 0, 1], fov: 75 }}
         gl={{ antialias: true, alpha: true }}

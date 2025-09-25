@@ -4,7 +4,7 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { motion, Variants, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, Variants, useMotionValue, useTransform, AnimatePresence, useAnimation } from 'framer-motion';
 import { ReasonsSection } from '../components/reasons-section';
 import { SkillsTools } from '../components/skillsTools';
 import Testimonials from '../components/Testimonials';
@@ -104,36 +104,84 @@ export default function AboutPage() {
   const [roleIndex, setRoleIndex] = useState(0); // Start with first role (I'm Daniella)
   const [direction, setDirection] = useState(1);
   const [showInitial, setShowInitial] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  // Removed unused state: const [isTransitioning, setIsTransitioning] = useState(false);
+  const controls = useAnimation();
+
+  // Handle mouse movement and hover state
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Update mouse position with a small offset to position the loader below the cursor
+      setMousePosition({ 
+        x: e.clientX, 
+        y: e.clientY + 12 // 12px below cursor
+      });
+      
+      // Check if hovering over interactive elements
+      const target = e.target as HTMLElement;
+      const isInteractive = target.closest('a, button, [role="button"], [tabindex]');
+      
+      if (isInteractive) {
+        controls.start({
+          scale: 1,
+          opacity: 1,
+          transition: { 
+            duration: 0.15,
+            ease: [0.4, 0, 0.2, 1]
+          }
+        });
+      } else {
+        controls.start({
+          scale: 0.8,
+          opacity: 0,
+          transition: { 
+            duration: 0.1,
+            ease: [0.4, 0, 0.2, 1]
+          }
+        });
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [controls]);
 
   // Auto-rotate text with better timing
   useEffect(() => {
     // Start with "I'm Daniella" for 2.5 seconds
     const initialTimer = setTimeout(() => {
-      setShowInitial(false);
-      setDirection(1);
-      setRoleIndex(1); // Move to first role after initial delay
+      // Removed transition state management as it wasn't used
+      setTimeout(() => {
+        setShowInitial(false);
+        setDirection(1);
+        setRoleIndex(1); // Move to first role after initial delay
+      }, 300);
     }, 2500);
 
     // Then rotate through roles every 4 seconds
     const rotationTimer = setInterval(() => {
       if (showInitial) return; // Don't rotate until initial delay is done
-      setDirection(prev => -prev); // Alternate direction
-      setRoleIndex((prev: number) => {
-        // Skip the first item (I'm Daniella) in the rotation
-        const nextIndex = (prev + 1) % roles.length;
-        return nextIndex === 0 ? 1 : nextIndex;
-      });
+      
+      // Removed transition state management as it wasn't used
+      setTimeout(() => {
+        setDirection(prev => -prev); // Alternate direction
+        setRoleIndex((prev: number) => {
+          // Skip the first item (I'm Daniella) in the rotation
+          const nextIndex = (prev + 1) % roles.length;
+          return nextIndex === 0 ? 1 : nextIndex;
+        });
+      }, 300);
     }, 4000);
     
     return () => {
       clearTimeout(initialTimer);
       clearInterval(rotationTimer);
     };
-  }, [roles.length, showInitial]);
+  }, [roles.length, showInitial, controls]);
 
   return (
     <motion.div 
-      className="min-h-screen bg-[#A58D84] overflow-x-hidden"
+      className="min-h-screen bg-[#A58D84] dark:bg-gray-900 overflow-x-hidden transition-colors duration-300"
       style={{ cursor: 'url("/images/selection-pointer.png") 0 0, auto' }}
       onMouseMove={handleMouseMove}
       initial={{ opacity: 0 }}
@@ -353,6 +401,37 @@ export default function AboutPage() {
       </main>
       
       <Footer />
+      
+      {/* Circular loader that follows mouse - positioned directly below cursor */}
+      <motion.div
+        className="fixed pointer-events-none z-50"
+        animate={controls}
+        initial={{ scale: 0, opacity: 0 }}
+        style={{
+          left: mousePosition.x,
+          top: mousePosition.y,
+          width: 12,
+          height: 12,
+          borderRadius: '50%',
+          border: '2px solid #000',
+          borderTopColor: 'transparent',
+          position: 'fixed' as const,
+          transform: 'translate(-50%, -50%)',
+          willChange: 'transform',
+          pointerEvents: 'none' as const,
+          filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5))',
+        }}
+      >
+        <style jsx>{`
+          .fixed {
+            animation: spin 0.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+          }
+          @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+          }
+        `}</style>
+      </motion.div>
     </motion.div>
   );
 }
