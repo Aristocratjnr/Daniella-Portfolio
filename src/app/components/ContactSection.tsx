@@ -639,7 +639,7 @@ export default function ContactForm() {
                         initial={{ opacity: 0, x: -5 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.6, duration: 0.3 }}
-                      >✉️</motion.span>
+                      ></motion.span>
                       <motion.h3 
                         className="text-gray-700 dark:text-gray-100 font-medium mb-1 sm:mb-2 text-base sm:text-lg"
                         animate={{ 
